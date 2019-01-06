@@ -1,4 +1,7 @@
 django
 waitress
 pillow
-django_crispy_forms
+django-crispy-forms
+dj-database-url
+dj-static
+python-dotenv
