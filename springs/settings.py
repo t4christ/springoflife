@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'springs.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
+import dj_database_url
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -172,3 +172,8 @@ else:
     STATIC_ROOT = "https://storage.googleapis.com/springs/static"
     STATIC_URL = 'https://storage.googleapis.com/springs/'
     MEDIA_URL = 'https://storage.googleapis.com/springs/media/'
+    DATABASES = {
+    'default': dj_database_url.config(
+        default='DATABASE_URL'
+    )
+}
