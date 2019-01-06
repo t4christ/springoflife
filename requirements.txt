@@ -6,3 +6,5 @@ dj-database-url
 dj-static
 python-dotenv
 psycopg2
+google-cloud-storage
+django-storages
