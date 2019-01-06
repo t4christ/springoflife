@@ -26,7 +26,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = '7v&ph%=o3ap5c5ap2=*)2isf2a#qy#+_l9a^dx7!zlg$b+)ox7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["localhost","spol.herokuapp.com","www.springsoflifeg.com"]
 
