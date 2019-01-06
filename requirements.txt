@@ -5,3 +5,4 @@ django-crispy-forms
 dj-database-url
 dj-static
 python-dotenv
+psycopg2
