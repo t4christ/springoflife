@@ -22,7 +22,8 @@ from .models import Village,Outreach,Portfolio
 # from django.views.decorators.csrf import csrf_exempt
 # import datetime
 # import json
-from django.core.mail import send_mail
+# from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
 
 
 
@@ -59,13 +60,18 @@ def contact(request):
     email=request.POST.get("email",)
     phone=request.POST.get("phone",)
     message=request.POST.get("message",)
-    print(email)
+    receiver=request.POST.get("receiver",)
+ 
     # receiver=request.POST.get("receiver",)
     if request.method == 'POST' and name and subject and email and message:
-        send_mail('{}', 'my phone number is {} and here is my message: {}', 'springsoflifeg@yahoo.com',['bakaretemitayo712@gmail.com']).format(subject,phone,message,email)
-        messages.success(request,"Message Sent You Will Be Constacted Soon.")
+        message="My name is %s"%name + " and my phone number is %s : "%phone + message 
+        # print(messae)
+        # send_mail('{}', 'my phone number is  and here is my message: {}', 'bakaretemitayo712@gmail.com',['bakaretemitayo7@gmail.com']).format(str(subject),str(message))
+        msg = EmailMultiAlternatives(subject, message, email, [receiver])
+        msg.send()
+        messages.success(request,"Message Sent. You Will Be Contacted Soon.")
     
         return redirect("/")
     else:
-        messages.error(request,"Error Sending Message, Make Sure All Details Are Filled and Retry.")
-    return render(request,"sol/contact.html")
+        # messages.error(request,"Error Sending Message, Make Sure All Details Are Filled and Retry.")
+        return render(request,"sol/contact.html")
