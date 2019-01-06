@@ -28,7 +28,7 @@ SECRET_KEY = '7v&ph%=o3ap5c5ap2=*)2isf2a#qy#+_l9a^dx7!zlg$b+)ox7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost","spol.herokuapp.com"]
+ALLOWED_HOSTS = ["localhost","spol.herokuapp.com","www.springsoflifeg.com"]
 
 
 # Application definition
