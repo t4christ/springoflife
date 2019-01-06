@@ -1,0 +1,4 @@
+django
+waitress
+pillow
+django_crispy_forms
