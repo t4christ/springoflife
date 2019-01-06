@@ -1,0 +1,250 @@
+{% extends './base.html' %} 
+{% load staticfiles %}
+{% block content %}
+<style>
+.statement li{
+    list-style-type:none;
+    
+}
+.single-team img{
+    height:325px;
+    width:360px;
+}
+</style>
+<div class="page-title" style="background-size:contain;background-image: url({% static 'images/sol/about-sol.jpeg' %})">
+    <h1>About us</h1>
+</div>
+
+<section id="about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="about-img">
+                    <img src="{% static 'images/sol/sol-logo.png' %}" alt="">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="about-content">
+                    <h2>Who we are</h2>
+                    <h3>Vision</h3>
+                    <p>Take the gospel of Christ to places where the light of God's is dim, where the gospel has not been heard and the power of God not known. Romans15:16-21</p>
+                    <h3>Mission</h3>
+                    <p>To honour God by planting Spirit empowered, Christ centered churches and schools in every nation.</p>
+                    <h3>Statement of Faith</h3>
+                    <p>We believe ...
+                    </p>
+                    <ul class="statement">
+                       <li>i. That the Bible is inspired, authoritative and infallible in its teachings,facts and events</li> 
+                       <li>ii. That God is a triune being,He is one in a very different sense from the sense in which He is three. He is one of His Spiritual essence and three in the distinction between the three personalities within the God head. Act 17:29, Mathew 28:19, 2Corithians 13:14. </li>
+                       <li>iii. That Jesus Christ is deity born of a virgin mary. </li>
+                       <li>iv. That the dead burial and ressurection of Jesus Christ is the only means of Grace for the saving of the soul of man. </li>
+                       <li>v. In believers baptism by immersion (for places without persecution and where their is the presence of a body of water). </li>
+                       <li>vi. In believers' transformation through the application of God's word and the sanctifying ministry of the Holy Spirit. </li>
+                       <li>vii. In the present supernatural ministry of the Holy Spirit who bestowed spiritual on believers. </li>
+                       <li>viii. In the physical ressurection of saved believers at second coming of Jesus Christ and the final judgement of the unsaved.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section id="team-area">
+    <div class="container">
+        <div class="center fadeInDown">
+            <h2>Missionaries Profile</h2>
+            <p class="lead">Leaders in various missions department. <br> To God be the Glory.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 single-team">
+                <div class="inner">
+                    <div class="team-img">
+                        <img src="{% static 'images/sol/henry-oise.jpeg' %}" alt="">
+                    </div>
+                    <div class="team-content">
+                        <h4>Henry Oise</h4>
+                        <span class="desg">Lead Missioner/International Director Springs of Life Global Missions International</span>
+                        <div class="team-social">
+                            <a class="fa fa-facebook" href="#"></a>
+                            <a class="fa fa-twitter" href="#"></a>
+                            <a class="fa fa-linkedin" href="#"></a>
+                            <a class="fa fa-pinterest" href="#"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 single-team">
+                <div class="inner">
+                    <div class="team-img">
+                        <img src="{% static 'images/sol/edith-oise.jpeg' %}" alt="">
+                    </div>
+                    <div class="team-content">
+                        <h4>Edith Oise</h4>
+                        <span class="desg">Director of Schools (New Life Academy) </span>
+                        <div class="team-social">
+                            <a class="fa fa-facebook" href="#"></a>
+                            <a class="fa fa-twitter" href="#"></a>
+                            <a class="fa fa-linkedin" href="#"></a>
+                            <a class="fa fa-pinterest" href="#"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 single-team">
+                <div class="inner">
+                    <div class="team-img">
+                        <img src="{% static 'images/team3.png' %}" alt="">
+                    </div>
+                    <div class="team-content">
+                        <h4>Prince Oghenetega Micheals</h4>
+                        <span class="desg">Fields Cordinator</span>
+                        <div class="team-social">
+                            <a class="fa fa-facebook" href="#"></a>
+                            <a class="fa fa-twitter" href="#"></a>
+                            <a class="fa fa-linkedin" href="#"></a>
+                            <a class="fa fa-pinterest" href="#"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 single-team">
+                <div class="inner">
+                    <div class="team-img">
+                        <img src="{% static 'images/sol/toyin.jpeg' %}" alt="">
+                    </div>
+                    <div class="team-content">
+                        <h4>Dania Oluwatoyin</h4>
+                        <span class="desg">Proprietress (New Life Academy)</span>
+                        <div class="team-social">
+                            <a class="fa fa-facebook" href="#"></a>
+                            <a class="fa fa-twitter" href="#"></a>
+                            <a class="fa fa-linkedin" href="#"></a>
+                            <a class="fa fa-pinterest" href="#"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-4 col-sm-6 single-team">
+                <div class="inner">
+                    <div class="team-img">
+                        <img src="{% static 'images/team5.png' %}" alt="">
+                    </div>
+                    <div class="team-content">
+                        <h4>Mable Schwartz</h4>
+                        <span class="desg">UI/UX Designer</span>
+                        <div class="team-social">
+                            <a class="fa fa-facebook" href="#"></a>
+                            <a class="fa fa-twitter" href="#"></a>
+                            <a class="fa fa-linkedin" href="#"></a>
+                            <a class="fa fa-pinterest" href="#"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 single-team">
+                <div class="inner">
+                    <div class="team-img">
+                        <img src="{% static 'images/team6.png' %}" alt="">
+                    </div>
+                    <div class="team-content">
+                        <h4>Adele Washington</h4>
+                        <span class="desg">UI/UX Designer</span>
+                        <div class="team-social">
+                            <a class="fa fa-facebook" href="#"></a>
+                            <a class="fa fa-twitter" href="#"></a>
+                            <a class="fa fa-linkedin" href="#"></a>
+                            <a class="fa fa-pinterest" href="#"></a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="bottom">
+    <div class="container fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+        <div class="row">
+            <div class="col-md-2">
+                <a href="#" class="footer-logo">
+                    <img src="{% static 'images/logo-black.png' %}" alt="logo">
+                </a>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h3>Company</h3>
+                            <ul>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">We are hiring</a></li>
+                                <li><a href="#">Meet the team</a></li>
+                                <li><a href="#">Copyright</a></li>
+                                <li><a href="#">Terms of use</a></li>
+                                <li><a href="#">Privacy policy</a></li>
+                                <li><a href="#">Contact us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/.col-md-3-->
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h3>Support</h3>
+                            <ul>
+                                <li><a href="#">Faq</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Forum</a></li>
+                                <li><a href="#">Documentation</a></li>
+                                <li><a href="#">Refund policy</a></li>
+                                <li><a href="#">Ticket system</a></li>
+                                <li><a href="#">Billing system</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/.col-md-3-->
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h3>Developers</h3>
+                            <ul>
+                                <li><a href="#">Web Development</a></li>
+                                <li><a href="#">SEO Marketing</a></li>
+                                <li><a href="#">Theme</a></li>
+                                <li><a href="#">Development</a></li>
+                                <li><a href="#">Email Marketing</a></li>
+                                <li><a href="#">Plugin Development</a></li>
+                                <li><a href="#">Article Writing</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/.col-md-3-->
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="widget">
+                            <h3>Our Partners</h3>
+                            <ul>
+                                <li><a href="#">Adipisicing Elit</a></li>
+                                <li><a href="#">Eiusmod</a></li>
+                                <li><a href="#">Tempor</a></li>
+                                <li><a href="#">Veniam</a></li>
+                                <li><a href="#">Exercitation</a></li>
+                                <li><a href="#">Ullamco</a></li>
+                                <li><a href="#">Laboris</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/.col-md-3-->
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!--/#bottom-->
+{% endblock content %}

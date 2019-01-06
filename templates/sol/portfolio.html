@@ -1,0 +1,167 @@
+{% extends './base.html' %} 
+{% load staticfiles %}
+{% block content %}
+
+
+<!-- <script>
+document.addEventListener("load",()=>{
+    let get_title = document.querySelectorAll(".titles").text
+    console.log("My title list " + get_title)
+})
+</script> -->
+
+<div class="page-title" style="background-size:cover;background-image: url({% static 'images/sol/work7.jpeg' %})">
+    <h1>Portfolio</h1>
+</div>
+
+<section id="portfolio">
+    <div class="container">
+        <div class="center">
+            <h2>Over 20 Years of God's Faithfulness</h2>
+            <p class="lead">Check Out the Wonderful Works of Our Lord God Almighty. His Love Endureth Forever.</p>
+        </div>
+
+
+        <ul class="portfolio-filter text-center">
+            <li><a class="btn btn-default active" href="#" data-filter="*">All Works</a></li>
+            {% for port in portfolio|dictsort:'title' %}
+            {% ifchanged %}
+            <li><a class="btn btn-default titles" href="#" data-filter=".{{port.title}}">{{port.title}}</a></li>
+            {% endifchanged %}
+            {% endfor %}
+<!--             
+            <li><a class="btn btn-default" href="#" data-filter=".html">Photography</a></li>
+            <li><a class="btn btn-default" href="#" data-filter=".wordpress">Web Development</a></li> -->
+        </ul>
+        <!--/#portfolio-filter-->
+
+        <div class="row">
+              
+               
+                
+            <div class="portfolio-items">
+                    {% for port in portfolio %}
+                <div class="portfolio-item {{port.title}} apps col-xs-12 col-sm-4 col-md-3 single-work">
+                    <div class="recent-work-wrap">
+                        <img style="height:217.5px;width:290px;" class="img-responsive" src="{{port.image.url}}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{{port.image.url}}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                       
+
+
+                    </div>
+                </div>
+                {% endfor %}
+
+
+                {% for port in portfolio %}
+                {% if port.link %}
+                <div class="portfolio-item {{port.title}} apps col-xs-12 col-sm-4 col-md-3 single-work">
+                    <div class="recent-work-wrap">
+              
+                <iframe  height="217" width="290" src="{{port.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       
+         
+
+            </div>
+        </div>
+        {% else %}
+        <div style="display:none;"></div>
+        {%endif%}
+        {% endfor %}
+                <!--/.portfolio-item-->
+
+                <!-- <div class="portfolio-item joomla bootstrap col-xs-12 col-sm-4 col-md-3 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/portfolio/item-2.png' %}' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/portfolio/item-2.png' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--/.portfolio-item-->
+
+                <!-- <div class="portfolio-item bootstrap wordpress col-xs-12 col-sm-4 col-md-3 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/portfolio/item-3.png' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/portfolio/item-3.png' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--/.portfolio-item-->
+
+                <!-- <div class="portfolio-item joomla wordpress apps col-xs-12 col-sm-4 col-md-3 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/portfolio/item-4.png' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/portfolio/item-4.png' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--/.portfolio-item-->
+
+                <!-- <div class="portfolio-item joomla html bootstrap col-xs-12 col-sm-4 col-md-3 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/portfolio/item-5.png' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/portfolio/item-5.png' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--/.portfolio-item-->
+
+                <!-- <div class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/portfolio/item-1.png' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/portfolio/item-1.png' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--/.portfolio-item-->
+
+                <!-- <div class="portfolio-item joomla html bootstrap col-xs-12 col-sm-4 col-md-3 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/portfolio/item-6.png' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/portfolio/item-6.png' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--/.portfolio-item-->
+<!-- 
+                <div class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/portfolio/item-2.png' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/portfolio/item-2.png' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--/.portfolio-item-->
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#portfolio-item-->
+
+
+{%endblock %}

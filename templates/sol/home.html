@@ -1,0 +1,370 @@
+
+{% extends './base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+{% block javascript %}
+<script>
+
+
+
+    </script>
+{% endblock javascript %}
+
+
+
+    <section id="main-slider" class="no-margin">
+        <div class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#main-slider" data-slide-to="1"></li>
+                <li data-target="#main-slider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+
+                <div class="item active" style="background-image:linear-gradient(rgba(0, 0, 0, 0.7)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/landing1.jpeg' %})">
+                    <img  style="height:200px;width:350px;position:absolute;top:0;left:0;right:0;margin:auto;" src="{% static 'images/sol/sol-ani.jpeg' %}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Welcome to Springs of Life Global Missions</h1>
+                                    <div class="animation animated-item-2">
+                                        Every christian should be involved in missions.This is what God wants.
+                                    </div>
+                                    <a class="btn-slide animation animated-item-3" href="#">Learn More</a>
+                                    <a class="btn-slide white animation animated-item-3" href="#">Get Started</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--/.item-->
+
+                <div class="item" style="background-size:contain;background-image:linear-gradient(rgba(0, 0, 0, 0.7)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/sol20-landing.jpeg' %})">
+               
+                    <div class="container">
+                            
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Welcome to Springs of Life Global Missions</h1>
+                                    <div class="animation animated-item-2">
+                                        Every christian should be involved in missions.This is what God wants.
+                                    </div>
+                                    <a class="btn-slide animation animated-item-3" href="#">Learn More</a>
+                                    <a class="btn-slide white animation animated-item-3" href="#">Get Started</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--/.item-->
+
+            </div>
+            <!--/.carousel-inner-->
+        </div>
+        <!--/.carousel-->
+        <a class="prev hidden-xs hidden-sm" href="#main-slider" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="next hidden-xs hidden-sm" href="#main-slider" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </section>
+    <!--/#main-slider-->
+
+
+    <section id="recent-works">
+        <div class="container">
+            <div class="center fadeInDown">
+                <h2>20 years of Gospel and Medical Missions Outreaches</h2>
+                <p class="lead">See what the Lord is doing in our outreaches. <br> Captions of the word section, deliverance section,counselling section,prayer section,worship section,discipleship section and medical section. Welcome to missions.</p>
+            </div>
+
+            <div class="row">
+                {% if outreach %}
+                {%for outreach in outreach %}
+                <div class="col-xs-12 col-sm-6 col-md-4 single-work">
+                    <div class="recent-work-wrap">
+                        <img style="height:292.5px;width:390px;" class="img-responsive" src="{{outreach.image.url}}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{{outreach.image.url}}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+{% endif %}
+                <div class="col-xs-12 col-sm-6 col-md-4 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/sol/work2.jpeg' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/sol/work2.jpeg' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/sol/work3.jpeg' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/sol/work3.jpeg' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/sol/work4.jpeg' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/sol/work4.jpeg' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/sol/work5.jpeg' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/sol/work5.jpeg' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 single-work">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="{% static 'images/sol/work6.jpeg' %}" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <a class="preview" href="{% static 'images/sol/work6.jpeg' %}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.row-->
+            <div class="clearfix text-center">
+                <br>
+                <br>
+                <!-- <a href="#" class="btn btn-primary">Show More</a> -->
+            </div>
+        </div>
+        <!--/.container-->
+    </section>
+    <!--/#recent-works-->
+
+   
+
+    <section id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 fadeInDown">
+                        <div class="tab-wrap">
+                            <div class="media">
+                                <div class="parrent pull-left">
+                                    <ul class="nav nav-tabs nav-stacked">
+
+
+
+                                            {% for village in village|slice:"0:1" %}
+                                            <li class="active"><a href="#tab{{village.title}}" data-toggle="tab" class="village">{{village.title}}</a></li>
+                                            {% endfor %}
+
+
+
+                                            {% for village in village|slice:"1:" %}
+                                            <li class=""><a href="#tab{{village.title}}" data-toggle="tab" class="villages">{{village.title}}</a></li>
+                                            {% endfor %}
+                                        
+                                        </ul>
+                                    </div>
+        
+                                       
+                                        <!-- <li class=""><a href="#tab1" data-toggle="tab" class="analistic-01">Responsive Web Design</a></li>
+                                        <li class="active"><a href="#tab2" data-toggle="tab" class="analistic-02">Premium Plugin Included</a></li>
+                                        <li class=""><a href="#tab3" data-toggle="tab" class="tehnical">Predefine Layout</a></li>
+                                        <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">Our Philosopy</a></li>
+                                        <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">What We Do?</a></li> -->
+                                
+    
+                                <div class="parrent media-body">
+                                    <div class="tab-content">
+                                                    {% for village in village|slice:"0:1" %}
+                                                    <div class="tab-pane fade" id="tab{{village.title}}">
+                                                            <div class="video-box">
+                                                                    <iframe width="766" height="431" src="{{village.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                     </div>
+                                                    </div>
+                                                        {% endfor %}
+
+
+                                                        {% for village in village|slice:"1:" %}
+                                                        <div class="tab-pane fade active in" id="tab{{village.title}}">
+                                                                <div class="video-box">
+                                                                        <iframe width="766" height="431" src="{{village.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                         </div>
+                                                        </div>
+                                                            {% endfor %}
+    
+                                        <!-- <div class="tab-pane fade in text-right" id="tab2">
+                                            <div class="video-box">
+                                                <img src="images/tab-video-bg.png" alt="video">
+                                                <a class="video-icon" href="http://www.youtube.com/watch?v=cH6kxtzovew" rel="prettyPhoto"><i class="fa fa-play"></i></a>
+                                            </div>
+                                        </div>
+    
+                                        <div class="tab-pane fade" id="tab3">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+                                        </div>
+    
+                                        <div class="tab-pane fade" id="tab4">
+                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words</p>
+                                        </div>
+    
+                                        <div class="tab-pane fade" id="tab5">
+                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures,</p>
+                                        </div> -->
+                                    </div>
+                                    <!--/.tab-content-->
+                                </div>
+                                <!--/.media-body-->
+                            </div>
+                            <!--/.media-->
+                        </div>
+                        <!--/.tab-wrap-->
+                    </div>
+                    <!--/.col-sm-6-->
+    
+                </div>
+                <!--/.row-->
+            </div>
+            <!--/.container-->
+        </section>
+        <!--/#content-->
+
+
+
+
+
+
+  
+
+    <!-- <section id="testimonial">
+        <div class="container">
+            <div class="center fadeInDown">
+                <h2>Testimonials</h2>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+            </div>
+            <div class="testimonial-slider owl-carousel">
+                <div class="single-slide">
+                    <div class="slide-img">
+                        <img src="images/client1.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <img src="images/review.png" alt="">
+                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
+                        <h4>- Charlotte Daniels</h4>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="slide-img">
+                        <img src="images/client2.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <img src="images/review.png" alt="">
+                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
+                        <h4>- Charlotte Daniels</h4>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="slide-img">
+                        <img src="images/client3.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <img src="images/review.png" alt="">
+                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
+                        <h4>- Charlotte Daniels</h4>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="slide-img">
+                        <img src="images/client2.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <img src="images/review.png" alt="">
+                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
+                        <h4>- Charlotte Daniels</h4>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="slide-img">
+                        <img src="images/client1.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <img src="images/review.png" alt="">
+                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
+                        <h4>- Charlotte Daniels</h4>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="slide-img">
+                        <img src="images/client3.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <img src="images/review.png" alt="">
+                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
+                        <h4>- Charlotte Daniels</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section id="partner">
+        <div class="container">
+            <div class="center fadeInDown">
+                <h2>Our Partners</h2>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+            </div>
+
+            <div class="partners">
+                <ul>
+                    <li>
+                        <a href="#"><img class="img-responsive fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="images/partners/brand-1.png"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img class="img-responsive fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" src="images/partners/brand-2.png"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img class="img-responsive fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" src="images/partners/brand-3.png"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img class="img-responsive fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" src="images/partners/brand-4.png"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img class="img-responsive fadeInDown" data-wow-duration="1000ms" data-wow-delay="1500ms" src="images/partners/brand-5.png"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/.container-->
+    </section>
+    <!--/#partner-->
+
+
+  
+
+   
+{% endblock content %}
