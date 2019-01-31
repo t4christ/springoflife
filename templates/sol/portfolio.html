@@ -26,7 +26,7 @@ document.addEventListener("load",()=>{
             <li><a class="btn btn-default active" href="#" data-filter="*">All Works</a></li>
             {% for port in portfolio|dictsort:'title' %}
             {% ifchanged %}
-            <li><a class="btn btn-default titles" href="#" data-filter=".{{port.title|cut:' '|cut'('|cut')'}}">{{port.title}}</a></li>
+            <li><a class="btn btn-default titles" href="#" data-filter=".{{port.title|cut:' '|cut:'('|cut:')'}}">{{port.title}}</a></li>
             {% endifchanged %}
             {% endfor %}
 <!--             
@@ -41,7 +41,7 @@ document.addEventListener("load",()=>{
                 
             <div class="portfolio-items">
                     {% for port in portfolio %}
-                <div class="portfolio-item {{port.title|cut:' '|cut'('|cut')'}} apps col-xs-12 col-sm-4 col-md-3 single-work">
+                <div class="portfolio-item {{port.title|cut:' '|cut:'('|cut:')'}} apps col-xs-12 col-sm-4 col-md-3 single-work">
                     <div class="recent-work-wrap">
                         <img style="height:217.5px;width:290px;" class="img-responsive" src="{{port.image.url}}" alt="">
                         <div class="overlay">
@@ -59,7 +59,7 @@ document.addEventListener("load",()=>{
 
                 {% for port in portfolio %}
                 {% if port.link %}
-                <div class="portfolio-item {{port.title|cut:' '|cut'('|cut')'}} apps col-xs-12 col-sm-4 col-md-3 single-work">
+                <div class="portfolio-item {{port.title|cut:' '|cut:'('|cut:')'}} apps col-xs-12 col-sm-4 col-md-3 single-work">
                     <div class="recent-work-wrap">
               
                 <iframe  height="217" width="290" src="{{port.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
