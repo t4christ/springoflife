@@ -58,7 +58,7 @@ def modify_portfolio(request):
     portfolio = Portfolio.objects.all()
     # port_arr = []
     for port in portfolio:
-            Portfolio.objects.filter(image__startswith='outreach/ish').update(title='Ishoko free mission school(New Life Academy)')
+            Portfolio.objects.filter(image__startswith='outreach/imosa').update(title='Imo-asasa mission field')
     return HttpResponse('Well Updated')
 
 
