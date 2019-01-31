@@ -54,6 +54,16 @@ def portfolio(request):
     return render(request,template,context)
 
 
+def modify_portfolio(request):
+    portfolio = Portfolio.objects.all()
+    # port_arr = []
+    for port in portfolio:
+        if port.title == 'Owodekudu Village':
+            Portfolio.objects.all().update(title='Owudekudu free missions primary school')
+    return HttpResponse('Well Updated')
+
+
+
 def contact(request):
     name=request.POST.get("name",)
     subject=request.POST.get("subject",)
