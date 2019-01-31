@@ -56,10 +56,9 @@ def portfolio(request):
 
 def modify_portfolio(request):
     portfolio = Portfolio.objects.all()
-    # port_arr = []
+    port_arr = []
     for port in portfolio:
-        if port.title == 'Owodekudu Village':
-            Portfolio.objects.all().update(title='Owudekudu free missions primary school')
+            Portfolio.objects.filter(image__startswith='outreach/owu').update(title='Owudekudu free missions primary school(New Life Academy)')
     return HttpResponse('Well Updated')
 
 
