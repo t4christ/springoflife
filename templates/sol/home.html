@@ -170,7 +170,7 @@
     <section id="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 fadeInDown">
+                    <div class="col-xs-12 col-sm-12 fadeInDown">
                         <div class="tab-wrap">
                             <div class="media">
                                 <div class="parrent pull-left">
@@ -200,8 +200,9 @@
                                 
     
                                 <div class="parrent media-body">
-                                    <h2 class="text-center">About Missions</h2>
+                                    
                                     <div class="tab-content">
+                                            <h1 class="text-center">About Missions</h1>
                                                     {% for village in village|slice:"0:1" %}
                                                     <div class="tab-pane fade" id="tab{{village.title|cut:' '}}">
                                                             <div class="video-box">
