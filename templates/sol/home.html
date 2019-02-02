@@ -179,13 +179,13 @@
 
 
                                             {% for village in village|slice:"0:1" %}
-                                            <li class="active"><a href="#tab{{village.title}}" data-toggle="tab" class="village">{{village.title}}</a></li>
+                                            <li class="active"><a href="#tab{{village.title|cut:' '}}" data-toggle="tab" class="village">{{village.title}}</a></li>
                                             {% endfor %}
 
 
 
                                             {% for village in village|slice:"1:" %}
-                                            <li class=""><a href="#tab{{village.title}}" data-toggle="tab" class="villages">{{village.title}}</a></li>
+                                            <li class=""><a href="#tab{{village.title|cut:' '}}" data-toggle="tab" class="villages">{{village.title}}</a></li>
                                             {% endfor %}
                                         
                                         </ul>
