@@ -17,7 +17,7 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.contrib import messages
 from django.utils import timezone
-from .models import Village,Outreach,Portfolio
+from .models import Village,Outreach,Portfolio,DonationPart
 # from itertools import chain
 # from django.views.decorators.csrf import csrf_exempt
 # import datetime
@@ -39,6 +39,12 @@ def home(request):
     context={"outreach":outreach,"village":village}
     return render(request,template,context)
 
+def blog(request):
+    # post=Post.objects.all()
+    # portfolio=Portfolio.objects.order_by().values_list("title",flat=True).distinct()
+    template="sol/blog.html"
+    context={}
+    return render(request,template,context)
 
 def about(request):
     template="sol/about.html"
@@ -54,13 +60,15 @@ def portfolio(request):
     return render(request,template,context)
 
 
-def modify_portfolio(request):
-    portfolio = Portfolio.objects.all()
-    # port_arr = []
-    for port in portfolio:
-            Portfolio.objects.filter(image__startswith='outreach/imosa').update(title='Imo-asasa mission field')
-    return HttpResponse('Well Updated')
 
+
+
+def donation(request):
+    donor=DonationPart.objects.all()
+    # portfolio=Portfolio.objects.order_by().values_list("title",flat=True).distinct()
+    template="sol/donation.html"
+    context={"donor":donor}
+    return render(request,template,context)
 
 
 def contact(request):
@@ -84,3 +92,12 @@ def contact(request):
     else:
         # messages.error(request,"Error Sending Message, Make Sure All Details Are Filled and Retry.")
         return render(request,"sol/contact.html")
+
+
+
+# def modify_portfolio(request):
+#     portfolio = Portfolio.objects.all()
+#     # port_arr = []
+#     for port in portfolio:
+#             Portfolio.objects.filter(image__startswith='outreach/imosa').update(title='Imo-asasa mission field')
+#     return HttpResponse('Well Updated')
