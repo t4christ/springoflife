@@ -200,9 +200,10 @@
                                 
     
                                 <div class="parrent media-body">
+                                    <h3 class="text-center">About Missions</h3>
                                     <div class="tab-content">
                                                     {% for village in village|slice:"0:1" %}
-                                                    <div class="tab-pane fade" id="tab{{village.title}}">
+                                                    <div class="tab-pane fade" id="tab{{village.title|cut:' '}}">
                                                             <div class="video-box">
                                                                     <iframe width="766" height="431" src="{{village.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                                      </div>
@@ -211,8 +212,13 @@
 
 
                                                         {% for village in village|slice:"1:" %}
-                                                        <div class="tab-pane fade active in" id="tab{{village.title}}">
+                                                        <div class="tab-pane fade active in" id="tab{{village.title|cut:' '}}">
                                                                 <div class="video-box">
+                                                                        <!-- <video width="320" height="240" controls>
+                                                                                <source src="" type="video/mp4">
+                                                                                <source src="{{village.link}}" type="video/ogg">
+                                                                              Your browser does not support the video tag.
+                                                                              </video> -->
                                                                         <iframe width="766" height="431" src="{{village.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                                          </div>
                                                         </div>
