@@ -16,11 +16,7 @@ urlpatterns = [
     path('blog',blog,name='blog'),
     path('donate',donation,name='donation'),
     path('contact',contact,name='contact'),
-    # url(r'^recharge/hard/(?P<username>[-\w]+)/$', quiz, name='hard'),
-    # url(r'^recharge/xmas/(?P<username>[-\w]+)/$', quiz, name='xmas'),
-    # # url(r'^qloads/$',load_question, name='load_question'),
-    # url(r'^qload/$', get_winners, name='load_question'),
-    # url(r'^statistics/$', statistics, name='statistics'),
+ 
 
     
 	

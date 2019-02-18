@@ -1,0 +1,240 @@
+{% extends "../base.html" %}
+{% load staticfiles %}
+{% load urlify %}
+{% load crispy_forms_tags %}
+{% load blog_tags %}
+{% block head_title %}
+{{ instance.title }} | {{ block.super }}
+{% endblock head_title %}
+
+
+{% block content %}
+
+{% block javascript %} 
+<script>
+$("#commentbtn").click(function() {
+  $('html, body').animate({ scrollTop:$(".commentfm").offset().top}, 500);
+});
+</script>
+{% endblock javascript %}
+
+
+
+<section id="blog">
+
+        <div class="blog container">
+            <div class="row">
+                <div class="col-md-8">
+
+                    <div class="blog-item">
+                        <a href="#">
+                                {% if instance.image.url %}
+                                <img class="img-responsive img-blog" src="{{instance.image.url}}" width="100%" alt="">
+                                {% endif %}
+                          </a>
+                        <div class="blog-content">
+                            <a href="#" class="blog_cat">{{instance.title}}</a>
+                            <!-- <h2><a href="blog-item.html">Consequat bibendum quam liquam viverra</a></h2> -->
+                            <div class="post-meta">
+                                <p>By <a href="#">{{instance.user}}</a></p>
+                                <p><i class="fa fa-clock-o"></i> <a href="#">{{instance.timestamp}}</a></p>
+                                <p><i class="fa fa-comment"></i> <a href="#">{{instance.comments.count}}</a></p>
+                                <!-- <p>
+                                    share:
+                                    <a href="#" class="fa fa-facebook"></a>
+                                    <a href="#" class="fa fa-twitter"></a>
+                                    <a href="#" class="fa fa-linkedin"></a>
+                                    <a href="#" class="fa fa-pinterest"></a>
+                                </p> -->
+                            </div>
+                            <h3>{{ instance.get_markdown }}</h3>
+                            
+                            <br>
+                            {% if instance.content_image.url %}
+                            <img class="img-responsive img-blog"  width="100%" src="{{instance.content_image.url}}" alt="">
+                            {% endif %}
+                            <br>
+                            {% if instance.video %}
+                            <iframe style="width:100%;margin-top:2%;height:100vh;" src="{{instance.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          {% endif %}
+
+                            <br>
+                            
+                     
+                            
+                            <div class="comments">
+                                <h2>Comments</h2>
+                                  {% if comment %}
+                                <div class="single-comment" >
+                                    <!-- <div class="comment-img"> -->
+                                        <!-- <img src="{% static 'images/graverter.jpg' %}" alt="author"> -->
+                                    <!-- </div> -->
+                                  
+                                    {% for comment in comment %}
+                                    <div class="comment-content">
+                                        <h5>{{comment.name}}</h5>
+                                        <p>{{comment.timestamp|timesince }}</p>
+                                        <p>{{ comment.content }}</p>
+                                    </div>
+                                    <div class="comment-count">
+                                        <a  href='{{ comment.get_absolute_url }}' class="comment-reply"><i class="fa fa-reply"></i> Reply</a>
+                                        <a href="#"><i class="fa fa-heart"></i> {% if comment.children.count > 0 %}{{ comment.children.count }} Comment{% if comment.children.count > 1 %}s{% endif %} | {% endif %}</a>
+                                    </div>
+                                </div>
+                                <div class="single-comment reply">
+                                    <!-- <div class="comment-img">
+                                        <img src="{% static 'images/graverter.jpg' %}" alt="author">
+                                    </div> -->
+                                    {% if comment.children %}
+                                    {% for child_comment in comment.children %}
+                                    <div class="comment-content">
+                                        <h5>{{child_comment.name}}</h5>
+                                        <p>{{ child_comment.content }}</p>
+                                    </div>
+                                    <div class="comment-count">
+                                        <!-- <a href="#"><i class="fa fa-reply"></i> Reply</a> -->
+                                        <!-- <a href="#"><i class="fa fa-heart"></i> 15</a> -->
+                                    </div>
+                                    {%endfor%}
+                                    {%endif%}
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                                <div class="comment-content">
+                                        <h5>Temitayo</h5>
+                                        <p></p>
+                                        <p>This is really nice</p>
+                                    </div>
+                                    
+
+                                        <div class="single-comment reply">
+                                                <!-- <div class="comment-img">
+                                                    <img src="{% static 'images/graverter.jpg' %}" alt="author">
+                                                </div> -->
+                                             
+                                                <div class="comment-content">
+                                                    <h5>Wale</h5>
+                                                    <p>Seconded</p>
+                                                </div>
+                                                <div class="comment-count">
+                                                    <!-- <a href="#"><i class="fa fa-reply"></i> Reply</a> -->
+                                                    <!-- <a href="#"><i class="fa fa-heart"></i> 15</a> -->
+                                                </div>
+                                                
+                                            </div>
+                                    {% endif %}
+                             
+                                <div class="single-comment">
+                                  
+                                    <div class="comment-content comment-form" style="margin-left:0">
+                                            <form id="form" class="" method="post" action=".">
+                                           
+                                                      {% csrf_token %}
+                                                      {{ comment_form|crispy }}
+                                  
+                                                      <input type='submit' value="Comment">
+                                                </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/.blog-item-->
+
+
+                </div>
+                
+                
+                
+                <!--/.col-md-8-->
+
+                <aside class="col-md-4">
+                    <!-- <div class="widget search">
+                        <form role="form">
+                            <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div> -->
+                    <!--/.search-->
+
+
+                    <!-- <div class="widget archieve">
+                        <h3>Categories</h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <ul class="blog_archieve">
+                                    <li><a href="#">December 2013 <span class="pull-right">(97)</span></a></li>
+                                    <li><a href="#">November 2013 <span class="pull-right">(32)</span></a></li>
+                                    <li><a href="#">October 2013 <span class="pull-right">(19)</span></a></li>
+                                    <li><a href="#">September 2013 <span class="pull-right">(08)</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--/.archieve-->
+
+                    <div class="widget popular_post">
+                            {% get_most_commented_posts as most_commented_posts %}
+                            
+                        <h3>Popular Post</h3>
+                        <ul> 
+                                {% for obj in most_commented_posts|slice:"0:3" %}
+                                <a href="/posts/detail/{{obj.slug}}/" class="blog_cat text-center">{{obj.title}}</a>
+                            <li>
+                                   
+                                <a href="/posts/detail/{{obj.slug}}/">
+                                        {% if obj.image %}
+                                    <img style="width:100%;" src="{{ obj.image.url }}" alt="">
+                                    {% endif %}
+                                   
+                                </a>
+                            </li>
+                            {% endfor %}
+                        
+                        </ul>
+                    </div>
+                    <!--/.archieve-->
+                    
+
+                    <div class="widget  popular_post">
+                            <h3 >Latest Post</h3>
+                            <ul> 
+                                    {% show_latest_posts as latest_posts %}
+                                    {% for obj in latest_posts|slice:"0:6" %}
+                                    <a href="/posts/detail/{{obj.slug}}/" class="blog_cat text-center">{{obj.title}}</a>
+                                <li>
+                                       
+                                    <a href="/posts/detail/{{obj.slug}}/">
+                                            {% if obj.image %}
+                                        <img style="width:100%;" src="{{ obj.image.url }}" alt="">
+                                        {% endif %}
+                                       
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            
+                            </ul> 
+                            </div>
+                    
+                    <!--/.archieve-->
+
+
+                 
+                    <!--/.blog_gallery-->
+<!-- 
+                    <div class="widget social_icon">
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="#" class="fa fa-linkedin"></a>
+                        <a href="#" class="fa fa-pinterest"></a>
+                        <a href="#" class="fa fa-github"></a>
+                    </div> -->
+
+                </aside>
+            </div>
+            <!--/.row-->
+        </div>
+    </section>
+    <!--/#blog-->
+    {% endblock %}

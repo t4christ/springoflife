@@ -20,7 +20,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('sol_admin/', admin.site.urls),
+     path('comments/', include("comments.urls",namespace="comments")),
+    path('posts/', include("posts.urls",namespace="posts")),
     path('', include("sol.urls",namespace="sol")),
+  
+
 ]
 
 

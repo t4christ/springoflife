@@ -68,9 +68,7 @@ class MyUser(AbstractBaseUser):
 			blank=True,
 			unique=True,
 			)
-	is_partner=models.BooleanField(default=False)	
-	is_corner=models.BooleanField(default=False)
-	is_tap=models.BooleanField(default=False)	
+	# is_partner=models.BooleanField(default=False)	
 	is_active = models.BooleanField(default=True)
 	is_admin = models.BooleanField(default=False)
 	stat_member=models.BooleanField(default=False)

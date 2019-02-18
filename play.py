@@ -1,10 +1,15 @@
 # def addition(**kwargs):
 #     kwargs["name"]="Temitayo"
 #     print(kwargs)
-# mydict = {"number":"0708","age":"28","country":"nigeria"}
+# myict = {}
+# mydict = {"number":"0708","age":"28","country":"nigeria","num":"008","state":"ogun"}
 # addition(**mydict)
 
+# copdict = myict.update(**mydict)
+# # print(copdict)
 
+# for k,v in mydict.items():
+#     print(k , v, sep=" => ")
 # ctemp =[30,40,50,60,70]
 
 # print(tuple(map(lambda t: t/5,ctemp)))
@@ -230,17 +235,72 @@
 
 
 
-evens = [2, 4, 6,8,10,12,14,16,18,20]
-odds = [1, 3, 5,7,9,11,13,15,17,18]
+# evens = [2, 4, 6,8,10,12,14,16,18,20]
+# odds = [1, 3, 5,7,9,11,13,15,17,18]
 
 
 # evenSquared = list(map(lambda e: e**2, filter(lambda e: e>4 and e<16, evens)))
 # print(evenSquared)
 
 
-evenSquared = [e**2 for e in evens]
-print(evenSquared)
+# evenSquared = [e**2 for e in evens]
+# print(evenSquared)
 
 
-evenSquared = [e**2 for e in odds if e > 3 and e < 17]
-print(evenSquared)
+# evenSquared = [e**2 for e in odds if e > 3 and e < 17]
+# print(evenSquared)
+
+
+# class Computer:
+    # def __init__(self):
+        # self.age=20
+
+    # def update(self):
+        # self.age=30
+        # return self.age
+
+# c1 = Computer()
+# c1.update()
+# print(c1.age)
+#print address of the object
+# print(id(c1))
+
+
+
+####### Python Factory Design Pattern ############
+
+BaseClass = type('BaseClass',(object,),{})
+
+@classmethod
+def Check1(self,myStr):
+    return myStr == "Ham"
+
+
+@classmethod
+def Check2(self,myStr):
+    return myStr == "SandWitch"
+
+C1 = type('C1',(BaseClass,),{'x':1,'Check':Check1})
+C2 = type('C2',(BaseClass,),{'x':30,'Check':Check2})
+
+def createFactory(myStr):
+    for cls in BaseClass.__subclasses__():
+       
+        if cls.Check(myStr):
+            return cls()
+       
+
+m = createFactory('Ham')
+v = createFactory('SandWitch')
+
+print(m.x,v.x,sep=' -- ')
+
+
+######### Python Class Method Decorator ###########
+# class MyClass:
+#     @classmethod
+#     def printHam(self):
+#         print("Ham")
+
+
+# MyClass.printHam()

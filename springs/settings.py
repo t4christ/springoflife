@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ["localhost","spol.herokuapp.com","www.springsoflifeg.com"]
 # Application definition
 
 INSTALLED_APPS = [
-    # 'accounts',
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,6 +44,10 @@ INSTALLED_APPS = [
 
     #Other Apps
     'sol',
+    'posts',
+    'taggit',
+    'comments',
+    'pagedown',
     'crispy_forms',
 ]
 
@@ -151,6 +155,8 @@ if  DEBUG:
         os.path.join(BASE_DIR, "static"),
         #'/var/www/static/',
     ]
+    POST_URL='posts'
+    PROFILE_URL='profile_photo'
     STATIC_URL = '/static/'
     OUTREACH="outreach"
     # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
