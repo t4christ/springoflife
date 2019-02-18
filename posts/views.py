@@ -70,7 +70,7 @@ def post_create(request):
 			messages.success(request, "Successfully Created.")
 			return redirect("/")
 	context = {"form": form}
-	return render(request, "sol/post/post_form.html", {"form": form})
+	return render(request, "sol/post/post_form.html", context)
 
 def post_detail(request, slug=None):
 	instance = get_object_or_404(Post, slug=slug)
