@@ -1,0 +1,9 @@
+__pycache__
+.coverage
+.vscode
+*.env
+/media
+/static
+play.js
+play.py
+springs-8a71d8f7389e.json
