@@ -359,6 +359,7 @@ She is  happily married and blessed with 3 daughters.
 <script>
 
 $('.view-sab,.view-mic,.view-olu,.view-elo,.view-aig').click(function(e){
+    let getBtn = e.target.parentElement.id
     $(""+ "#" + getBtn + " " + "span").toggle(1000);
     $(""+ "#" + getBtn + " " + ".view-profile").text('Close Profile').click(function(){
         $(this).text('View Profile')
