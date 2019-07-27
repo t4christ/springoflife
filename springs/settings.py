@@ -70,7 +70,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=os.path.join(BASE_DIR, 'springs-8a71d8f7389e.json')
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=os.path.join(BASE_DIR,'spgoflife-c8c96ccea7e8.json')
 
 
 
@@ -173,11 +173,11 @@ else:
     STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
     # GS_ACCESS_KEY_ID =os.getenv("CLIENT_ID")
     # GS_SECRET_ACCESS_KEY = os.getenv("CLIENT_SECRET")
-    GS_BUCKET_NAME = "springs" #os.getenv("GCS_BUCKET")
+    GS_BUCKET_NAME = "spgoflife" #os.getenv("GCS_BUCKET")
     # GS_PROJECT_ID = os.getenv("GCLOUD_PROJECT")
-    STATIC_ROOT = "https://storage.googleapis.com/springs/static"
-    STATIC_URL = 'https://storage.googleapis.com/springs/'
-    MEDIA_URL = 'https://storage.googleapis.com/springs/media/'
+    STATIC_ROOT = "https://storage.googleapis.com/spgoflife/static"
+    STATIC_URL = 'https://storage.googleapis.com/spoflife/'
+    MEDIA_URL = 'https://storage.googleapis.com/spgoflife/media/'
     DATABASES = {
     'default': dj_database_url.config(
         default='DATABASE_URL'
