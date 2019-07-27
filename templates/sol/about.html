@@ -6,13 +6,16 @@
     list-style-type:none;
     
 }
+.team-content span{
+    display:none;
+}
 .single-team img{
     height:412px;
     width:360px;
 }
 </style>
-<div class="page-title" style="background-size:contain;background-image: url({% static 'images/sol/about-sol.jpeg' %})">
-    <h1>About us</h1>
+<div class="page-title">
+    <h1 style="color:black;">About us</h1>
 </div>
 
 <section id="about-us">
@@ -175,14 +178,50 @@
             <!-- <p class="lead">Leaders in various missions department. <br> To God be the Glory.</p> -->
         </div>
         <div class="row">
+
+       <div class="col-md-4 col-sm-6 single-team">
+                <div class="inner">
+                    <div class="team-img">
+                        <img src="{% static 'images/sol/henry-oise.jpeg' %}" alt="">
+                    </div>
+                    <div class="team-content" id="team-six">
+                        <h4>Henry Oise</h4>
+                        <button class="view-profile view-hen btn-primary">View Profile</button>
+                        <span class="desg">
+                      Henry Oise is the lead missioner of the Springs of life global evangelistic Ministry(SOL). The  ministry honours God by planting churches in places where no church previously existed as well as  starting free-tuition schools in places where no school exists. 
+
+                        Henry Oise has two bachelors degrees in Geography(Bsc.ed) from Delta State University, Abraka and  in Missiology from the West Africa Christian University (WACU) Sango-Ota. He is an Alumni of the Christian leadership training Institute( CLTS) Ibadan. Henry Oise has authored four books and he is in his twentieth year in his missionary endeavours.
+
+                        The ministry he leads has four mission fields :
+                        OWUDEKUDU mission field ( which compromises of 9 villages). 
+                        AKOGUN mission field( which compromises of six villages).
+                        ISHOKO mission field ( which compromises of 10 villages) and
+                        ONIDUNDUN  mission field( which compromises of eleven villages). 
+
+                        The mission runs two free-tuition schools in Owudekudu  and Ishoko villages of Ogun state. Books, uniforms and writing materials are provided freely for these kids. The primary school at  Owudekudu  has 138 children while the primary school at Ishoko ( which is barely six months old) has 66 children. Because of the limited resources SOL has a ceiling on the number of kids they can admit by session. The schools go by the name : New Life Academy, and it recently was approved by the Ogun state ministry of education. 
+
+                        The Churches SOL plants in the villages go by the name : New Life Bible Church. 
+
+                        The Focus of SOL's evangelism and discipleship efforts so far is amongst  the Yorubas  and the Adja ethnic groups. The Adja people are from Benin republic and majority of them are farmers who in recent times have settled in large numbers in Ogun state .
+
+                        </span>
+                       
+                    </div>
+                </div>
+            </div>
+
+
+
+
             <div class="col-md-4 col-sm-6 single-team">
                 <div class="inner">
                     <div class="team-img">
                         <img src="{% static 'images/sol/Sabina_Idowu_Osehobo.jpeg' %}" alt="">
                     </div>
-                    <div class="team-content">
+                    <div class="team-content" id="team-one">
                         <h4>Sabina  Idowu-Osehobo</h4>
-                        <!-- <button class="sab">View About Her</button> -->
+                        <button class="view-profile view-sab btn-primary">View Profile</button>
+                        
                         <span class="desg">
 
                             Sabina Idowu-Osehobo is Executive Director of one of the leading  poverty alleviation organization in Africa. Her educational background spans the fields of Mass communication, English Language, Literature and Development Studies. She is also an alumnus of the Chief Executive Programme CEP 26 of the Lagos Business School. She has worked with various media organizations including The Nigerian Observer and Here and There magazine where she served as editor.
@@ -202,8 +241,9 @@
                     <div class="team-img">
                         <img src="{% static 'images/sol/Michael_Ohiomero_Giwa-Amu.jpeg' %}" alt="">
                     </div>
-                    <div class="team-content">
+                    <div class="team-content" id="team-two">
                         <h4>Michael Ohiomero Giwa-Amu</h4>
+                        <button class="view-profile view-mic btn-primary">View Profile</button>
                         <span class="desg"> 
                             Michael Ohiomero Giwa-Amu was born according to God’s divine providence on the 4th of December 1964 into the Igheroise happy home to his parents Michael and Victoria Giwa-Amu. 
 
@@ -224,8 +264,9 @@
                     <div class="team-img">
                         <img src="{% static 'images/sol/Professor_Olusola_Babatunde_Kehinde.jpeg' %}" alt="">
                     </div>
-                    <div class="team-content">
+                    <div class="team-content" id="team-three">
                         <h4>Professor Olusola Babatunde Kehinde</h4>
+                        <button class="view-profile view-olu btn-primary">View Profile</button>
                         <span class="desg">
                             Prof. Kehinde, Olusola Babatunde is a Plant Geneticist and Breeder lecturing at the Federal University of Agriculture, Abeokuta. He studied at the University of Ibadan, Ibadan where he obtained his first degree in 1987 and a Ph.D in1994. Though born into a Christian home, he gave his life to Christ in 1985 and has experienced a closer walk with God since then. He has a passion for taking the Gospel of Jesus Christ to the less privileged living in rural areas and has a  commitment to upgrading their standard of living.
                             He is married to Prof. (Mrs.) Iyabode Kehinde and they are blessed with children.
@@ -242,8 +283,9 @@
                     <div class="team-img">
                         <img src="{% static 'images/sol/Mrs_Eloviano_Robo_Shodunke.jpeg' %}" alt="">
                     </div>
-                    <div class="team-content">
+                    <div class="team-content" id="team-four">
                         <h4>Mrs Eloviano 'Robo Shodunke</h4>
+                        <button class="view-profile view-elo btn-primary">View Profile</button>
                         <span class="desg">
 
                             Mrs Eloviano 'Robo Shodunke is the first of 5 children born to one of the founding members/trustees of SOL, Dame Christabel Ewoma Ukoli of blessed memory. 
@@ -269,13 +311,23 @@ She is  happily married and blessed with 3 daughters.
                 </div>
             </div>
     
-            <div class="col-md-4 col-md-offset-4 col-sm-6 single-team">
+
+
+             
+
+
+
+
+
+
+            <div class="col-md-4  col-sm-6 single-team">
                 <div class="inner">
                     <div class="team-img">
                         <img src="{% static 'images/sol/Dr_Aigbe_Gregory_Ohihoin.jpeg' %}" alt="">
                     </div>
-                    <div class="team-content">
+                    <div class="team-content" id="team-five">
                         <h4>Dr.Aigbe Gregory Ohihoin</h4>
+                        <button class="view-profile view-aig btn-primary">View Profile</button>
                         <span class="desg">
                             Dr.Aigbe Gregory Ohihoin.
                             MBBS(Ben),MSc (Lag),FMCOG(Nig),FWACS(WA),MCIArb(UK),DMAS(Del),PGDCR(Liverpool)    
@@ -296,10 +348,25 @@ She is  happily married and blessed with 3 daughters.
 
 
 
+
             </div>
         </div>
     </div>
 </section>
+
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script>
+
+$('.view-sab,.view-mic,.view-olu,.view-elo,.view-aig').click(function(e){
+    $(""+ "#" + getBtn + " " + "span").toggle(1000);
+    $(""+ "#" + getBtn + " " + ".view-profile").text('Close Profile').click(function(){
+        $(this).text('View Profile')
+    })
+})
+
+
+    </script>
 
 
 {% endblock content %}
