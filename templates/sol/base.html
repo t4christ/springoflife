@@ -54,16 +54,27 @@
 {% include './footer.html' %}
 
 
-
-
-{% block javascript %} 
-
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'js/jquery.isotope.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
+<script>
+
+$('.view-sab,.view-mic,.view-olu,.view-elo,.view-aig,.view-hen').click(function(e){
+    let getBtn = e.target.parentElement.id
+    $(""+ "#" + getBtn + " " + "span").toggle(1000);
+    $(""+ "#" + getBtn + " " + ".view-profile").text('Close Profile').click(function(){
+        $(this).text('View Profile')
+    })
+})
+
+
+    </script>
+
+{% block javascript %} 
+
 
 
 {% endblock javascript %}
