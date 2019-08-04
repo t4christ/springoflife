@@ -390,9 +390,3 @@ path = os.path.abspath('./posts/urls.py')
 # with open(path) as f:
 #     print(f.read())
 
-
-
-
-opath = os.path.exists('./newenv')
-
-print("abcd"[2:])
