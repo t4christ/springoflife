@@ -21,9 +21,7 @@
             "essential": false,
             "memory": 128,
             "links":["db"]
-        },
-
-        
+        },  
         {
             "name":"smtp",
             "image":"texplode/esusu_smtp",
