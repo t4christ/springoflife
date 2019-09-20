@@ -186,7 +186,7 @@ PAYSTACK_WEBHOOK_DOMAIN='http://5eeab2a8.ngrok.io'
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 
-if not DEBUG:
+if DEBUG:
 
     STATIC_DIR = os.path.join(BASE_DIR, 'static')
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
