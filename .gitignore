@@ -2,6 +2,7 @@ __pycache__
 .coverage
 .vscode
 *.env
+*.pem
 /media
 /static
 /staticfiles
