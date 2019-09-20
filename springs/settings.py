@@ -26,7 +26,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = '7v&ph%=o3ap5c5ap2=*)2isf2a#qy#+_l9a^dx7!zlg$b+)ox7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = ["localhost","192.168.99.100","spol.herokuapp.com","www.springsoflifeg.com"]
 ALLOWED_HOSTS = ["*"]
@@ -135,24 +135,24 @@ USE_L10N = True
 USE_TZ = True
 
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-
-
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ.get('POSTGRES_DATABASE'),
-#         'USER': os.environ.get('POSTGRES_USER'),
-#         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-#         'HOST': os.environ.get('POSTGRES_HOST'),
-#         'PORT': os.environ.get('POSTGRES_PORT'),
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         }
 #     }
-# }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRES_DATABASE'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
+        'PORT': os.environ.get('POSTGRES_PORT'),
+    }
+}
 
 
 EMAIL_HOST=os.environ.get('SMARTHOST_ADDRESS')
@@ -186,7 +186,7 @@ PAYSTACK_WEBHOOK_DOMAIN='http://5eeab2a8.ngrok.io'
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 
-if  DEBUG:
+if not DEBUG:
 
     STATIC_DIR = os.path.join(BASE_DIR, 'static')
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
