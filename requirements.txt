@@ -1,5 +1,4 @@
 django
-waitress
 pillow
 django-crispy-forms
 django-markdown-deux
@@ -14,4 +13,7 @@ psycopg2
 google-cloud-storage
 django-storages
 django-taggit
+boto3
+psycopg2-binary
+
 
