@@ -29,7 +29,7 @@ deploy:
   app: sol
   env: Sol-env  
   bucket_name: springs-bucket
-  bucket_path: spring_bucket
+  bucket_path: springs_bucket
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
