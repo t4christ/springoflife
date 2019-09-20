@@ -205,6 +205,8 @@ if not DEBUG:
 
 else:
     OUTREACH="outreach"
+    POST_URL='posts'
+    PROFILE_URL='profile_photo'
     MEDIAFILES_LOCATION = 'media'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
