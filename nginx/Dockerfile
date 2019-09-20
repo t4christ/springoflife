@@ -1,5 +1,5 @@
 # pull official base image
-FROM nginx:alpine
+FROM nginx:latest
 
 RUN rm /etc/nginx/conf.d/default.conf
 # COPY nginx.conf /etc/nginx/nginx.conf
