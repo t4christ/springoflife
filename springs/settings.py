@@ -28,8 +28,8 @@ SECRET_KEY = '7v&ph%=o3ap5c5ap2=*)2isf2a#qy#+_l9a^dx7!zlg$b+)ox7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost","spol.herokuapp.com","www.springsoflifeg.com"]
-
+# ALLOWED_HOSTS = ["localhost","192.168.99.100","spol.herokuapp.com","www.springsoflifeg.com"]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     #Other Apps
     'sol',
+    'paystack',
     'posts',
     'taggit',
     'comments',
@@ -70,7 +71,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=os.path.join(BASE_DIR,'spgoflife-c8c96ccea7e8.json')
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=os.path.join(BASE_DIR,'spgoflife-c8c96ccea7e8.json')
 
 
 
@@ -98,12 +99,7 @@ WSGI_APPLICATION = 'springs.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 import dj_database_url
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+
 
 
 # Password validation
@@ -139,28 +135,68 @@ USE_L10N = True
 USE_TZ = True
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_PORT = 2525
-EMAIL_HOST_USER = os.getenv('EMAIL_USERNAME')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('POSTGRES_DATABASE'),
+#         'USER': os.environ.get('POSTGRES_USER'),
+#         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+#         'HOST': os.environ.get('POSTGRES_HOST'),
+#         'PORT': os.environ.get('POSTGRES_PORT'),
+#     }
+# }
+
+
+EMAIL_HOST=os.environ.get('SMARTHOST_ADDRESS')
+EMAIL_PORT=os.environ.get('SMARTHOST_PORT')
+EMAIL_HOST_USER=os.environ.get('SMARTHOST_USER')
+EMAIL_HOST_PASSWORD=os.environ.get('SMARTHOST_PASSWORD')
 EMAIL_TIMEOUT = 30
-EMAIL_USE_TLS = False
+EMAIL_USE_TLS = True
+
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.mailgun.org'
+# EMAIL_PORT = 25
+# EMAIL_HOST_USER = os.environ.get('EMAIL_USERNAME')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+# EMAIL_TIMEOUT = 30
+# EMAIL_USE_TLS = False
+
+
+
+
+PAYSTACK_PUBLIC_KEY=os.environ.get('PAYSTACK_PUBLIC_KEY')
+PAYSTACK_SECRET_KEY=os.environ.get('PAYSTACK_SECRET_KEY')
+# PAYSTACK_FAILED_URL='failed-verification'
+# PAYSTACK_SUCCESS_URL='successful-verification'
+PAYSTACK_WEBHOOK_DOMAIN='http://5eeab2a8.ngrok.io'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 
 if  DEBUG:
+
+    STATIC_DIR = os.path.join(BASE_DIR, 'static')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_URL = '/static/'
     STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static"),
-        #'/var/www/static/',
+    STATIC_DIR,
     ]
     POST_URL='posts'
     PROFILE_URL='profile_photo'
-    STATIC_URL = '/static/'
     OUTREACH="outreach"
-    # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     MEDIA_URL = '/media/'
     MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
@@ -169,18 +205,35 @@ if  DEBUG:
 
 else:
     OUTREACH="outreach"
-    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-    # DEFAULT_FILE_STORAGE = 'storages.backends.gs.GSBotoStorage'
-    STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-    # GS_ACCESS_KEY_ID =os.getenv("CLIENT_ID")
-    # GS_SECRET_ACCESS_KEY = os.getenv("CLIENT_SECRET")
-    GS_BUCKET_NAME = "spgoflife" #os.getenv("GCS_BUCKET")
-    # GS_PROJECT_ID = os.getenv("GCLOUD_PROJECT")
-    STATIC_ROOT = "https://storage.googleapis.com/spgoflife/static"
-    STATIC_URL = 'https://storage.googleapis.com/spoflife/'
-    MEDIA_URL = 'https://storage.googleapis.com/spgoflife/media/'
-    DATABASES = {
-    'default': dj_database_url.config(
-        default='DATABASE_URL'
-    )
-}
+    MEDIAFILES_LOCATION = 'media'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+    }
+    AWS_LOCATION = 'static'
+    STATICFILES_LOCATION = 'static'
+
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+
+
+#     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+#     # DEFAULT_FILE_STORAGE = 'storages.backends.gs.GSBotoStorage'
+#     STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+#     # GS_ACCESS_KEY_ID =os.getenv("CLIENT_ID")
+#     # GS_SECRET_ACCESS_KEY = os.getenv("CLIENT_SECRET")
+#     GS_BUCKET_NAME = "spgoflife" #os.getenv("GCS_BUCKET")
+#     # GS_PROJECT_ID = os.getenv("GCLOUD_PROJECT")
+#     STATIC_ROOT = "https://storage.googleapis.com/spgoflife/static"
+#     STATIC_URL = 'https://storage.googleapis.com/spoflife/'
+#     MEDIA_URL = 'https://storage.googleapis.com/spgoflife/media/'
+#     DATABASES = {
+#     'default': dj_database_url.config(
+#         default='DATABASE_URL'
+#     )
+# }

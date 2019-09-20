@@ -1,59 +1,70 @@
 
 {% extends './base.html' %}
 {% load staticfiles %}
+{% load paystack %}
+
 {% block content %}
 
 
 
 <section id="contact-page">
-  <h2 class="text-mute text-center" style="font-size:6em;position:absolute;top:50%;width:100%;z-index:5;background:whitesmoke;">Coming Soon</h2> 
+  <!--<h2 class="text-mute text-center" style="font-size:6em;position:absolute;top:50%;width:100%;z-index:5;background:whitesmoke;">Coming Soon</h2> -->
     <div class="container">
         <div class="large-title text-center">        
             <h2>Support Springs of Life Global Missions. Make Your Donation Here</h2>
             <!-- <p>All users on MySpace will know that there are millions of people out there. Every day <br> besides so many people joining this community.</p> -->
         </div> 
+       
+
         <div class="row contact-wrap"> 
-            <!-- <div class="status alert alert-success" style="display: none"></div> -->
-            <form  name="contact-form" method="post" action="">
+            
+            <div class="alert alert-danger text-center" id="donate-error" style="display:none;"></div>
+            <div class="alert alert-success text-center" id="donate-success" style="display:none;"></div>
+            <form  name="contact-form" id="donate-form" method="post" action="">
+            <input type="hidden" value={{new_ref}} id="ref">
+            <input type="hidden" value={{key}} id="key">
                 {% csrf_token  %}
                 <div class="col-sm-5 col-sm-offset-1">
                     <div class="form-group">
                         <label>Name *</label>
-                        <input type="text" name="name"  class="form-control" required="required">
+                        <input type="text" name="name"  id="name" class="form-control" required="required">
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label>Email *</label>
-                        <input type="email" name="email"  class="form-control" required="required">
-                    </div> -->
+                        <input type="email" name="email" id="email" class="form-control" required="required">
+                    </div> 
                     <div class="form-group">
-                        <label>Phone</label>
-                        <input type="number"  name="phone" class="form-control">
+                        <label>Phone *</label>
+                        <input type="number" id="phone" required='required'  name="phone" class="form-control">
                     </div>
-                    <div class="form-group">
-                            <!-- <label>Receiver *</label> -->
-                            <input type="hidden" name="receiver" value="springsoflifeg@gmail.com" class="form-control" required="required">
-                        </div>
-                    <!-- <div class="form-group">
-                        <label>Company Name</label>
-                        <input type="text" class="form-control">
-                    </div>                         -->
+                                        <div class="form-group">
+                        <label>Amount in Naira(NGN) *</label>
+                        <input type="number" id="amount" required='required'  name="amount" class="form-control">
+                    </div>
+
+
                 </div>
                 <div class="col-sm-5">
                     <div class="form-group">
                         <label>Choose where you want to donate to</label>
-                        <select >
+                        <select id="village" name="village">
                             {% for donor in donor %}
-                                <option value="">{{donor.sections}}</option>
+                                <option value="{{donor.sections}}">{{donor.sections}}</option>
                                 {% endfor %}
 
                         </select>
                     </div>
+
+
                     <div class="form-group">
-                        <label>Message *</label>
-                        <textarea name="message" id="message" required="required" class="form-control" rows="8"></textarea>
+                    
+                        <label>Message </label>
+                        <textarea name="message" required="required" id="message" class="form-control" rows="8"></textarea>
                     </div>                        
-                    <div class="form-group">
-                        <input type="submit"  class="btn btn-primary btn-lg"  value="Donate">
+                    <div class="form-group add-donate">
+                        <input type="submit"  id="donate-button" class="btn btn-primary btn-lg"  value="Continue">
+                        <div id="donate-message"></div>
+
                     </div>
                 </div>
             </form> 
@@ -61,5 +72,34 @@
     </div><!--/.container-->
 </section><!--/#contact-page-->
 
+<!--<script>
+function payWithPaystack(){
+        const amount = document.querySelector("#amount").value.trim();
+        const email = document.querySelector("#email").value.trim();
+        const key = document.querySelector("#key").value.trim();
+        const ref = document.querySelector("#ref").value.trim();
+        let currency = "ngn"
+        let plan = ""
+        let obj = {
+            key: key,
+            email: email,
+            amount: amount * 100,
+            ref:ref,    
+            callback: function (response) {
+            window.location.href =`/paystackverify-payment/${ref}/?amount=${amount}&trxref=`+ response.trxref
+            }
+        }      
+        
+        if(Boolean(currency)){
+            obj.currency = currency.toUpperCase()
+        }
+        if(Boolean(plan)){
+            obj.plan = plan
+        }
+        var handler = PaystackPop.setup(obj);
+        handler.openIframe();
+        console.log({currency,plan,ref})
+    }
+</script>-->
 
 {% endblock %}

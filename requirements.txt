@@ -2,9 +2,10 @@ django
 waitress
 pillow
 django-crispy-forms
-django-markdown-deux==1.0.5
+django-markdown-deux
 django-extensions
-markdown2==2.3.1
+markdown2
+gunicorn
 markdown
 dj-database-url
 dj-static
@@ -13,3 +14,4 @@ psycopg2
 google-cloud-storage
 django-storages
 django-taggit
+

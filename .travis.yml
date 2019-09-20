@@ -1,0 +1,38 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker-compose build
+
+script:
+  - docker-compose up -d
+  - docker-compose down
+
+after_success:
+  - docker build -t texplode/springs-web  .
+
+  
+  
+
+  # Login to Docker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Take images and push them to dockerhub
+
+  - docker push texplode/springs-web
+  
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: springs-app
+  env: SpringApp-env 
+  bucket_name: springs-bucket
+  bucket_path: spring_bucket
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+

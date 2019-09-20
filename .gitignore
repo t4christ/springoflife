@@ -6,4 +6,7 @@ __pycache__
 /static
 play.js
 play.py
+Procfile
+*.log
+db.sqlite
 /springs-8a71d8f7389e.json

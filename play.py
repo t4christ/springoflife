@@ -88,39 +88,39 @@
 # print(cls1.hexcolor)
 
 
-# # class Point():
-# #     def __init__(self, x, y):
-# #         self.x = x
-# #         self.y = y
+# class Point():
+#      def __init__(self, x, y):
+#          self.x = x
+#          self.y = y
 
-# #     def __repr__(self):
-# #         return "<Point x:{0},y:{1}>".format(self.x, self.y)
+#      def __repr__(self):
+#          return "<Point x:{0},y:{1}>".format(self.x, self.y)
 
-# #     def __add__(self, other):
-# #         return Point(self.x + other.x, self.y + other.y)
+#      def __add__(self, other):
+#          return Point(self.x + other.x, self.y + other.y)
 
-# #     def __sub__(self, other):
-# #         return Point(self.x - other.x, self.y - other.y)
+#      def __sub__(self, other):
+#          return Point(self.x - other.x, self.y - other.y)
 
-# #     def __iadd__(self, other):
-# #         self.x += other.x
-# #         self.y += other.y
-# #         return self
+#      def __iadd__(self, other):
+#          self.x += other.x
+#          self.y += other.y
+#          return self
 
 
-# def main():
-#     p1 = Point(10, 20)
-#     p2 = Point(30, 30)
-#     print(p1, p2)
+# # def main():
+# p1 = Point(10, 20)
+# p2 = Point(30, 30)
+# print(p1, p2)
 
-#     p3 = p1 + p2
-#     print(p3)
+# p3 = p1 + p2
+# print(p3)
 
-#     p4 = p2 - p1
-#     print(p4)
+# p4 = p2 - p1
+# print(p4)
 
-#     p1 += p2
-#     print("I add {}".format(p1))
+# p1 += p2
+# print("I add {}".format(p1))
     
 
 
@@ -236,12 +236,12 @@
 
 
 
-# # evens = [2, 4, 6,8,10,12,14,16,18,20]
-# # odds = [1, 3, 5,7,9,11,13,15,17,18]
+# evens = [2, 4, 6,8,10,12,14,16,18,20]
+# odds = [1, 3, 5,7,9,11,13,15,17,18]
 
 
-# # evenSquared = list(map(lambda e: e**2, filter(lambda e: e>4 and e<16, evens)))
-# # print(evenSquared)
+# evenSquared = list(map(lambda e: e**2, filter(lambda e: e>4 and e<16, evens)))
+# print(result(10))
 
 
 # # evenSquared = [e**2 for e in evens]
@@ -270,31 +270,30 @@
 
 # ####### Python Factory Design Pattern ############
 
-# # BaseClass = type('BaseClass',(object,),{})
+# BaseClass = type('BaseClass',(object,),{})
 
-# # @classmethod
-# # def Check1(self,myStr):
-# #     return myStr == "Ham"
+# @classmethod
+# def Check1(self,myStr):
+#      return myStr == "Ham"
 
 
-# # @classmethod
-# # def Check2(self,myStr):
-# #     return myStr == "SandWitch"
+# @classmethod
+# def Check2(self,myStr):
+#      return myStr == "SandWitch"
+# C1 = type('C1',(BaseClass,),{'x':1,'Check':Check1})
+# C2 = type('C2',(BaseClass,),{'x':30,'Check':Check2})
 
-# # C1 = type('C1',(BaseClass,),{'x':1,'Check':Check1})
-# # C2 = type('C2',(BaseClass,),{'x':30,'Check':Check2})
-
-# # def createFactory(myStr):
-# #     for cls in BaseClass.__subclasses__():
+# def createFactory(myStr):
+#      for cls in BaseClass.__subclasses__():
        
-# #         if cls.Check(myStr):
-# #             return cls()
+#          if cls.Check(myStr):
+#              return cls()
        
 
-# # m = createFactory('Ham')
-# # v = createFactory('SandWitch')
+# m = createFactory('Ham')
+# v = createFactory('SandWitch')
 
-# # print(m.x,v.x,sep=' -- ')
+# print(m.x,v.x,sep=' -- ')
 
 # # def sort(seq):
 
@@ -327,10 +326,12 @@
 # # MyClass.printHam()
 
 # ############## Return the number of alphabet inputted ##################
-# # c  = input("Letter (a-z): ")
-# # print("C order",ord(c),ord('a'))
-# # n = ord(c) - ord('a') + 1
-# # print("Its number is %d" % n)
+# alpha = {'a':1,'b':2,'c':3,'d':4,'e':5,'f':6,'g':7,'h':8,'i':9,'j':10,'k':11,'l':12,'m':13,'n':14,'o':15,'p':16,'q':17,'r':18,'s':19,'t':20,'u':21,'v':22,'w':23,'x':24,'y':25,'z':26}
+# c  = input("Letter (a-z): ")
+# print("C order",ord(c),ord('a'))
+# n = ord(c) - ord('a') + 1
+# n = alpha.get(c,'Sorry this is an invalid input')
+# print("Its number is %d" % n)
 
 # # first = input("First letter: ")
 # # last = input("Last letter: ")
@@ -383,10 +384,15 @@
 
 # print(end)
 
-import os
+# import os
 
-path = os.path.abspath('./posts/urls.py')
+# path = os.path.abspath('./posts/urls.py')
 
 # with open(path) as f:
 #     print(f.read())
 
+for i in range(10):
+       count=0
+       for j in range(i):
+        count+=1
+        print(i * j,count)

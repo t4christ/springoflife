@@ -63,6 +63,8 @@ class DonationPart(TimestampedModel):
 class Donation(TimestampedModel):
     name = models.CharField(max_length = 100 , default='')
     phone_number = models.CharField(max_length = 100 , default='')
+    amount = models.IntegerField(default=0)
+    email = models.EmailField(max_length =100, default='')
     section = models.ForeignKey(DonationPart,related_name ='donation',on_delete=models.CASCADE)
     message = models.TextField(default='')
     def __str__(self):
