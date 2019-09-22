@@ -18,7 +18,7 @@ services:
       - staticfiles:/var/www/app/staticfiles
     depends_on:
       - db
-    env_file: .env
+    # env_file: .env
     networks:
       - springs_db_nw
       - springs_nw
