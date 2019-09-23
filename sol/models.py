@@ -45,7 +45,7 @@ class Portfolio(TimestampedModel):
 
 class Village(TimestampedModel):
     title= models.CharField(max_length=100,default="")
-    description= models.TextField()
+    description= models.TextField(default="")
     link=models.URLField( null=True, blank=True)
     def __str__(self):
         return "{} Village Video".format(self.title)
