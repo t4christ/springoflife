@@ -45,10 +45,11 @@ document.addEventListener("load",()=>{
                 <div class="portfolio-item {{port.title|cut:' '|cut:'('|cut:')'}} apps col-xs-12 col-sm-4 col-md-3 single-work">
                     <div class="recent-work-wrap">
                         <img style="height:217.5px;width:290px;" class="img-responsive" src="{{port.image.url}}" alt="">
+                         <p>{{post.description}}</p>
                         <div class="overlay">
                             <div class="recent-work-inner">
                                 <a class="preview" href="{{port.image.url}}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
-                                <p>{{post.description}}</p>
+                               
                             </div>
                         </div>
                        
