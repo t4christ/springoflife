@@ -156,13 +156,13 @@ def contact(request):
     phone=request.POST.get("phone",)
     message=request.POST.get("message",)
     receiver=request.POST.get("receiver",)
- 
+    sender='bakaretemitayo712@gmail.com'
     # receiver=request.POST.get("receiver",)
     if request.method == 'POST' and name and subject and email and message:
-        message="My name is %s"%name + " and my phone number is %s : "%phone + message 
+        message=f"My name is {name} and my phone number is {phone} {message}. you can reach me on my email address {email}"  
         # print(messae)
         # send_mail('{}', 'my phone number is  and here is my message: {}', 'bakaretemitayo712@gmail.com',['bakaretemitayo7@gmail.com']).format(str(subject),str(message))
-        msg = EmailMultiAlternatives(subject, message, email, [receiver])
+        msg = EmailMultiAlternatives(subject, message, sender, [receiver])
         msg.send()
         messages.success(request,"Message Sent. You Will Be Contacted Soon.")
     
