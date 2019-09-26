@@ -25,6 +25,7 @@ class TimestampedModel(models.Model):
 
 class Outreach(TimestampedModel):
     title= models.CharField(max_length=100,default="")
+    description= models.TextField(default="")
     if settings.DEBUG:
         image=models.ImageField(upload_to=settings.OUTREACH)
     else:

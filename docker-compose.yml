@@ -9,13 +9,14 @@ services:
       - spring_data:/var/lib/postgresql/data/
     networks:
       - springs_db_nw
-  springs_app:
+  web:
     build: .
     tty: true
     command: /bin/sh -c "gunicorn springs.wsgi:application --bind 0.0.0.0:8009 && python manage.py migrate"
     volumes:
       - .:/var/www/app/
       - staticfiles:/var/www/app/staticfiles
+      - ./media:/var/www/app/media
     depends_on:
       - db
     # env_file: .env
@@ -25,13 +26,16 @@ services:
       - smtp_net
 
   nginx:
-    build: ./nginx
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile.dev
     volumes:
       - staticfiles:/staticfiles
+      - ./media:/var/www/app/media
     ports:
-      - "8000:80"
+      - "8005:80"
     depends_on:
-      - springs_app
+      - web
     restart: always
     networks:
       - springs_nw

@@ -48,6 +48,8 @@ class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=500)
     slug = models.SlugField(unique=True,max_length=1500)
+    describe_one= models.TextField(default="")
+    describe_two= models.TextField(default="")
     comment=GenericRelation(Comment)
     if settings.DEBUG:
         image = models.ImageField(upload_to=settings.POST_URL, 

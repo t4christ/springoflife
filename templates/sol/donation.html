@@ -102,4 +102,75 @@ function payWithPaystack(){
     }
 </script>-->
 
+<script>
+let donateClick = document.getElementById('donate-form')
+let URL ='/donate_record'
+
+function clearField(){
+document.querySelector('#name').value=''
+document.querySelector('#phone').value=''
+document.querySelector('#message').value=''
+document.querySelector('#village').value=''
+document.querySelector('#amount').value=''
+document.querySelector('#email').value=''
+return
+}
+
+const donate = async (e)=>{
+
+e.preventDefault()
+const name = document.querySelector("#name").value.trim();
+const phone = document.querySelector("#phone").value.trim();
+const village = document.querySelector("#village").value.trim();
+const message = document.querySelector("#message").value.trim();
+const amount = document.querySelector("#amount").value.trim();
+const email = document.querySelector("#email").value.trim();
+
+
+
+$.ajax({
+      url: URL,
+      data: {name,phone,village,message,amount,email,csrfmiddlewaretoken:'{{csrf_token}}'},
+      type: "post",
+      dataType: 'json',
+      success: function (data) {
+
+    if(data.invalid_data){
+        
+        document.querySelector('#donate-error').style.display='block';
+        document.querySelector('#donate-error').innerHTML=data.invalid_data;
+        setTimeout(()=>{
+            document.querySelector('#donate-error').style.display='none';
+        },4000)
+    }
+    else{
+    clearField()
+    document.querySelector('#donate-button').style.display='none';
+    document.querySelector('#donate-success').style.display='block';
+    document.querySelector('#donate-success').style.display='block';
+    document.querySelector('#donate-success').innerHTML=data.success;
+   if(data.donate_message){
+       document.querySelector('#donate-message').innerHTML=data.donate_message; 
+   }
+    setTimeout(()=>{
+            document.querySelector('#donate-success').style.display='none';
+            window.location.href = "/pay_donation"
+        },3000)
+    }
+      }
+      })
+
+
+}
+
+donateClick.addEventListener('submit',donate)
+
+/*window.addEventListener('DOMContentLoaded',() => {
+ document.querySelector('#django-paystack-button').style.display='none';
+})*/
+
+
+</script>
+
+
 {% endblock %}
