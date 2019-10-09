@@ -53,6 +53,8 @@
 
 {% include './footer.html' %}
 
+
+
 <script src="{{paystack_script}}"></script>
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -73,6 +75,30 @@ $('.view-sab,.view-mic,.view-olu,.view-elo,.view-aig,.view-hen,.view-mar,.view-o
 
     </script>
 
+<script>
+let prayer_tab = document.querySelectorAll(".prayers .card-body");
+
+function prayer_point(e){
+let button_target = e.target.parentNode.className
+
+let target_button = document.querySelector("."+button_target + " " + "#prayer-point")
+if(target_button.style.display === "none"){
+document.querySelector("."+button_target + " " + "button").innerHTML = "Close Prayer Point";
+document.querySelector("."+button_target + " " + "#prayer-point").style.display = "block";
+
+}
+else{
+    document.querySelector("."+button_target + " " + "button").innerHTML = "View Prayer Point";
+    document.querySelector("."+button_target + " " + "#prayer-point").style.display = "none";
+}
+}
+
+for ( let node = 0; node < prayer_tab.length; node++){
+prayer_tab[node].addEventListener("click",prayer_point)
+}
+
+
+</script>
 
 
 

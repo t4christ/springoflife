@@ -1,0 +1,98 @@
+
+{% extends '../base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<style>
+.search-title{
+display:flex;
+flex-direction:column;
+}
+
+.search-title form{
+align-self:flex-end;
+display:flex;
+}
+
+
+.search-title form button{
+background:#EC5538;
+color:white;
+}
+
+.search-title form button:hover{
+background:#4e4e4e;
+color:white;
+}
+
+.card{
+margin-bottom: 5%;
+border: 2px solid whitesmoke;
+box-shadow: -1px 6px 7px -4px;
+}
+
+.card img{
+height: 100%;
+width:100%;
+
+}
+
+.ministry-wrapper{
+    display:flex;
+    flex-direction:column;
+
+}
+
+.ministry-header{
+    padding:0;
+}
+.ministry-header .ministry-background{
+height: 500px;
+width:100%;
+background-size:cover;
+
+}
+
+.img-background{
+    position:absolute;
+    top:400px;
+    width:100%;
+    
+}
+.img-background h1{
+color:white;
+}
+
+</style>
+<section>
+  
+    <div class="container">
+            <div class="ministry-wrapper">
+<div class="col-md-12 ministry-header">
+<div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/ministries/plant-ministry.jpeg'%})" ></div>
+<div class="img-background">
+<h1>Grow in God's Mission</h1>
+ <hr>
+ </div>
+ 
+    </div>
+        
+    <h2 class="text-center" style="font-weight:bold;">{{village}}</h2>     
+
+        <div class="row"> 
+{% for grow in grow_mission %}
+<div class="card col-md-4">
+  <iframe style="width:100%;" class="card-img-top" src="{{grow.link}}">
+  <iframe>
+  <div class="card-body">
+  </div>
+</div> 
+{%empty%}
+<p class="text-center">No villages available yet. Kindly check back later.</p>
+{% endfor %}
+
+</div> <!-- End Row -->
+</div> <!-- End Ministry Wrapper -->
+</div> <!-- End Container -->
+</section> <!-- End Section -->
+{% endblock content %}

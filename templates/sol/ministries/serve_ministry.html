@@ -1,0 +1,177 @@
+
+{% extends '../base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<style>
+.search-title{
+display:flex;
+flex-direction:column;
+}
+
+.search-title form{
+align-self:flex-end;
+display:flex;
+}
+
+
+.search-title form button{
+background:#EC5538;
+color:white;
+}
+
+.search-title form button:hover{
+background:#4e4e4e;
+color:white;
+}
+
+.card{
+margin-bottom: 5%;
+align-items:center;
+padding:0;
+border: 2px solid whitesmoke;
+box-shadow: -1px 6px 7px -4px;
+}
+
+.card img{
+height: 100%;
+width:100%;
+
+}
+
+.card p{
+    margin:2%;
+}
+.ministry-wrapper{
+    display:flex;
+    flex-direction:column;
+
+}
+
+.ministry-header{
+    padding:0;
+}
+.ministry-header .ministry-background{
+height: 500px;
+width:100%;
+background-size:cover;
+
+}
+
+.img-background{
+    position:absolute;
+    top:400px;
+    width:100%;
+    
+}
+.img-background h1{
+color:white;
+}
+
+input, textarea{
+    border-style:groove!important;
+}
+
+</style>
+<section>
+  
+    <div class="container">
+            <div class="ministry-wrapper">
+<div class="col-md-12 ministry-header">
+<div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/ministries/plant-ministry.jpeg'%})" ></div>
+<div class="img-background">
+<h1>Serve With Us</h1>
+ <hr>
+ </div>
+  
+        <div class="row" style="margin-top:5%;"> 
+<div class="card col-md-6">
+  <div class="card-body">
+  <p class="text-center">Short Term Opportunities</p>
+  </div>
+  </div>
+
+  <div class="card col-md-6">
+  <div class="card-body">
+  <p class="text-center">I Want to Serve for Up to 6 Months</p>
+  </div>
+</div>
+
+  <div class="card col-md-6">
+  <div class="card-body">
+  <p class="text-center">Long Term Opportunities</p>
+  </div>
+</div> 
+
+
+  <div class="card col-md-6">
+  <div class="card-body">
+  <p class="text-center">I Want to Serve for Up to 11 Months or More</p>
+  </div>
+</div> 
+
+    
+  
+
+
+
+
+
+
+
+
+  <div class="card col-md-8 col-md-offset-2">
+  <div class="card-body">
+  <h2 class="text-center" style="margin-top:3%;margin-bottom:5%;">Want to  talk now ? Complete the information and we will reach out to you.</h2>
+  </div>
+
+  <form  name="contact-form" id="donate-form" method="post" action="">
+            <input type="hidden" value={{new_ref}} id="ref">
+            <input type="hidden" value={{key}} id="key">
+                {% csrf_token  %}
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="form-group">
+                        <label>First Name *</label>
+                        <input type="text" name="first_name"  id="first_name" class="form-control" required="required">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Name *</label>
+                        <input type="text" name="last_name"  id="last_name" class="form-control" required="required">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" id="email" class="form-control" required="required">
+                    </div> 
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="number" id="phone" required='required'  name="phone" class="form-control">
+                    </div>
+                                        <div class="form-group">
+                    
+                        <label>Comment </label>
+                        <textarea name="comment" required="required" id="comment" class="form-control" rows="8"></textarea>
+                    </div> 
+                                   
+                    <div class="form-group serve-submit">
+                        <input type="submit"  id="serve-button" class="btn btn-primary btn-lg"  value="Send">
+                        
+
+                    </div>
+
+                </div>
+                
+
+
+
+                </div>
+            </form> 
+</div> 
+
+
+</div> <!-- End Row -->
+</div> <!-- End Ministry Wrapper -->
+</div> <!-- End Container -->
+</div> <!-- End Section -->
+{% endblock content %}

@@ -1,0 +1,116 @@
+{% extends '../base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<style>
+.card{
+margin-bottom: 5%;
+border: 2px solid whitesmoke;
+box-shadow: -1px 6px 7px -4px;
+}
+
+.card img{
+height: 300px;
+width:100%;
+margin-bottom: 5%;
+}
+
+.card a{
+    cursor:pointer;
+}
+
+.card-body{
+display: flex;
+flex-direction: column;
+align-self: center;
+}
+
+</style>
+<section >
+  
+    <div class="container">
+        <div class="large-title text-center">        
+            <h2>Our Ministries</h2>
+        </div> 
+       
+
+
+
+
+
+        <div class="row"> 
+
+      <div class="card col-md-4">
+  <img class="card-img-top" src="{% static 'images/sol/ministries/edu-ministry.jpeg'%}" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title text-center">Educational Missions</h4>
+    <a href="{% url 'sol:edu_mission' %}" class="btn btn-primary">See More</a>
+  </div>
+</div> 
+
+
+      <div class="card col-md-4">
+  <img class="card-img-top" src="{% static 'images/sol/ministries/med-ministry.jpeg'%}" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title text-center">Medical Missions</h4>
+    <a href="{% url 'sol:med_mission' %}" class="btn btn-primary">See More</a>
+  </div>
+</div>
+
+
+     <div class="card col-md-4">
+  <img class="card-img-top" src="{% static 'images/sol/ministries/plant-ministry.jpeg'%}" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title text-center">Church Plants</h4>
+    <a href="{% url 'sol:church_plant' %}" class="btn btn-primary">See More</a>
+  </div>
+</div>
+
+
+      <div class="card col-md-4">
+  <img class="card-img-top" src="{% static 'images/sol/ministries/grow-ministry.jpg'%}" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title text-center">Grow In God's Mission</h4>
+    <a href="{% url 'sol:grow_mission' %}" class="btn btn-primary">See More</a>
+  </div>
+</div>
+
+
+
+
+      <div class="card col-md-4">
+  <img class="card-img-top" src="{% static 'images/sol/ministries/pray-ministry.jpeg' %}" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title text-center">Pray With Us</h4>
+    <a href="{% url 'sol:pray_withus' %}" class="btn btn-primary">See More</a>
+  </div>
+</div>
+
+
+
+      <div class="card col-md-4">
+  <img class="card-img-top" src="{% static 'images/sol/ministries/partner-ministry.jpeg' %}" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title text-center">Partner With Us</h4>
+    <a href="{% url 'sol:partner_withus' %}" class="btn btn-primary">See More</a>
+  </div>
+</div>
+
+
+
+      <div class="card col-md-4">
+  <img class="card-img-top" src="{% static 'images/sol/ministries/serve-ministry.jpeg' %}" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title text-center">Serve</h4>
+    <a href="{% url 'sol:serve_mission' %}" class="btn btn-primary">See More</a>
+  </div>
+</div>
+
+
+        </div><!--/.row-->
+    </div><!--/.container-->
+</section><!--/#contact-page-->
+
+
+{% endblock %}

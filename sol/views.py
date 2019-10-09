@@ -10,7 +10,7 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.contrib import messages
 from django.utils import timezone
-from .models import Village,Outreach,Portfolio,DonationPart,Donation
+from .models import *
 from django.core.mail import EmailMultiAlternatives
 from django.views.decorators.csrf import csrf_exempt
 from paystack.signals import event_signal
@@ -66,12 +66,9 @@ def about(request):
     return render(request,template,context)
 
 
-def portfolio(request):
-    portfolio=Portfolio.objects.all()
-    # portfolio=Portfolio.objects.order_by().values_list("title",flat=True).distinct()
-    template="sol/portfolio.html"
-    context={"portfolio":portfolio}
-    return render(request,template,context)
+
+
+
 
 
 def donation(request):
@@ -107,7 +104,7 @@ def validate_input(*args):
     invalid_data={}
     for data in args:
         print("My data",data)
-        if re.match("[a-zA-Z0-9\s_@\.-]+$",data):
+        if re.match("[a-zA-Z0-9\s_@!\.-]+$",data):
             validated_data.append(data)
             print(validated_data)
         else:
@@ -179,3 +176,104 @@ def contact(request):
 #     for port in portfolio:
 #             Portfolio.objects.filter(image__startswith='outreach/imosa').update(title='Imo-asasa mission field')
 #     return HttpResponse('Well Updated')
+
+
+##########################  Our Ministries  ########################
+
+def our_ministries(request):
+    # portfolio=Portfolio.objects.all()
+    # portfolio=Portfolio.objects.order_by().values_list("title",flat=True).distinct()
+    template="sol/ministries/our_ministries.html"
+    context={}
+    return render(request,template,context)
+
+
+def edu_mission(request):
+    search_query=request.POST.get('search_query',None)
+    village_title=""
+    edu_mission=None
+    try:
+        if search_query == None:
+            edu_mission=EducationalMission.objects.all()
+        else:
+            village_title=search_query
+            edu_mission = EducationalMission.objects.filter(village=search_query)
+    except:
+        messages.error(request,"Educations missions will be available soon.Check back later")
+    template="sol/ministries/edu_mission.html"
+    context={"edu_mission":edu_mission,"village":village_title}
+    return render(request,template,context)
+
+def med_mission(request):
+    search_query=request.POST.get('search_query',None)
+    village_title=""
+    med_mission=None
+    try:
+        if search_query == None:
+            med_mission= MedicalMission.objects.all()
+        else:
+            village_title=search_query
+            med_mission = MedicalMission.objects.filter(village=search_query)
+    except:
+        messages.error(request,"Medical missions will be available soon.Check back later")
+    
+    template="sol/ministries/med_mission.html"
+    context={"med_mission":med_mission,"village":village_title}
+    return render(request,template,context)
+
+def church_plant(request):
+    search_query=request.POST.get('search_query',None)
+    village_title=""
+    church_plant=None
+    try:
+        if search_query == None:
+            church_plant= ChurchPlant.objects.all()
+        else:
+            village_title=search_query
+            church_plant =ChurchPlant.objects.filter(village=search_query)
+    except:
+        messages.error(request,"Church Plants will be available soon.Check back later")
+    
+    template="sol/ministries/church_plant.html"
+    context={"church_plant":church_plant,"village":village_title}
+    return render(request,template,context)
+
+def grow_mission(request):
+    grow_mission=GrowMission.objects.all()
+    template="sol/ministries/grow_mission.html"
+    context={"grow_mission":grow_mission}
+    return render(request,template,context)
+
+def pray_withus(request):
+    pray_withus=PrayerPoint.objects.all()
+    template="sol/ministries/pray_withus.html"
+    context={"pray_withus":pray_withus}
+    return render(request,template,context)
+
+
+def partner_withus(request):
+    partner_withus=PrayWithUs.objects.all()
+    template="sol/ministries/partner_withus.html"
+    # context={"pray_withus":pray_withus}
+    return render(request,template)
+
+
+def serve_ministry(request):
+    first_name= str(request.POST.get("first_name",))
+    last_name= str(request.POST.get("last_name",))
+    phone= str(request.POST.get("phone",))
+    email= str(request.POST.get("email",))
+    comment= str(request.POST.get("comment",))
+    validation_result = validate_input(first_name,last_name,phone,email,comment)
+    if isinstance(validation_result,list):
+        # print("My validation input",validation_result)
+        first_name,last_name,phone,email,comment = validation_result
+        if request.method == 'POST':
+            ServeWithUs.objects.create(first_name=first_name,last_name=last_name,phone_number=phone,email=email,comment=comment)
+            messages.success(request,"Successfully sent. We will get in touch with you soon.")
+            redirect("/")
+    else:
+        messages.error(request,"Make sure all inputs are valid.")
+    template="sol/ministries/serve_ministry.html"
+    # context={"pray_withus":pray_withus}
+    return render(request,template)

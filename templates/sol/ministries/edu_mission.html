@@ -1,0 +1,106 @@
+
+{% extends '../base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<style>
+.search-title{
+display:flex;
+flex-direction:column;
+}
+
+.search-title form{
+align-self:flex-end;
+display:flex;
+}
+
+
+.search-title form button{
+background:#EC5538;
+color:white;
+}
+
+.search-title form button:hover{
+background:#4e4e4e;
+color:white;
+}
+
+
+.card{
+margin-bottom: 5%;
+border: 2px solid whitesmoke;
+box-shadow: -1px 6px 7px -4px;
+}
+
+.card img{
+height: 100%;
+width:100%;
+
+}
+
+.ministry-wrapper{
+    display:flex;
+    flex-direction:column;
+
+}
+
+.ministry-header{
+    padding:0;
+}
+.ministry-header .ministry-background{
+height: 500px;
+width:100%;
+
+}
+
+.img-background{
+    position:absolute;
+    top:400px;
+    width:100%;
+    
+}
+.img-background h1{
+color:white;
+}
+</style>
+<section>
+
+
+    <div class="container">
+    <div class="ministry-wrapper">
+<div class="col-md-12 ministry-header">
+<div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/ministries/edu-ministry.jpeg'%})" ></div>
+<div class="img-background">
+ <h1>Educational Missions</h1>
+ <hr>
+ </div>
+ <h2 class="text-center">Access to education changes lives now and for generations to come. This is long-term suitable impact.</h2>
+ <p>Where commuinities live in poverty, it will be necessary tomeet people's immediate needs in the form of food, shelter and clothes ( and we do this at SOL), but we do more. Our goal is always long term-missions that restores. We believe one of the most strategic ways to bring about restoration is through education, Illeteracy is sutained and opportunities. </p>
+    </div>
+
+
+<div class="large-title text-center search-title">                   
+    <form class="form-inline" action="" method="post">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" name="search_query" type="text" placeholder="Search">
+    <button class="btn" type="submit">Search</button>
+  </form>
+  <h2 class="text-center" style="font-weight:bold;">{{village}}</h2>
+        </div> 
+         
+
+<div class="row"> 
+{% for edu in edu_mission %}
+      <div class="card col-md-4">
+  <img class="card-img-top" src="{{edu.image.url}}" alt="Card image">
+  <div class="card-body">
+  </div>
+</div> 
+{% empty %}
+<h2 class="text-center">No data available for that village. Check back later.</h2>
+{% endfor %}
+</div> <!-- End Row -->
+</div><!-- End Ministry Wrapper -->
+</div> <!-- End Container -->
+</div> <!-- End Section -->
+{% endblock content %}
