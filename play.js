@@ -217,3 +217,9 @@
 
 
 console.log(typeof undefined)
+
+
+
+// "Principal": {
+//     "AWS": "arn:aws:iam::362750386222:user/springs-owner"
+// },
