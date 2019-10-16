@@ -71,9 +71,10 @@ color:white;
 <div class="col-md-12 ministry-header">
 <div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/ministry/grow_ministry.jpeg'%})" ></div>
 <div class="img-background">
-<h1>Grow in God's Mission</h1>
+<h1>Grow Your Minds In God's Mission Through 5 Minutes Videos</h1>
  <hr>
  </div>
+ 
  
     </div>
         
@@ -82,8 +83,11 @@ color:white;
         <div class="row"> 
 {% for grow in grow_mission %}
 <div class="card col-md-4">
-  <iframe style="width:100%;" class="card-img-top" src="{{grow.link}}">
-  <iframe>
+  <video style="width:100%;" class="card-img-top" controls>
+  <source src="{{grow.link}}" type="video/mp4">
+  <source src="{{grow.link}}" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
   <div class="card-body">
   </div>
 </div> 
