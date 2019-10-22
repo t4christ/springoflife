@@ -216,10 +216,24 @@
 
 
 
-console.log(typeof undefined)
+// console.log(typeof undefined)
 
 
 
 // "Principal": {
 //     "AWS": "arn:aws:iam::362750386222:user/springs-owner"
 // },
+
+let arr = [17,28,30]
+let arr2 = [99,16,8,7]
+
+let res = [0,0]
+for(let i = 0; i < arr.length; i++ ){
+    if(arr[i] > arr2[i]){
+        res[0]+=1
+    }
+    else if(arr[i] < arr2[i]){
+    res[1]+=1
+    }
+}
+console.log(res)

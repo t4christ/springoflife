@@ -391,8 +391,19 @@
 # with open(path) as f:
 #     print(f.read())
 
-for i in range(10):
-       count=0
-       for j in range(i):
-        count+=1
-        print(i * j,count)
+# for i in range(10):
+#        count=0
+#        for j in range(i):
+#         count+=1
+#         print(i * j,count)
+
+# arr1 = [1,2,3]
+# arr2 = [3,2,1]
+
+# count = 0
+# res = []
+# for a in arr1:
+#        if a < arr2[count] or a > arr2[count]:
+#               res.append(1)       
+#               count+=1
+# print(res)
