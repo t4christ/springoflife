@@ -22,7 +22,7 @@ services:
     networks:
       - springs_db_nw
       - springs_nw
-      - smtp_net
+      # - smtp_net
 
   nginx:
     build: ./nginx
@@ -38,15 +38,15 @@ services:
 
 
 
-  smtp:
-    build:
-      context: ./docker-smtp
-    ports:
-     - "587:587"
-    env_file: .env
-    networks:
-      - smtp_net
-      - springs_nw
+  # smtp:
+  #   build:
+  #     context: ./docker-smtp
+  #   ports:
+  #    - "587:587"
+  #   env_file: .env
+  #   networks:
+  #     - smtp_net
+  #     - springs_nw
 
 volumes:
   spring_data:
@@ -58,5 +58,5 @@ networks:
     driver: bridge
   springs_nw:
     driver: bridge
-  smtp_net:
-    driver: bridge
+  # smtp_net:
+  #   driver: bridge
