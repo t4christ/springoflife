@@ -1,13 +1,7 @@
 {
     "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
-        {
-            "name":"db",
-            "image":"postgres:alpine",
-            "hostname": "db",
-            "essential": false,
-            "memory": 128
-        },
+    
 
         {
           "command": [
@@ -19,8 +13,8 @@
             "image":"texplode/springs-web",
             "hostname": "web",
             "essential": false,
-            "memory": 128,
-            "links":["db"]
+            "memory": 128
+            
         },
 
         
