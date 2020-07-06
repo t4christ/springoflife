@@ -11,6 +11,7 @@ script:
 
 after_success:
   - docker build -t texplode/springs-web  .
+  - docker build -t texplode/springs-nginx  ./nginx
 
   
   
@@ -21,6 +22,7 @@ after_success:
   # Take images and push them to dockerhub
 
   - docker push texplode/springs-web
+  - docker push texplode/springs-nginx
   
 
 deploy:
