@@ -13,7 +13,7 @@
             "image":"texplode/springs-web",
             "hostname": "web",
             "essential": false,
-            "memory": 128
+            "memory": 256
             
         },
 
