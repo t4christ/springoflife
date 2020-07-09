@@ -12,6 +12,8 @@ script:
 after_success:
   - docker build -t texplode/springs-web  .
   - docker build -t texplode/springs-nginx  ./nginx
+  - docker build -t texplode/docker_smtp ./docker-smtp
+  - docker build -t texplode/debug_springs  ./debug_server
 
   
   
@@ -23,7 +25,8 @@ after_success:
 
   - docker push texplode/springs-web
   - docker push texplode/springs-nginx
-  
+  - docker push texplode/docker_smtp
+  - docker push texplode/debug_springs
 
 deploy:
   provider: elasticbeanstalk

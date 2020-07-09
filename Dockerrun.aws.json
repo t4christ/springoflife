@@ -20,7 +20,7 @@
         
         {
             "name":"smtp",
-            "image":"texplode/esusu_smtp",
+            "image":"texplode/docker_smtp",
             "hostname": "smtp",
             "essential": false,
             "memory": 128,
@@ -28,6 +28,20 @@
               {
                   "hostPort": 25,
                   "containerPort":25
+              }
+          ]
+        },
+
+        {
+            "name":"debug_springs",
+            "image":"texplode/debug_springs",
+            "hostname": "debug_springs",
+            "essential": false,
+            "memory": 128,
+            "portMappings": [
+              {
+                  "hostPort": 8005,
+                  "containerPort":8005
               }
           ]
         },
