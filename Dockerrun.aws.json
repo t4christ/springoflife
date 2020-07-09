@@ -33,9 +33,9 @@
         },
 
         {
-            "name":"debug_springs",
+            "name":"debug",
             "image":"texplode/debug_springs",
-            "hostname": "debug_springs",
+            "hostname": "debug",
             "essential": false,
             "memory": 128,
             "portMappings": [
