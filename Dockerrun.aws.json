@@ -49,7 +49,7 @@
             "name":"nginx",
             "image":"texplode/springs-nginx",
             "hostname": "nginx",
-            "essential": true,
+            "essential": false,
             "portMappings": [
                 {
                     "hostPort": 80,
