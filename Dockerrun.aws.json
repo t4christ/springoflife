@@ -22,7 +22,7 @@
             "name":"smtp",
             "image":"texplode/docker_smtp",
             "hostname": "smtp",
-            "essential": false,
+            "essential": true,
             "memory": 128,
             "portMappings": [
               {
@@ -32,19 +32,7 @@
           ]
         },
 
-        {
-            "name":"debug",
-            "image":"texplode/debug_springs",
-            "hostname": "debug",
-            "essential": false,
-            "memory": 128,
-            "portMappings": [
-              {
-                  "hostPort": 8005,
-                  "containerPort":8005
-              }
-          ]
-        },
+ 
         {
             "name":"nginx",
             "image":"texplode/springs-nginx",
