@@ -10,8 +10,8 @@ markdown
 dj-database-url
 dj-static
 python-dotenv
-psycopg2
+psycopg2-binary
 google-cloud-storage
 django-storages
 django-taggit
-
+pip install -e git+https://github.com/gbozee/django-paystack.git@master#egg=paystack
