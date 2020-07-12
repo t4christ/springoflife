@@ -16,8 +16,7 @@
             "memory": 256
             
         },
-
-        
+      
         {
             "name":"smtp",
             "image":"texplode/docker_smtp",
