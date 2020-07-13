@@ -50,8 +50,8 @@ services:
 #       - smtp_net
 #       - springs_nw
 
-# volumes:
-#   spring_data:
+volumes:
+  spring_data:
 #   staticfiles:
 
 
