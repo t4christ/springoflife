@@ -26,7 +26,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = '7v&ph%=o3ap5c5ap2=*)2isf2a#qy#+_l9a^dx7!zlg$b+)ox7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = ["localhost","192.168.99.100","spol.herokuapp.com","www.springsoflifeg.com"]
 ALLOWED_HOSTS = ["*"]
@@ -135,7 +135,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-if DEBUG:
+if not DEBUG:
 
     DATABASES = {
             'default': {

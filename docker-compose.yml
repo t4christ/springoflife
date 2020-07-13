@@ -5,48 +5,50 @@ services:
   db:
     restart: always
     image: postgres:alpine
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
     volumes:
       - spring_data:/var/lib/postgresql/data/
     networks:
       - springs_db_nw
-  # springs_app:
-  #   build: .
-  #   tty: true
-  #   command: /bin/sh -c "gunicorn springs.wsgi:application --bind 0.0.0.0:8009 && python manage.py migrate"
-  #   volumes:
-  #     - .:/var/www/app/
-  #     - staticfiles:/var/www/app/staticfiles
-  #   depends_on:
-  #     - db
-  #   env_file: .env
-  #   networks:
-  #     - springs_db_nw
-  #     - springs_nw
-  #     # - smtp_net
+  web:
+    build: .
+    tty: true
+    command: /bin/sh -c "gunicorn springs.wsgi:application --bind 0.0.0.0:8009 && python manage.py migrate"
+    volumes:
+      - .:/var/www/app/
+      - staticfiles:/var/www/app/staticfiles
+    depends_on:
+      - db
+    env_file: .env
+    networks:
+      - springs_db_nw
+      - springs_nw
+      # - smtp_net
 
-  # nginx:
-  #   build: ./nginx
-  #   volumes:
-  #     - staticfiles:/staticfiles
-  #   ports:
-  #     - "8000:80"
-  #   depends_on:
-  #     - springs_app
-  #   restart: always
-  #   networks:
-  #     - springs_nw
+  nginx:
+    build: ./nginx
+    volumes:
+      - staticfiles:/staticfiles
+    ports:
+      - "8000:80"
+    depends_on:
+      - web
+    restart: always
+    networks:
+      - springs_nw
 
 
 
-  # smtp:
-  #   build:
-  #     context: ./docker-smtp
-  #   ports:
-  #    - "587:587"
-  #   env_file: .env
-  #   networks:
-  #     - smtp_net
-  #     - springs_nw
+  smtp:
+    build:
+      context: ./docker-smtp
+    ports:
+     - "587:587"
+    env_file: .env
+    networks:
+      - smtp_net
+      - springs_nw
 
 volumes:
   spring_data:
@@ -56,7 +58,7 @@ volumes:
 networks:
   springs_db_nw:
     driver: bridge
-  # springs_nw:
-  #   driver: bridge
-  # smtp_net:
-  #   driver: bridge
+  springs_nw:
+    driver: bridge
+  smtp_net:
+    driver: bridge
