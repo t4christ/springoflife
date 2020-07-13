@@ -21,7 +21,7 @@
             "name":"smtp",
             "image":"texplode/docker_smtp",
             "hostname": "smtp",
-            "essential": true,
+            "essential": false,
             "memory": 128,
             "portMappings": [
               {
