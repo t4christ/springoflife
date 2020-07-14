@@ -1,6 +1,7 @@
 __pycache__
 .coverage
 .vscode
+.env
 *.env
 /media
 /static

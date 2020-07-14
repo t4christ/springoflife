@@ -135,7 +135,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-if DEBUG:
+if  DEBUG:
 
     DATABASES = {
             'default': {
@@ -207,9 +207,11 @@ if  DEBUG:
 
 else:
     OUTREACH="outreach"
+    POST_URL='posts'
+    PROFILE_URL='profile_photo'
     MEDIAFILES_LOCATION = 'media'
-    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    DEFAULT_FILE_STORAGE = 'springs.custom_storage.MediaStorage'
+    STATICFILES_STORAGE = 'springs.custom_storage.StaticStorage'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
