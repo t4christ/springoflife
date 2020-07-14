@@ -13,4 +13,5 @@ Procfile
 db.sqlite
 backup_db.sh
 /springs-8a71d8f7389e.json
+/spgoflife.json
 dbenv
