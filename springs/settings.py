@@ -220,7 +220,7 @@ else:
     AWS_LOCATION = 'static'
     STATICFILES_LOCATION = 'static'
 
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
 
