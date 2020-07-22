@@ -19,6 +19,10 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.site.site_header = 'Springs Of Life Admin'
+admin.site.site_title = "Admin Portal"
+admin.site.index_title = "Welcome to Portal"
+
 urlpatterns = [
     path('sol_admin/', admin.site.urls),
     path('comments/', include("comments.urls",namespace="comments")),
