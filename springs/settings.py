@@ -78,7 +78,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -138,24 +137,24 @@ USE_L10N = True
 USE_TZ = True
 
 
-if  DEBUG:
+# if  DEBUG:
 
-    DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-            }
-        }
+#     DATABASES = {
+#             'default': {
+#                 'ENGINE': 'django.db.backends.sqlite3',
+#                 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#             }
+#         }
 
-else:
-    DATABASES = {
+# else:
+DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ.get('POSTGRES_DATABASE'),
-            'USER': os.environ.get('POSTGRES_USER'),
-            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-            'HOST': os.environ.get('POSTGRES_HOST'),
-            'PORT': os.environ.get('POSTGRES_PORT'),
+            'NAME': os.environ.get('POSTGRES_DATABASE','springs'),
+            'USER': os.environ.get('POSTGRES_USER','springs_user'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD','springs_password'),
+            'HOST': os.environ.get('POSTGRES_HOST','localhost'),
+            'PORT': os.environ.get('POSTGRES_PORT','5432'),
         }
     }
 
@@ -192,13 +191,11 @@ PAYSTACK_WEBHOOK_DOMAIN='http://5eeab2a8.ngrok.io'
 
 
 if  DEBUG:
-
+    
     STATIC_DIR = os.path.join(BASE_DIR, 'staticfiles')
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     STATIC_URL = '/static/'
-    STATICFILES_DIRS = [
-    STATIC_DIR,
-    ]
+    STATICFILES_DIRS = [STATIC_DIR,]
     POST_URL='posts'
     PROFILE_URL='profile_photo'
     OUTREACH="outreach"
@@ -206,9 +203,8 @@ if  DEBUG:
     MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 
-
-
 else:
+    
     OUTREACH="outreach"
     POST_URL='posts'
     PROFILE_URL='profile_photo'
@@ -219,12 +215,9 @@ else:
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-    AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-    }
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
     AWS_LOCATION = 'static'
     STATICFILES_LOCATION = 'static'
-
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 

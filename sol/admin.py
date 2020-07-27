@@ -10,3 +10,14 @@ admin.site.register(Village)
 admin.site.register(Donation)
 admin.site.register(DonationPart)
 
+
+########### Our Ministries ##############
+admin.site.register(EducationalMission)
+admin.site.register(MedicalMission)
+admin.site.register(ChurchPlant)
+admin.site.register(GrowMission)
+admin.site.register(ServeWithUs)
+admin.site.register(PartnerWithUs)
+admin.site.register(PrayWithUs)
+admin.site.register(PrayerPoint)
+

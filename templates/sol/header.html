@@ -1,5 +1,27 @@
 {% load static %}
 
+<style>
+    #get_involved_ul li{
+        margin-bottom:10px;
+        color:white!important;
+    }
+
+    #get_involved_ul a:hover{
+        color:white!important;
+    }
+</style>
+
+
+<script>
+function hover(){
+document.querySelector('#get_involved ul').style.display="block";
+}
+function unhover(){
+document.querySelector('#get_involved ul').style.display="none";
+}
+</script>
+
+
     <header id="header">
         <div class="top-bar">
             <div class="container">
@@ -41,17 +63,28 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{% url 'sol:home' %}"><img src="{% static 'images/sol/sol-logo.png' %}" style="width:115px;height:68px;" alt="logo"></a>
+                    <a class="navbar-brand" href="{% url 'sol:home' %}"><img src="{% static 'images/sol/sol-logo.jpeg' %}" style="width:115px;height:68px;" alt="logo"></a>
                 </div>
 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="{% url 'sol:home' %}">Home</a></li>
+                        <li class="active home-header"><a href="{% url 'sol:home' %}">Home</a></li>
                         <li><a href="{% url 'sol:about' %}">About Us</a></li>
                         <li><a href="{% url 'sol:donation'%}">Donate</a></li>
                         <li><a href="{% url 'posts:list'%}">Blog</a></li>
-                        <li><a href="{% url 'posts:create'%}">Create Post</a></li>
-                        <li><a href="{% url 'sol:portfolio' %}">Portfolio</a></li>
+                       <!-- <li><a href="posts:create>Create Post</a></li>-->
+                        <li id="get_involved" onmouseover="hover()"onmouseout="unhover()"><a href="{% url 'sol:our_ministries' %}">Get Involved</a>
+                        <ul id="get_involved_ul" style="display:none;background:#151515;padding: 15px;z-index: 2;width: 300px;font-size:16px;position:absolute">
+                            <li style="list-style-type: none;"><a href="{% url 'sol:edu_mission' %}">Education Missions</a></li>
+                            <li style="list-style-type: none;"><a href="{% url 'sol:med_mission' %}">Medical Missions</a></li>
+                            <li style="list-style-type: none;"><a href="{% url 'sol:church_plant' %}">Church Plant</a></li>
+                            <li style="list-style-type: none;"><a href="{% url 'sol:grow_mission' %}">Grow in Missions</a></li>
+                            <li style="list-style-type: none;"><a href="{% url 'sol:pray_withus' %}">Pray With Us</a></li>
+                            <li style="list-style-type: none;"><a href="{% url 'sol:pray_withus' %}">MTC</a></li>
+                        
+                        </ul>
+                        </li>
+
                         <!-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
@@ -69,5 +102,12 @@
         </nav>
         <!--/nav-->
 
+
+
+
+
+ 
+
+ 
     </header>
     <!--/header-->

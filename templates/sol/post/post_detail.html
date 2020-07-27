@@ -50,7 +50,7 @@ $("#commentbtn").click(function() {
                             <h3>{{ instance.get_markdown }}</h3>
                             
                             <br>
-                            {% if instance.content_image.url %}
+                            {% if instance.content_image.url == True %}
                             <img class="img-responsive img-blog"  width="100%" src="{{instance.content_image.url}}" alt="">
                             {% endif %}
                             <br>

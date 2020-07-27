@@ -53,6 +53,8 @@
 
 {% include './footer.html' %}
 
+
+
 <script src="{{paystack_script}}"></script>
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -74,71 +76,26 @@ $('.view-sab,.view-mic,.view-olu,.view-elo,.view-aig,.view-hen,.view-mar,.view-o
     </script>
 
 <script>
-let donateClick = document.getElementById('donate-form')
-let URL ='/donate_record'
+let prayer_tab = document.querySelectorAll(".prayers .card-body");
 
-function clearField(){
-document.querySelector('#name').value=''
-document.querySelector('#phone').value=''
-document.querySelector('#message').value=''
-document.querySelector('#village').value=''
-document.querySelector('#amount').value=''
-document.querySelector('#email').value=''
-return
-}
+function prayer_point(e){
+let button_target = e.target.parentNode.className
 
-const donate = async (e)=>{
-
-e.preventDefault()
-const name = document.querySelector("#name").value.trim();
-const phone = document.querySelector("#phone").value.trim();
-const village = document.querySelector("#village").value.trim();
-const message = document.querySelector("#message").value.trim();
-const amount = document.querySelector("#amount").value.trim();
-const email = document.querySelector("#email").value.trim();
-
-
-
-$.ajax({
-      url: URL,
-      data: {name,phone,village,message,amount,email,csrfmiddlewaretoken:'{{csrf_token}}'},
-      type: "post",
-      dataType: 'json',
-      success: function (data) {
-
-    if(data.invalid_data){
-        
-        document.querySelector('#donate-error').style.display='block';
-        document.querySelector('#donate-error').innerHTML=data.invalid_data;
-        setTimeout(()=>{
-            document.querySelector('#donate-error').style.display='none';
-        },4000)
-    }
-    else{
-    clearField()
-    document.querySelector('#donate-button').style.display='none';
-    document.querySelector('#donate-success').style.display='block';
-    document.querySelector('#donate-success').style.display='block';
-    document.querySelector('#donate-success').innerHTML=data.success;
-   if(data.donate_message){
-       document.querySelector('#donate-message').innerHTML=data.donate_message; 
-   }
-    setTimeout(()=>{
-            document.querySelector('#donate-success').style.display='none';
-            window.location.href = "/pay_donation"
-        },3000)
-    }
-      }
-      })
-
+let target_button = document.querySelector("."+button_target + " " + "#prayer-point")
+if(target_button.style.display === "none"){
+document.querySelector("."+button_target + " " + "button").innerHTML = "Close Prayer Point";
+document.querySelector("."+button_target + " " + "#prayer-point").style.display = "block";
 
 }
+else{
+    document.querySelector("."+button_target + " " + "button").innerHTML = "View Prayer Point";
+    document.querySelector("."+button_target + " " + "#prayer-point").style.display = "none";
+}
+}
 
-donateClick.addEventListener('submit',donate)
-
-/*window.addEventListener('DOMContentLoaded',() => {
- document.querySelector('#django-paystack-button').style.display='none';
-})*/
+for ( let node = 0; node < prayer_tab.length; node++){
+prayer_tab[node].addEventListener("click",prayer_point)
+}
 
 
 </script>
@@ -146,11 +103,7 @@ donateClick.addEventListener('submit',donate)
 
 
 
-{% block javascript %} 
 
-
-
-{% endblock javascript %}
 
 </body>
 

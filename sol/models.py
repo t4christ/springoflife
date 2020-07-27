@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 from django.db import models
 from django.conf import settings
 from django.db import models
-from django.contrib.postgres.fields import JSONField
 # from django.db.models.signals import post_save
 # from django.utils import timezone
 
@@ -26,6 +25,7 @@ class TimestampedModel(models.Model):
 
 class Outreach(TimestampedModel):
     title= models.CharField(max_length=100,default="")
+    description= models.TextField(default="")
     if settings.DEBUG:
         image=models.ImageField(upload_to=settings.OUTREACH)
     else:
@@ -38,6 +38,7 @@ class Outreach(TimestampedModel):
 class Portfolio(TimestampedModel):
     title= models.CharField(max_length=100,default="")
     image=models.ImageField(upload_to=settings.OUTREACH)
+    description= models.TextField(default="")
     link=models.URLField( null=True, blank=True)
     def __str__(self):
         return "{} Portfolio ".format(self.title)
@@ -46,8 +47,8 @@ class Portfolio(TimestampedModel):
 
 class Village(TimestampedModel):
     title= models.CharField(max_length=100,default="")
+    description= models.TextField(default="")
     link=models.URLField( null=True, blank=True)
-    sub_village = JSONField(blank=True, default="")
     def __str__(self):
         return "{} Village Video".format(self.title)
 
@@ -100,3 +101,71 @@ class Donation(TimestampedModel):
 #     @property
 #     def success(self):
 #         return self.status == Payment.SUCCESS
+
+
+
+################################ Our Ministrys #############################
+
+class EducationalMission(TimestampedModel):
+    title= models.CharField(max_length=100,default="")
+    village= models.CharField(max_length=100,default="")
+    image=models.ImageField(upload_to=settings.OUTREACH)
+    description= models.TextField(default="")
+    def __str__(self):
+        return "{} Educational Mission ".format(self.title)
+
+class MedicalMission(TimestampedModel):
+    title= models.CharField(max_length=100,default="")
+    village= models.CharField(max_length=100,default="")
+    image=models.ImageField(upload_to=settings.OUTREACH)
+    description= models.TextField(default="")
+    def __str__(self):
+        return "{} Medical Mission ".format(self.title)
+
+class ChurchPlant(TimestampedModel):
+    title= models.CharField(max_length=100,default="")
+    village= models.CharField(max_length=100,default="")
+    image=models.ImageField(upload_to=settings.OUTREACH)
+    description= models.TextField(default="")
+    def __str__(self):
+        return "{} Church Plant ".format(self.title)
+
+class GrowMission(TimestampedModel):
+    title= models.CharField(max_length=100,default="")
+    link=models.URLField( null=True, blank=True)
+    description= models.TextField(default="")
+    def __str__(self):
+        return "{} Grow in Mission ".format(self.title)
+
+
+
+class PrayWithUs(TimestampedModel):
+    Date = models.CharField(max_length=100,default="", unique=True)
+    def __str__(self):
+        return "{} Pray With Us ".format(self.Date)
+
+
+
+class PrayerPoint(TimestampedModel):
+    pray_time = models.ForeignKey(PrayWithUs, on_delete=models.CASCADE, related_name="pray_time")
+    image=models.ImageField(upload_to=settings.OUTREACH)
+    prayer_point= models.TextField(default="")
+    def __str__(self):
+        return "{} Prayer point ".format(self.prayer_point)
+
+class PartnerWithUs(TimestampedModel):
+    title= models.CharField(max_length=100,default="")
+    village= models.CharField(max_length=100,default="")
+    image=models.ImageField(upload_to=settings.OUTREACH)
+    description= models.TextField(default="")
+    def __str__(self):
+        return "{} Pray With Us ".format(self.title)
+
+class ServeWithUs(TimestampedModel):
+    first_name= models.CharField(max_length=100,default="")
+    last_name= models.CharField(max_length=100,default="")
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=13,default="")
+    comment= models.TextField(default="")
+    def __str__(self):
+        return "{} Serve With Us ".format(self.first_name)

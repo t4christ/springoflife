@@ -1,14 +1,12 @@
 {% extends './base.html' %} 
 {% load static %}
+
+
+
 {% block content %}
 
 
-<!-- <script>
-document.addEventListener("load",()=>{
-    let get_title = document.querySelectorAll(".titles").text
-    console.log("My title list " + get_title)
-})
-</script> -->
+
 
 <div class="page-title" style="background-size:cover;background-image: url({% static 'images/sol/work7.jpeg' %})">
     <h1>Portfolio</h1>
@@ -45,9 +43,11 @@ document.addEventListener("load",()=>{
                 <div class="portfolio-item {{port.title|cut:' '|cut:'('|cut:')'}} apps col-xs-12 col-sm-4 col-md-3 single-work">
                     <div class="recent-work-wrap">
                         <img style="height:217.5px;width:290px;" class="img-responsive" src="{{port.image.url}}" alt="">
+                         
                         <div class="overlay">
                             <div class="recent-work-inner">
-                                <a class="preview" href="{{port.image.url}}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                                <a class="preview" id="preview" href="{{port.image.url}}" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                               <p id="description">{{port.description}}</p>
                             </div>
                         </div>
                        
@@ -165,4 +165,20 @@ document.addEventListener("load",()=>{
 <!--/#portfolio-item-->
 
 
-{%endblock %}
+<!--<script>
+let description = document.querySelector('#description');
+let portfolioClick = document.querySelector('');
+
+const port = ()=>{
+
+setTimeout(()=>{
+document.querySelector("#pp_full_res").appendChild(description)
+},2000)
+
+}
+
+portfolioClick.addEventListener('click',port)
+
+</script>-->
+
+{% endblock %}

@@ -3,14 +3,21 @@
 {% load static %}
 {% load blog_tags %}
 {% block content %}
+<style>
+@media and screen (max-width:970px){
+    h2{
+        font-size:24px!important;
+    }
+}
 
+</style>
 
 
 <section id="contact-page">
     <!-- <h2 class="text-mute text-center" style="font-size:6em;position:absolute;top:50%;width:100%;z-index:5;background:whitesmoke;">Coming Soon</h2> -->
     <div class="container">
         <div class="large-title text-center">        
-            <h2>Springs of Life Global Missions Blog</h2>
+            <h2>The SOL Report</h2>
             <section id="blog">
                     
 
@@ -20,18 +27,24 @@
                                 {% for obj in object_list %}
                             <div class="blog-item">
                                  <h2><a href="/posts/detail/{{obj.slug}}/" class="blog_cat">{{obj.title}}</a></h2>
+                                 <div>
                                 {% if obj.image.url %}
                                 <a href="/posts/detail/{{obj.slug}}/">
                                     <img class="img-responsive img-blog" src="{{ obj.image.url }}" width="100%" alt="" /></a>
                                {% endif %}
+                               <p style="width:inherit;">{{obj.describe_one}}</p>
+                               </div>
                                 <div class="blog-content">
                                     
                                     <!-- <h2><a href="blog-item.html">Consequat bibendum quam liquam viverra</a></h2> -->
                                     <h3>{{ obj.get_markdown|truncatechars_html:120 }}</h3>
-                                    {% if obj.content_image.url %}
+                                    <div>
+                                    {% if obj.content_image.url == True%}
                                     <a href="/posts/detail/{{obj.slug}}/">
                                         <img class="img-responsive img-blog" src="{{ obj.content_image.url }}" width="100%" alt="" /></a>
                                    {% endif %}
+                                   <p style="width:inherit;">{{obj.describe_two}}</p>
+                                   </div>
                                     <a class="readmore" href="/posts/detail/{{obj.slug}}/">Read More <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </div>

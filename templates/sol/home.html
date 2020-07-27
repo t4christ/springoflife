@@ -14,17 +14,17 @@
             <div class="carousel-inner">
 
                 <div class="item active" style="background-image:linear-gradient(rgba(0, 0, 0, 0.7)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/landing1.jpeg' %})">
-                    <img  style="margin-bottom:5%;height:200px;width:350px;position:absolute;top:0;left:0;right:0;margin:auto;" src="{% static 'images/sol/sol-ani.jpeg' %}">
+                   <img  style="margin-bottom:5%;height:200px;width:350px;position:absolute;top:0;left:0;right:0;margin:auto;" src="{% static 'images/sol/sol-ani.jpg' %}">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="carousel-content">
-                                    <h1 class="animation animated-item-1" style="margin-top:10%;" >Welcome to Springs of Life Global Evangelical Ministry</h1>
+                                    <h1 class="animation animated-item-1" style="margin-top:10%;" >Welcome to Springs of Life Global Evangelistic Ministry</h1>
                                     <div class="animation animated-item-2">
                                         Every christian should be involved in missions.This is what God wants.
                                     </div>
-                                    <a class="btn-slide animation animated-item-3" href="#">Learn More</a>
-                                    <a class="btn-slide white animation animated-item-3" href="#">Get Started</a>
+                                    <!--<a class="btn-slide animation animated-item-3" href="#">Missions</a>
+                                    <a class="btn-slide white animation animated-item-3" href="#">Force</a>-->
                                 </div>
                             </div>
 
@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="carousel-content">
-                                    <h1 class="animation animated-item-1">Welcome to Springs of Life Global Missions</h1>
+                                    <h1 class="animation animated-item-1">Welcome to Springs of Life Global Evangelistic Ministry</h1>
                                     <div class="animation animated-item-2">
                                         Every christian should be involved in missions.This is what God wants.
                                     </div>
@@ -66,6 +66,103 @@
         </a>
     </section>
     <!--/#main-slider-->
+
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 fadeInDown">
+                    <div class="tab-wrap">
+                        <div class="media">
+                            <div class="parrent pull-left">
+                                <ul class="nav nav-tabs nav-stacked">
+
+
+
+                                        {% for village in village|slice:"0:1" %}
+                                        <li class="active"><a href="#tab{{village.title|cut:' '}}" data-toggle="tab" class="village">{{village.title}}</a></li>
+                                        {% endfor %}
+
+
+
+                                        {% for village in village|slice:"1:" %}
+                                        <li class=""><a href="#tab{{village.title|cut:' '}}" data-toggle="tab" class="villages">{{village.title}}</a></li>
+                                        {% endfor %}
+                                    
+                                    </ul>
+                                </div>
+    
+                                   
+                                    <!-- <li class=""><a href="#tab1" data-toggle="tab" class="analistic-01">Responsive Web Design</a></li>
+                                    <li class="active"><a href="#tab2" data-toggle="tab" class="analistic-02">Premium Plugin Included</a></li>
+                                    <li class=""><a href="#tab3" data-toggle="tab" class="tehnical">Predefine Layout</a></li>
+                                    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">Our Philosopy</a></li>
+                                    <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">What We Do?</a></li> -->
+                            
+
+                            <div class="parrent media-body">
+                                
+                                <div class="tab-content">
+                                        <h1 class="text-center">Featured Content</h1>
+                                        <h3 class="text-center">About Missions</h3>
+                                                {% for village in village|slice:"0:1" %}
+                                                <div class="tab-pane fade" id="tab{{village.title|cut:' '}}">
+                                                        <div class="video-box">
+                                                                <iframe width="766" height="431" src="{{village.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                 </div>
+                                                </div>
+                                                    {% endfor %}
+
+
+                                                    {% for village in village|slice:"1:" %}
+                                            <div class="tab-pane fade active in" id="tab{{village.title|cut:' '}}">
+                                                            <div class="video-box">
+                                                                    <!-- <video width="320" height="240" controls>
+                                                                            <source src="" type="video/mp4">
+                                                                            <source src="{{village.link}}" type="video/ogg">
+                                                                          Your browser does not support the video tag.
+                                                                          </video> -->
+                                                                    <iframe width="766" height="431" src="{{village.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                     </div>
+                                                    </div>
+                                                        {% endfor %}
+
+                                    <!-- <div class="tab-pane fade in text-right" id="tab2">
+                                        <div class="video-box">
+                                            <img src="images/tab-video-bg.png" alt="video">
+                                            <a class="video-icon" href="http://www.youtube.com/watch?v=cH6kxtzovew" rel="prettyPhoto"><i class="fa fa-play"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="tab3">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="tab4">
+                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words</p>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="tab5">
+                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures,</p>
+                                    </div> -->
+                                </div>
+                                <!--/.tab-content-->
+                            </div>
+                            <!--/.media-body-->
+                        </div>
+                        <!--/.media-->
+                    </div>
+                    <!--/.tab-wrap-->
+                </div>
+                <!--/.col-sm-6-->
+
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.container-->
+    </section>
+    <!--/#content-->
+
 
 
     <section id="recent-works">
@@ -159,208 +256,49 @@
 
    
 
-    <section id="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 fadeInDown">
-                        <div class="tab-wrap">
-                            <div class="media">
-                                <div class="parrent pull-left">
-                                    <ul class="nav nav-tabs nav-stacked">
 
-
-
-                                            {% for village in village|slice:"0:1" %}
-                                            <li class="active"><a href="#tab{{village.title|cut:' '}}" data-toggle="tab" class="village">{{village.title}}</a></li>
-                                            {% endfor %}
-
-
-
-                                            {% for village in village|slice:"1:" %}
-                                            <li class=""><a href="#tab{{village.title|cut:' '}}" data-toggle="tab" class="villages">{{village.title}}</a></li>
-                                            {% endfor %}
-                                        
-                                        </ul>
-                                    </div>
-        
-                                       
-                                        <!-- <li class=""><a href="#tab1" data-toggle="tab" class="analistic-01">Responsive Web Design</a></li>
-                                        <li class="active"><a href="#tab2" data-toggle="tab" class="analistic-02">Premium Plugin Included</a></li>
-                                        <li class=""><a href="#tab3" data-toggle="tab" class="tehnical">Predefine Layout</a></li>
-                                        <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">Our Philosopy</a></li>
-                                        <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">What We Do?</a></li> -->
-                                
-    
-                                <div class="parrent media-body">
-                                    
-                                    <div class="tab-content">
-                                            <h1 class="text-center">About Missions</h1>
-                                                    {% for village in village|slice:"0:1" %}
-                                                    <div class="tab-pane fade" id="tab{{village.title|cut:' '}}">
-                                                            <div class="video-box">
-                                                                    <iframe width="766" height="431" src="{{village.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                                     </div>
-                                                    </div>
-                                                        {% endfor %}
-
-
-                                                        {% for village in village|slice:"1:" %}
-                                                <div class="tab-pane fade active in" id="tab{{village.title|cut:' '}}">
-                                                                <div class="video-box">
-                                                                        <!-- <video width="320" height="240" controls>
-                                                                                <source src="" type="video/mp4">
-                                                                                <source src="{{village.link}}" type="video/ogg">
-                                                                              Your browser does not support the video tag.
-                                                                              </video> -->
-                                                                        <iframe width="766" height="431" src="{{village.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                                         </div>
-                                                        </div>
-                                                            {% endfor %}
-    
-                                        <!-- <div class="tab-pane fade in text-right" id="tab2">
-                                            <div class="video-box">
-                                                <img src="images/tab-video-bg.png" alt="video">
-                                                <a class="video-icon" href="http://www.youtube.com/watch?v=cH6kxtzovew" rel="prettyPhoto"><i class="fa fa-play"></i></a>
-                                            </div>
-                                        </div>
-    
-                                        <div class="tab-pane fade" id="tab3">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
-                                        </div>
-    
-                                        <div class="tab-pane fade" id="tab4">
-                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words</p>
-                                        </div>
-    
-                                        <div class="tab-pane fade" id="tab5">
-                                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures,</p>
-                                        </div> -->
-                                    </div>
-                                    <!--/.tab-content-->
-                                </div>
-                                <!--/.media-body-->
-                            </div>
-                            <!--/.media-->
-                        </div>
-                        <!--/.tab-wrap-->
-                    </div>
-                    <!--/.col-sm-6-->
-    
-                </div>
-                <!--/.row-->
+    <section id="team-area">
+        <div class="container">
+            <div class="center fadeInDown">
+                <h2>Recent Posts</h2>
             </div>
-            <!--/.container-->
-        </section>
-        <!--/#content-->
+            <div class="row">
+                {% for post in posts %}
+                <div class="col-md-4 col-sm-6 single-team">
+                    <div class="inner">
+                        <div class="team-content">
+                            <h2><a href="/posts/detail/{{post.slug}}/" class="blog_cat">{{post.title}}</a></h2>
+                        </div>
+                    </div>
 
+                    <div class="team-img">
+                        <img src="{{ post.image.url }}" alt="">
+                    </div>
+                </div>
+                    {% empty %}
+                    <div class="col-md-4 col-sm-6 single-team">
+                        <div class="inner">
+                            <div class="team-img">
+                            </div>
+                            <div class="team-content">
+                                <h4>Ooops</h4>
+                                <span class="desg">No post is available yet.</span>
+
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+
+        
+            </div>
+        </div>
+    </section>
 
 
 
 
 
   
-
-    <!-- <section id="testimonial">
-        <div class="container">
-            <div class="center fadeInDown">
-                <h2>Testimonials</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
-            </div>
-            <div class="testimonial-slider owl-carousel">
-                <div class="single-slide">
-                    <div class="slide-img">
-                        <img src="images/client1.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <img src="images/review.png" alt="">
-                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
-                        <h4>- Charlotte Daniels</h4>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="slide-img">
-                        <img src="images/client2.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <img src="images/review.png" alt="">
-                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
-                        <h4>- Charlotte Daniels</h4>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="slide-img">
-                        <img src="images/client3.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <img src="images/review.png" alt="">
-                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
-                        <h4>- Charlotte Daniels</h4>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="slide-img">
-                        <img src="images/client2.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <img src="images/review.png" alt="">
-                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
-                        <h4>- Charlotte Daniels</h4>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="slide-img">
-                        <img src="images/client1.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <img src="images/review.png" alt="">
-                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
-                        <h4>- Charlotte Daniels</h4>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="slide-img">
-                        <img src="images/client3.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <img src="images/review.png" alt="">
-                        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price.</p>
-                        <h4>- Charlotte Daniels</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- <section id="partner">
-        <div class="container">
-            <div class="center fadeInDown">
-                <h2>Our Partners</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
-            </div>
-
-            <div class="partners">
-                <ul>
-                    <li>
-                        <a href="#"><img class="img-responsive fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="images/partners/brand-1.png"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img class="img-responsive fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" src="images/partners/brand-2.png"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img class="img-responsive fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" src="images/partners/brand-3.png"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img class="img-responsive fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" src="images/partners/brand-4.png"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img class="img-responsive fadeInDown" data-wow-duration="1000ms" data-wow-delay="1500ms" src="images/partners/brand-5.png"></a>
-                    </li>
-                </ul>
-            </div>
-        </div> -->
-        <!--/.container-->
-    <!-- </section> -->
-    <!--/#partner-->
 
 
   
