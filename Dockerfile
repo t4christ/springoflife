@@ -13,7 +13,7 @@ COPY requirements.txt /requirements.txt
 RUN apk update && \
     apk add --virtual build-deps gcc python3-dev musl-dev && \
     apk add \
-    libevent-dev \
+    libffi-dev \
     postgresql-dev \
     libpng \
     git \
