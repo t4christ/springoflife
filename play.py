@@ -391,8 +391,103 @@
 # with open(path) as f:
 #     print(f.read())
 
-for i in range(10):
-       count=0
-       for j in range(i):
-        count+=1
-        print(i * j,count)
+# for i in range(10):
+#        count=0
+#        for j in range(i):
+#         count+=1
+#         print(i * j,count)
+
+# def word_freq(str):
+#     freq_map = {}
+#     for s in str:
+#         if 'val' in freq_map:
+#             freq_map['val'] = 0
+#         else:
+#             freq_map['val'] = 1
+    
+#     return freq_map
+
+# def harmless_ransom_notes(note_text, magazine_text):
+#     res = word_freq(magazine_text)
+
+#     split_string = note_text.split()
+
+#     result = True
+
+#     for s in split_string:
+#         if res[s]:
+#             res[s] -=1
+#             if res[s] < 0:
+#                 result = False
+#         else:
+#             result = False
+#     return result
+# print(harmless_ransom_notes('emily is very very eager', 'emily martin is being very eager to go out'))`
+
+# def wordFreq(string):
+#        words = string.replace(".","")
+#        print("Words",words)
+#        freqMap = {}
+#        for w in words:
+#               if not freqMap[w]:
+#                      freqMap[w] = 0
+#               freqMap[w] +=1
+#        return freqMap
+
+# def harmlessRansomNotes(noteText,magazineText):
+#        res = wordFreq(magazineText)
+#        noteText = noteText.split('')
+#        result =True
+#        for word in noteText:
+#               if res[word]:
+#                      res[word] -=1
+#                      if res[word] < 0:
+#                             result = False
+#               else:
+#                      result = False
+#        return result
+
+
+# def harmlessNote(noteText,magazineText):
+#        note_split = noteText.split()
+#        magazine = magazineText.split()
+#        note_text_len = len(note_split)
+#        mag_text_count = 0
+#        for word in note_split:
+#               if word in magazine:
+#                      magazine[magazine.index(word)] = ''
+#                      mag_text_count +=1
+#        if  mag_text_count == note_text_len:
+#               return True
+#        return False
+
+# print(harmlessNote('emily is very very eager', 'emily martin is being very eager to go out'))
+
+# def word_freq(string):
+#     string_split = string.split()
+#     freq_map = {}
+#     for s in string_split:
+#         if s in freq_map:
+#             freq_map[s] = 0
+#         else:
+#             freq_map[s] = 1
+    
+#     return freq_map
+
+# def harmless_ransom_notes(note_text, magazine_text):
+#     res = word_freq(magazine_text)
+
+#     split_string = note_text.split()
+#     print("Split",res)
+#     result = True
+
+#     for s in split_string:
+#         if res[s]:
+            
+#             res[s] -=1
+#             if res[s] < 0:
+#                 result = False
+#         else:
+#             result = False
+#     return result
+# print(harmless_ransom_notes('emily is  very eager', 'emily martin is being very eager to go out'))
