@@ -68,7 +68,12 @@ color:white;
     <div class="container">
         <div class="ministry-wrapper">
 <div class="col-md-12 ministry-header">
+    {% if ministry_background %}
+    <div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),
+    url({{ministry_background.image.url}} ); background-position:center;" ></div>
+    {% else %}
 <div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/ministry/med_ministry.jpeg'%})" ></div>
+{% endif %}
 <div class="img-background">
  <h1>Medical Missions</h1>
  <hr>
@@ -89,7 +94,7 @@ color:white;
         <div class="row"> 
 {% for med in med_mission %}
       <div class="card col-md-4">
-  <img class="card-img-top" src="{{med.image.url}}" alt="Card image">
+  <img class="card-img-top" src="{{med.link}}" alt="Card image">
   <div class="card-body">
   </div>
 </div> 

@@ -39,13 +39,15 @@ def sol_donate_webhook(sender, event, data,**kwargs):
 def home(request):
     template="sol/home.html"
     outreach=Outreach.objects.all()
+    
     village = Village.objects.all()
     try:
         posts = Post.objects.all()[:3]
-        context={"outreach":outreach,"village":village,"posts":posts}
+        feature = ChurchPlant.objects.filter(village='Akogun')[:3]
+        context={"outreach":outreach,"village":village,"posts":posts,"feature":feature}
         return render(request,template,context)
     except:
-        context={"outreach":outreach,"village":village,"posts":posts}
+        context={"outreach":outreach,"village":village,"posts":posts,"feature":feature}
         return render(request,template,context)
 
 
@@ -195,6 +197,13 @@ def our_ministries(request):
 
 
 def edu_mission(request):
+    ministry_background = None
+    try:
+        ministry_background = ministryBackground.objects.get(ministry_name='education')
+    except ministryBackground.DoesNotExist:
+        pass
+        
+        
     search_query=request.POST.get('search_query',None)
     village_title=""
     edu_mission=None
@@ -207,10 +216,62 @@ def edu_mission(request):
     except:
         messages.error(request,"Educations missions will be available soon.Check back later")
     template="sol/ministries/edu_mission.html"
-    context={"edu_mission":edu_mission,"village":village_title}
+    context={"edu_mission":edu_mission,"village":village_title,'ministry_background':ministry_background}
     return render(request,template,context)
 
+
+def mtc(request):
+    ministry_background = None
+    try:
+        ministry_background = ministryBackground.objects.get(ministry_name='mtc')
+    except ministryBackground.DoesNotExist:
+        pass
+    search_query=request.POST.get('search_query',None)
+    village_title=""
+    mtc=None
+    try:
+        if search_query == None:
+            edu_mission=EducationalMission.objects.all()
+        else:
+            village_title=search_query
+            mtc = Mtc.objects.filter(village=search_query)
+    except:
+        messages.error(request,"Mtc data will be available soon.Check back later")
+    template="sol/ministries/mtc.html"
+    context={"mtc":mtc,"village":village_title,'ministry_background':ministry_background}
+    return render(request,template,context)
+
+
+
+def conference(request):
+    ministry_background = None
+    try:
+        ministry_background = ministryBackground.objects.get(ministry_name='conference')
+    except ministryBackground.DoesNotExist:
+        pass
+    search_query=request.POST.get('search_query',None)
+    village_title=""
+    conference=None
+    try:
+        if search_query == None:
+            conference=Conference.objects.all()
+        else:
+            village_title=search_query
+            conference = Conference.objects.filter(village=search_query)
+    except:
+        messages.error(request,"Conference programs will be available soon.Check back later")
+    template="sol/ministries/conference.html"
+    context={"conference":conference,"village":village_title,'ministry_background':ministry_background}
+    return render(request,template,context)
+
+
+
 def med_mission(request):
+    ministry_background = None
+    try:
+        ministry_background = ministryBackground.objects.get(ministry_name='medical')
+    except ministryBackground.DoesNotExist:
+        pass
     search_query=request.POST.get('search_query',None)
     village_title=""
     med_mission=None
@@ -224,10 +285,15 @@ def med_mission(request):
         messages.error(request,"Medical missions will be available soon.Check back later")
     
     template="sol/ministries/med_mission.html"
-    context={"med_mission":med_mission,"village":village_title}
+    context={"med_mission":med_mission,"village":village_title,'ministry_background':ministry_background}
     return render(request,template,context)
 
 def church_plant(request):
+    ministry_background = None
+    try:
+        ministry_background = ministryBackground.objects.get(ministry_name='missions')
+    except ministryBackground.DoesNotExist:
+        pass
     search_query=request.POST.get('search_query',None)
     village_title=""
     church_plant=None
@@ -241,30 +307,50 @@ def church_plant(request):
         messages.error(request,"Church Plants will be available soon.Check back later")
     
     template="sol/ministries/church_plant.html"
-    context={"church_plant":church_plant,"village":village_title}
+    context={"church_plant":church_plant,"village":village_title,'ministry_background':ministry_background}
     return render(request,template,context)
 
 def grow_mission(request):
+    ministry_background = None
+    try:
+        ministry_background = ministryBackground.objects.get(ministry_name='growth')
+    except ministryBackground.DoesNotExist:
+        pass
     grow_mission=GrowMission.objects.all()
     template="sol/ministries/grow_mission.html"
-    context={"grow_mission":grow_mission}
+    context={"grow_mission":grow_mission,'ministry_background':ministry_background}
     return render(request,template,context)
 
 def pray_withus(request):
+    ministry_background = None
+    try:
+        ministry_background = ministryBackground.objects.get(ministry_name='pray')
+    except ministryBackground.DoesNotExist:
+        pass
     pray_withus=PrayerPoint.objects.all()
     template="sol/ministries/pray_withus.html"
-    context={"pray_withus":pray_withus}
+    context={"pray_withus":pray_withus,'ministry_background':ministry_background}
     return render(request,template,context)
 
 
 def partner_withus(request):
+    ministry_background = None
+    try:
+        ministry_background = ministryBackground.objects.get(ministry_name='partner')
+    except ministryBackground.DoesNotExist:
+        pass
     partner_withus=PrayWithUs.objects.all()
     template="sol/ministries/partner_withus.html"
-    # context={"pray_withus":pray_withus}
+    context={"partner_withus":partner_withus,'ministry_background':ministry_background}
     return render(request,template)
 
 
 def serve_ministry(request):
+    ministry_background = None
+    try:
+        ministry_background = ministryBackground.objects.get(ministry_name='serve')
+    except ministryBackground.DoesNotExist:
+        pass
     first_name= str(request.POST.get("first_name",))
     last_name= str(request.POST.get("last_name",))
     phone= str(request.POST.get("phone",))
@@ -281,5 +367,5 @@ def serve_ministry(request):
     else:
         messages.error(request,"Make sure all inputs are valid.")
     template="sol/ministries/serve_ministry.html"
-    # context={"pray_withus":pray_withus}
+    context={'ministry_background':ministry_background}
     return render(request,template)

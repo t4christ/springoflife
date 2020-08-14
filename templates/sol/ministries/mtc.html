@@ -25,7 +25,6 @@ background:#4e4e4e;
 color:white;
 }
 
-
 .card{
 height:356px;
 margin-bottom: 5%;
@@ -51,6 +50,7 @@ width:100%;
 .ministry-header .ministry-background{
 height: 500px;
 width:100%;
+background-size:cover;
 
 }
 
@@ -63,43 +63,44 @@ width:100%;
 .img-background h1{
 color:white;
 }
+
 </style>
 <section>
-
-
+  
     <div class="container">
-    <div class="ministry-wrapper">
+            <div class="ministry-wrapper">
 <div class="col-md-12 ministry-header">
     {% if ministry_background %}
-<div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),
-url({{ministry_background.image.url}} ); background-position:center;" ></div>
-{% else %}
-<div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),
-url({% static 'images/sol/ministry/edu_ministry.jpeg'%} )" ></div>
+    <div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),
+    url({{ministry_background.image.url}} ); background-position:center;" ></div>
+    {% else %}
+<div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/ministry/plant_ministry.jpeg'%})" ></div>
 {% endif %}
 <div class="img-background">
- <h1>Educational Missions</h1>
+<h1>MTC (Mission Training Center)</h1>
  <hr>
  </div>
- <h2 class="text-center">Access to education changes lives now and for generations to come. This is a long-term suitable impact.</h2>
- <p>Where communities live in poverty, it will be necessary to meet people's immediate needs in the form of food, shelter and clothes ( and we do all this at SOL), but we do more. Our goal is always in long term-missions that restores. We believe one of the most strategic ways to bring about restoration is through education, Illeteracy is sutained and opportunities. </p>
+  <h2 class="text-center">If you want to stop the gates of hell in a place.Plant a church.</h2>
+ <p>SOL believes that Jesus builds His church(mathew16:18) as believers engage in discipleship. SOL missionaries use one-on-one evangelism, public meetings and events to engage communities with the gospel. As people come to Christ they are discipled to grow in their faith and develop to leaders of new faith communities. </p>
+ 
+
+
     </div>
-
-
-<div class="large-title text-center search-title">                   
+        <div class="large-title text-center search-title">        
+            
     <form class="form-inline" action="" method="post">
     {% csrf_token %}
     <input class="form-control mr-sm-2" name="search_query" type="text" placeholder="Search">
-    <button class="btn" type="submit">Search</button>
+    <button class="btn" type="submit" >Search</button>
+    
   </form>
-  <h2 class="text-center" style="font-weight:bold;">{{village}}</h2>
         </div> 
-         
+    <h2 class="text-center" style="font-weight:bold;">{{village}}</h2>     
 
-<div class="row"> 
-{% for edu in edu_mission %}
+        <div class="row"> 
+{% for mtc in mtc %}
       <div class="card col-md-4">
-  <img class="card-img-top" src="{{edu.image.url}}" alt="Card image">
+  <img class="card-img-top" src="{{mtc.link}}" alt="Card image">
   <div class="card-body">
   </div>
 </div> 
@@ -107,7 +108,7 @@ url({% static 'images/sol/ministry/edu_ministry.jpeg'%} )" ></div>
 <h2 class="text-center">No data available for that village. Check back later.</h2>
 {% endfor %}
 </div> <!-- End Row -->
-</div><!-- End Ministry Wrapper -->
+</div> <!-- End Ministry Wrapper -->
 </div> <!-- End Container -->
 </div> <!-- End Section -->
 {% endblock content %}

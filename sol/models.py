@@ -22,6 +22,15 @@ class TimestampedModel(models.Model):
         # default ordering for most models.
         # ordering=['-created_at', '-updated_at’]
 
+class ministryBackground(TimestampedModel):
+    ministry_name = models.CharField(max_length=100,default="")
+    if settings.DEBUG:
+            image=models.ImageField(upload_to=settings.OUTREACH)
+    else:
+        image=models.ImageField(upload_to=settings.MEDIA_URL)
+    def __str__(self):
+            return "Ministry Background {}".format(self.ministry_name)
+
 
 class Outreach(TimestampedModel):
     title= models.CharField(max_length=100,default="")
@@ -109,6 +118,7 @@ class Donation(TimestampedModel):
 class EducationalMission(TimestampedModel):
     title= models.CharField(max_length=100,default="")
     village= models.CharField(max_length=100,default="")
+    link=models.URLField( null=True, blank=True)
     image=models.ImageField(upload_to=settings.OUTREACH)
     description= models.TextField(default="")
     def __str__(self):
@@ -118,6 +128,7 @@ class MedicalMission(TimestampedModel):
     title= models.CharField(max_length=100,default="")
     village= models.CharField(max_length=100,default="")
     image=models.ImageField(upload_to=settings.OUTREACH)
+    link=models.URLField( null=True, blank=True)
     description= models.TextField(default="")
     def __str__(self):
         return "{} Medical Mission ".format(self.title)
@@ -125,6 +136,7 @@ class MedicalMission(TimestampedModel):
 class ChurchPlant(TimestampedModel):
     title= models.CharField(max_length=100,default="")
     village= models.CharField(max_length=100,default="")
+    link=models.URLField( null=True, blank=True)
     image=models.ImageField(upload_to=settings.OUTREACH)
     description= models.TextField(default="")
     def __str__(self):
@@ -137,6 +149,22 @@ class GrowMission(TimestampedModel):
     def __str__(self):
         return "{} Grow in Mission ".format(self.title)
 
+class Mtc(TimestampedModel):
+    title= models.CharField(max_length=100,default="")
+    link=models.URLField( null=True, blank=True)
+    image=models.ImageField(upload_to=settings.OUTREACH)
+    description= models.TextField(default="")
+    def __str__(self):
+        return "{} Mtc ".format(self.title)
+
+
+class Conference(TimestampedModel):
+    title= models.CharField(max_length=100,default="")
+    link=models.URLField( null=True, blank=True)
+    image=models.ImageField(upload_to=settings.OUTREACH)
+    description= models.TextField(default="")
+    def __str__(self):
+        return "{} Conference ".format(self.title)
 
 
 class PrayWithUs(TimestampedModel):
@@ -169,3 +197,5 @@ class ServeWithUs(TimestampedModel):
     comment= models.TextField(default="")
     def __str__(self):
         return "{} Serve With Us ".format(self.first_name)
+    
+    

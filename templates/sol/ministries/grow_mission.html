@@ -69,7 +69,12 @@ color:white;
     <div class="container">
             <div class="ministry-wrapper">
 <div class="col-md-12 ministry-header">
+  {% if ministry_background %}
+  <div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),
+  url({{ministry_background.image.url}} ); background-position:center;" ></div>
+  {% else %}
 <div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/ministry/grow_ministry.jpg'%})" ></div>
+{% endif %}
 <div class="img-background">
 <h1>Grow Your Minds In God's Mission Through 5 Minutes Videos</h1>
  <hr>

@@ -5,6 +5,7 @@ from .models import *
 
 
 admin.site.register(Outreach)
+admin.site.register(ministryBackground)
 admin.site.register(Portfolio)
 admin.site.register(Village)
 admin.site.register(Donation)

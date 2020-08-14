@@ -26,7 +26,8 @@ color:white;
 }
 
 .card{
-height:356px;
+height:auto;
+padding:0px;
 margin-bottom: 5%;
 border: 2px solid whitesmoke;
 box-shadow: -1px 6px 7px -4px;
@@ -70,9 +71,14 @@ color:white;
     <div class="container">
             <div class="ministry-wrapper">
 <div class="col-md-12 ministry-header">
+    {% if ministry_background %}
+    <div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),
+    url({{ministry_background.image.url}} ); background-position:center;" ></div>
+    {% else %}
 <div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/ministry/plant_ministry.jpeg'%})" ></div>
+{% endif %}
 <div class="img-background">
-<h1>Church Plants</h1>
+<h1>Mission Fields</h1>
  <hr>
  </div>
   <h2 class="text-center">If you want to stop the gates of hell in a place.Plant a church.</h2>
@@ -95,6 +101,9 @@ color:white;
         <div class="row"> 
 {% for church in church_plant %}
       <div class="card col-md-4">
+        
+    <h2 class="text-center"><a href="/church_plant" class="blog_cat">{{church.title}}</a></h2>
+        
   <img class="card-img-top" src="{{church.image.url}}" alt="Card image">
   <div class="card-body">
   </div>

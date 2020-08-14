@@ -105,27 +105,52 @@
                                 <div class="tab-content">
                                         <h1 class="text-center">Featured Content</h1>
                                         <h3 class="text-center">About Missions</h3>
-                                                {% for village in village|slice:"0:1" %}
+                                        {% for feature in feature %}
+                                        <div class="col-md-4 col-sm-6 single-team">
+                                            <div class="inner">
+                                                <div class="team-content">
+                                                    <h2><a href="/church_plant" class="blog_cat">{{feature.title}}</a></h2>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="team-img">
+                                                <img src="{{ feature.image.url }}" alt="">
+                                            </div>
+                                        </div>
+                                            {% empty %}
+                                            <div class="col-md-4 col-sm-6 single-team">
+                                                <div class="inner">
+                                                    <div class="team-img">
+                                                    </div>
+                                                    <div class="team-content">
+                                                        <h4>Ooops</h4>
+                                                        <span class="desg">No feature is available yet.</span>
+                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {%endfor%}
+                                                <!--  for village in village|slice:"0:1" 
                                                 <div class="tab-pane fade" id="tab{{village.title|cut:' '}}">
                                                         <div class="video-box">
                                                                 <iframe width="766" height="431" src="{{village.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                                  </div>
                                                 </div>
-                                                    {% endfor %}
+                                                     endfor 
 
 
-                                                    {% for village in village|slice:"1:" %}
+                                                    for village in village|slice:"1:" 
                                             <div class="tab-pane fade active in" id="tab{{village.title|cut:' '}}">
                                                             <div class="video-box">
-                                                                    <!-- <video width="320" height="240" controls>
+                                                                     <video width="320" height="240" controls>
                                                                             <source src="" type="video/mp4">
                                                                             <source src="{{village.link}}" type="video/ogg">
                                                                           Your browser does not support the video tag.
                                                                           </video> -->
-                                                                    <iframe width="766" height="431" src="{{village.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                                     </div>
-                                                    </div>
-                                                        {% endfor %}
+                                                                    <!-- <iframe width="766" height="431" src="{{village.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                                                                     <!-- </div> -->
+                                                    <!-- </div> -->
+                                                    
 
                                     <!-- <div class="tab-pane fade in text-right" id="tab2">
                                         <div class="video-box">
