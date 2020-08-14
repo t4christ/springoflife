@@ -7,7 +7,7 @@
           "command": [
             "/bin/sh",
             "-c",
-            "python manage.py migrate && gunicorn springs.wsgi:application --bind 0.0.0.0:8009 && python manage.py collectstatic"
+            "python manage.py migrate && gunicorn springs.wsgi:application --bind 0.0.0.0:8009"
         ],
             "name":"web",
             "image":"texplode/springs-web",
