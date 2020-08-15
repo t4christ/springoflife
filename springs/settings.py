@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
     #Other Apps
     'sol',
-    'django-paystack.paystack',
+    'paystack',
     'posts',
     'taggit',
     'comments',

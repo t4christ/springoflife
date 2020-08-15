@@ -27,7 +27,7 @@ urlpatterns = [
     path('sol_admin/', admin.site.urls),
     path('comments/', include("comments.urls",namespace="comments")),
     path('posts/', include("posts.urls",namespace="posts")),
-    path("paystack", include(('django-paystack.paystack.urls','paystack'),namespace='paystack')),
+    path("paystack", include(('django_paystack.paystack.urls','paystack'),namespace='paystack')),
     path('', include("sol.urls",namespace="sol")),
 
   
