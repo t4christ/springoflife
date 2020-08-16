@@ -24,7 +24,7 @@ import re
 
 @require_http_methods(["HEAD", "POST"])
 @csrf_exempt
-@receiver(event_signal)
+# @receiver(event_signal)
 def sol_donate_webhook(sender, event, data,**kwargs):
     print('My paystack data', data)
    # sender is the raw request
