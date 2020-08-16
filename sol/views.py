@@ -14,10 +14,10 @@ from posts.models import Post
 from .models import *
 from django.core.mail import EmailMultiAlternatives
 from django.views.decorators.csrf import csrf_exempt
-from paystack.signals import event_signal
+# from paystack.signals import event_signal
 from django.dispatch import receiver
 from django.views.decorators.http import require_http_methods
-from paystack.utils import get_js_script
+# from paystack.utils import get_js_script
 from django.utils.crypto import get_random_string
 from django.template.loader import render_to_string
 import re
@@ -100,7 +100,8 @@ def pay_donation(request):
         if 'email' in request.session and 'amount' in request.session:
             email=request.session.get('email')
             amount=request.session.get('amount')
-            context={"amount":amount,"email":email,"paystack_script":get_js_script(),"new_ref":new_ref,"key":key}
+            context={"amount":amount,"email":email,"new_ref":new_ref,"key":key}
+            # context={"amount":amount,"email":email,"paystack_script":get_js_script(),"new_ref":new_ref,"key":key}
     except Exception as e:
         messages.error(request,'Donation session expired please try again.')
     return render(request,template,context)
