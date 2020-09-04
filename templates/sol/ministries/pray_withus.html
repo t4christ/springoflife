@@ -88,10 +88,10 @@ color:white;
 <div class="row prayers" style="margin-top:5%;"> 
 {% for prayer in pray_withus %}
       <div class="card col-md-6">
-  <img class="card-img-top" src="{{prayer.link}}" alt="Card image">
+  <img class="card-img-top" src="{{prayer.image.url}}" alt="Card image">
   <div class="card-body">
   <p class="text-center">{{prayer.pray_time.Date}}</p>
-  <button class="view-prayer btn-primary">View Prayer Point</button>
+  <button onClick="pray_withclass="view-prayer btn-primary">View Prayer Point</button>
   <p style="display:none;" class="text-center" id="prayer-point">{{prayer.prayer_point}}</p>
   
   </div>
