@@ -91,8 +91,8 @@ color:white;
   <img class="card-img-top" src="{{prayer.image.url}}" alt="Card image">
   <div class="card-body">
   <p class="text-center">{{prayer.pray_time.Date}}</p>
-  <button onClick="pray_withclass="view-prayer btn-primary">View Prayer Point</button>
-  <p style="display:none;" class="text-center" id="prayer-point">{{prayer.prayer_point}}</p>
+  <button class="view-prayer-{{prayer.id}} btn-primary" id="view-prayer-{{prayer.id}}">View Prayer Point</button>
+  <p style="display:none;" class="text-center" id="prayer-point-{{prayer.id}}">{{prayer.prayer_point}}</p>
   
   </div>
 </div> 

@@ -81,19 +81,25 @@ let prayer_tab = document.querySelectorAll(".prayers .card-body");
 function prayer_point(e){
 let button_target = e.target.parentNode.className
 
-let target_button = document.querySelector("."+button_target + " " + "#prayer-point")
+let id = `#${e.target.nextElementSibling.id}`
+let buttonTarget = `#${e.target.id}`
+
+
+
+let target_button = document.querySelector("."+button_target + " " + id)
 if(target_button.style.display === "none"){
-document.querySelector("."+button_target + " " + "button").innerHTML = "Close Prayer Point";
-document.querySelector("."+button_target + " " + "#prayer-point").style.display = "block";
+document.querySelector(buttonTarget).innerHTML = "Close Prayer Point";
+document.querySelector("."+button_target + " " + id).style.display = "block";
 
 }
 else{
-    document.querySelector("."+button_target + " " + "button").innerHTML = "View Prayer Point";
-    document.querySelector("."+button_target + " " + "#prayer-point").style.display = "none";
+    document.querySelector(buttonTarget).innerHTML = "View Prayer Point";
+    document.querySelector("."+button_target + " " + id).style.display = "none";
 }
 }
 
 for ( let node = 0; node < prayer_tab.length; node++){
+    console.log(prayer_tab[node])
 prayer_tab[node].addEventListener("click",prayer_point)
 }
 
