@@ -24,6 +24,7 @@ RUN apk update && \
     libjpeg \
     libjpeg-turbo-dev \
     && pip install -r /requirements.txt 
+    # && pip install -e git+https://github.com/gbozee/django-paystack.git@master#egg=paystack 
     
 
 
