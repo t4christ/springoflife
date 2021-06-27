@@ -20,6 +20,8 @@ from django.views.decorators.http import require_http_methods
 # from paystack.utils import get_js_script
 from django.utils.crypto import get_random_string
 from django.template.loader import render_to_string
+from django.core import serializers
+
 import re
 
 @require_http_methods(["HEAD", "POST"])
@@ -53,6 +55,13 @@ def home(request):
 
 def transact_success(request):
     template="sol/donations/success-page.html"
+    name = request.session.get('name')
+    amount = request.session.get('amount')
+    email = request.session.get('email')
+    phone = request.session.get('phone')
+    village = request.session.get('village')
+    message = request.session.get('message') 
+    Donation.objects.create(name=name,amount=amount,email=email,phone_number=phone, section=village, message=message)
     context={}
     return render(request,template,context)
 
@@ -81,9 +90,9 @@ def about(request):
 
 def donation(request):
     donor = DonationPart.objects.all()
-    if 'email' in request.session and 'amount' in request.session:
-        request.session.pop('email')
-        request.session.pop('amount')
+    data_list = ['phone','village','email','message','name','amount']
+    pop_session = [request.session.pop(i) for i in data_list if i in request.session]
+
     # portfolio=Portfolio.objects.order_by().values_list("title",flat=True).distinct()
     template="sol/donation.html"
     context={"donor":donor}
@@ -127,6 +136,7 @@ def validate_input(*args):
 
 def donate_record(request):
     data={}
+
     name= str(request.POST.get("name",))
     phone= str(request.POST.get("phone",))
     village= str(request.POST.get("village",))
@@ -140,12 +150,17 @@ def donate_record(request):
         print("My validation input",validation_result)
         name,phone,village,message,amount,email = validation_result
         village = DonationPart.objects.get(sections=village)
+        village = serializers.serialize("json", [village])
         if request.method == 'POST':
-            Donation.objects.create(name=name,amount=amount,email=email,phone_number=phone, section=village, message=message)
             data["donate_message"] = render_to_string('sol/donate_message.html')
             data['success']="Successfully received details.You can continue to donate. God bless you."
+            request.session['amount']=name
+            request.session['phone']=phone
+            request.session['village']=village
             request.session['amount']=amount
             request.session['email']=email
+            request.session['message']=message
+
 
         else:
             data['failed']="Only post request allowed."    

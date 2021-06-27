@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
     #Other Apps
     'sol',
-    'paystack',
+    'django-paystack.paystack',
     'posts',
     'taggit',
     'comments',
@@ -181,8 +181,8 @@ EMAIL_USE_TLS = True
 
 PAYSTACK_PUBLIC_KEY=os.environ.get('PAYSTACK_PUBLIC_KEY')
 PAYSTACK_SECRET_KEY=os.environ.get('PAYSTACK_SECRET_KEY')
-# PAYSTACK_FAILED_URL='failed-verification'
-# PAYSTACK_SUCCESS_URL='successful-verification'
+PAYSTACK_FAILED_URL='failed-verification'
+PAYSTACK_SUCCESS_URL='successful-verification'
 PAYSTACK_WEBHOOK_DOMAIN='http://5eeab2a8.ngrok.io'
 
 
