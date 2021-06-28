@@ -56,19 +56,21 @@ def home(request):
 
 
 def transact_success(request):
-    template="sol/donations/success-page.html"
+    template="paystack/success-page.html"
     name = request.session.get('name')
     amount = request.session.get('amount')
     email = request.session.get('email')
     phone = request.session.get('phone')
     village = request.session.get('village')
-    message = request.session.get('message') 
+    message = request.session.get('message')
+    print("Am here with",village)
+    village = DonationPart.objects.get(sections=village) 
     Donation.objects.create(name=name,amount=amount,email=email,phone_number=phone, section=village, message=message)
     context={}
     return render(request,template,context)
 
 def transact_failed(request):
-    template="sol/donations/failed-page.html"
+    template="paystack/failed-page.html"
     context={}
     return render(request,template,context)
 
@@ -151,12 +153,12 @@ def donate_record(request):
     if isinstance(validation_result,list):
         print("My validation input",validation_result)
         name,phone,village,message,amount,email = validation_result
-        village = DonationPart.objects.get(sections=village)
-        village = serializers.serialize("json", [village])
+        village = DonationPart.objects.get(sections=village).sections
+        # village = serializers.serialize("json", [village])
         if request.method == 'POST':
             data["donate_message"] = render_to_string('sol/donate_message.html')
             data['success']="Successfully received details.You can continue to donate. God bless you."
-            request.session['amount']=name
+            request.session['name']=name
             request.session['phone']=phone
             request.session['village']=village
             request.session['amount']=amount
