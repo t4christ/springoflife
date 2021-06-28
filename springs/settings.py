@@ -31,6 +31,7 @@ DEBUG = False
 # ALLOWED_HOSTS = ["localhost","192.168.99.100","spol.herokuapp.com","www.springsoflifeg.com"]
 ALLOWED_HOSTS = ["*"]
 
+
 # Application definition
 
 INSTALLED_APPS = [
