@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM ubuntu
 
 
 
@@ -10,9 +10,28 @@ COPY requirements.txt /requirements.txt
 
 
 #run package installations
-RUN apk update && \
-    apk add --virtual build-deps gcc python3-dev musl-dev && \
-    apk add \
+# RUN apk update && \
+#     apk add --virtual build-deps gcc python3-dev musl-dev && \
+#     apk add \
+#     libffi-dev \
+#     postgresql-dev \
+#     libpng \
+#     git \
+#     libjpeg-turbo \
+#     freetype-dev \
+#     libpng-dev \
+#     jpeg-dev \
+#     libjpeg \
+#     libjpeg-turbo-dev \
+#     && pip3 install -r /requirements.txt 
+    # && pip install -e git+https://github.com/gbozee/django-paystack.git@master#egg=paystack 
+    
+
+
+
+RUN apt-get -y update && \
+    apt-get install python3 -y \
+    apt-get install -y \
     libffi-dev \
     postgresql-dev \
     libpng \
@@ -24,8 +43,9 @@ RUN apk update && \
     libjpeg \
     libjpeg-turbo-dev \
     && pip3 install -r /requirements.txt 
-    # && pip install -e git+https://github.com/gbozee/django-paystack.git@master#egg=paystack 
-    
+
+
+
 
 
 
