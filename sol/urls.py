@@ -7,7 +7,7 @@ from .views import (
 	home,about,our_ministries,contact,donation,blog,donate_record,
     sol_donate_webhook,transact_success,transact_failed,pay_donation,
     church_plant,grow_mission,pray_withus,med_mission,edu_mission,
-    partner_withus,serve_ministry
+    partner_withus,serve_ministry,certbot,
     # modify_portfolio
 	)
 
@@ -15,6 +15,7 @@ app_name="sol"
 
 urlpatterns = [
 	path('', home,name='home'),
+    path('.well-known/acme-challenge/<str:id>',certbot,name='certbot'),
     # path('sol_donate/success',transact_success,name='transact_success'),
     # path('sol_donate/failed',transact_failed,name='transact_failed'),
     path('paystack/webhook/',sol_donate_webhook,name='sol_wehbook'),
