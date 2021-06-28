@@ -31,17 +31,17 @@ COPY requirements.txt /requirements.txt
 
 RUN apt-get -y update && \
     apt-get install python3 -y \
-    apt-get install -y \
-    libffi-dev \
-    postgresql-dev \
-    libpng \
-    git \
-    libjpeg-turbo \
-    freetype-dev \
-    libpng-dev \
-    jpeg-dev \
-    libjpeg \
-    libjpeg-turbo-dev \
+    # apt-get install -y \
+    # libffi-dev \
+    # postgresql-dev \
+    # libpng \
+    # git \
+    # libjpeg-turbo \
+    # freetype-dev \
+    # libpng-dev \
+    # jpeg-dev \
+    # libjpeg \
+    # libjpeg-turbo-dev \
     && pip3 install -r /requirements.txt 
 
 
