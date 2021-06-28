@@ -31,6 +31,7 @@ COPY requirements.txt /requirements.txt
 
 RUN apt-get -y update && \
     apt-get install python3 -y \
+    python3-pip \
     # apt-get install -y \
     # libffi-dev \
     # postgresql-dev \
