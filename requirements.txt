@@ -15,4 +15,4 @@ psycopg2-binary
 google-cloud-storage
 django-storages
 django-taggit
--e git+https://github.com/gbozee/django-paystack.git@master#egg=paystack == 1.5.0
+-e git+https://github.com/gbozee/pypaystack.git@master#egg=paystack
