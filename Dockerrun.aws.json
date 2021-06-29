@@ -16,21 +16,6 @@
             "memory": 128
             
         },
-      
-        {
-            "name":"smtp",
-            "image":"texplode/docker_smtp",
-            "hostname": "smtp",
-            "essential": false,
-            "memory": 128,
-            "portMappings": [
-              {
-                  "hostPort": 25,
-                  "containerPort":25
-              }
-          ]
-        },
-
  
         {
             "name":"nginx",
