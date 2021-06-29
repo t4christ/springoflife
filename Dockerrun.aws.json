@@ -7,7 +7,7 @@
           "command": [
             "/bin/sh",
             "-c",
-            "python manage.py migrate && gunicorn springs.wsgi:application --bind 0.0.0.0:8009 && python manage.py collectstatic"
+            "python3 manage.py migrate && gunicorn springs.wsgi:application --bind 0.0.0.0:8009 && python3 manage.py collectstatic"
         ],
             "name":"web",
             "image":"texplode/springs-web",
@@ -16,6 +16,21 @@
             "memory": 128
             
         },
+      
+        {
+            "name":"smtp",
+            "image":"texplode/docker_smtp",
+            "hostname": "smtp",
+            "essential": false,
+            "memory": 128,
+            "portMappings": [
+              {
+                  "hostPort": 25,
+                  "containerPort":25
+              }
+          ]
+        },
+
  
         {
             "name":"nginx",
