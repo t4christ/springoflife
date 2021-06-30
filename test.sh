@@ -22,3 +22,10 @@
 # $ ssh-copy-id -i deploy_rsa.pub ec2-user@<your-ec2-instance>
 # $ rm -f deploy_rsa deploy_rsa.pub
 # $ git add deploy_rsa.enc
+
+
+ # Run ssh configuration
+  # - openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
+  # - eval "$(ssh-agent -s)"
+  # - chmod 600 /tmp/deploy_rsa
+  # - echo "yes" ssh-add /tmp/deploy_rsa
