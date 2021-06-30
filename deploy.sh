@@ -1,10 +1,10 @@
 #!/bin/bash
 
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-
 echo "Installing Aws"
-./aws/install -i /usr/local/aws-cli -b /usr/local/bin
+
+ apt-get install awscli
+
+
 
 aws --version
 
