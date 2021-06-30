@@ -4,7 +4,9 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscl
 unzip awscliv2.zip
 
 echo "Installing Aws"
-./aws/install
+./aws/install -i /usr/local/aws-cli -b /usr/local/bin
+
+aws --version
 
 
 # echo "Running deploy script"
