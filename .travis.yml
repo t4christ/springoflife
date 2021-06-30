@@ -27,6 +27,8 @@ after_success:
   - docker push texplode/springs-web
   - docker push texplode/springs-nginx
   - docker push texplode/docker_smtp
+  - openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_iv -in sol_accessKeys.csv.enc -out sol_accessKeys.csv -d
+  - aws configure import --csv sol_accessKeys.csv
   - docker run --rm -it amazon/aws-cli ssm send-command --region us-east-2 --document-name "AWS-RunRemoteScript" --targets "Key=instanceids,Values=i-0881ef84752782ea2" --parameters '{"sourceType":["S3"],"sourceInfo":["{\"path\":\"https://s3.amazonaws.com/springs-bucket/scripts/shell/deploy.sh\"}"],"commandLine":["deploy.sh"]}'
 
 
