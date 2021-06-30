@@ -1,12 +1,8 @@
 #!/bin/bash
 
-echo "Installing Aws"
+echo "Running Aws Version"
 
- apt-get install awscli
-
-
-
-aws --version
+docker run --rm -it amazon/aws-cli --version
 
 
 # echo "Running deploy script"
