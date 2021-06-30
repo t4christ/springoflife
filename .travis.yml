@@ -26,17 +26,22 @@ after_success:
   - docker push texplode/springs-web
   - docker push texplode/springs-nginx
   - docker push texplode/docker_smtp
-  
-
+ 
 deploy:
-  provider: elasticbeanstalk
-  region: us-east-2
-  app: sol
-  env: Sol-env 
-  bucket_name: springs-bucket
-  # bucket_path: spring_bucket
+  provider: script
+  script: bash ./deploy.sh
   on:
-    branch: springs
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
+    branch: master
+
+# deploy:
+#   provider: elasticbeanstalk
+#   region: us-east-2
+#   app: sol
+#   env: Sol-env 
+#   bucket_name: springs-bucket
+#   # bucket_path: spring_bucket
+#   on:
+#     branch: springs
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key: $AWS_SECRET_KEY
 
