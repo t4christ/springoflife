@@ -13,6 +13,7 @@ after_success:
   - docker build -t texplode/springs-web  .
   - docker build -t texplode/springs-nginx  ./nginx
   - docker build -t texplode/docker_smtp ./docker-smtp
+
   
 
   
@@ -26,12 +27,18 @@ after_success:
   - docker push texplode/springs-web
   - docker push texplode/springs-nginx
   - docker push texplode/docker_smtp
+  - docker run --rm -it amazon/aws-cli ssm send-command \
+    --document-name "AWS-RunRemoteScript" \
+    --targets "Key=instanceids,Values=i-0881ef84752782ea2" \
+    --parameters '{"sourceType":["S3"],"sourceInfo":["{\"path\":\"https://s3.amazonaws.com/springs-bucket/scripts/shell/deploy.sh\"}"],"commandLine":["deploy.sh"]}'
+
+
  
-deploy:
-  provider: script
-  script: bash ./deploy.sh
-  on:
-    branch: springs
+# deploy:
+#   provider: script
+#   script: bash ./deploy.sh
+#   on:
+#     branch: springs
 
 # deploy:
 #   provider: elasticbeanstalk
