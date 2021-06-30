@@ -31,7 +31,7 @@ deploy:
   provider: script
   script: bash ./deploy.sh
   on:
-    branch: master
+    branch: springs
 
 # deploy:
 #   provider: elasticbeanstalk
