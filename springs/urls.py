@@ -27,7 +27,7 @@ urlpatterns = [
     path('sol_admin/', admin.site.urls),
     path('comments/', include("comments.urls",namespace="comments")),
     path('posts/', include("posts.urls",namespace="posts")),
-    path("paystack", include(('paystack.urls','paystack'),namespace='paystack')),
+    # path("paystack", include(('pypaystack.urls','pypaystack'),namespace='paystack')),
     path('', include("sol.urls",namespace="sol")),
 
   
