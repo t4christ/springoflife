@@ -1,19 +1,6 @@
 {
     "AWSEBDockerrunVersion": 2,
-    "volumes": [
-        {
-          "name": "sslcert",
-          "host": {
-            "sourcePath": "/etc/letsencrypt/live/missions.springsoflifeg.com/fullchain.pem"
-          }
-        },
-        {
-            "name": "sslcertkey",
-            "host": {
-              "sourcePath": "/etc/letsencrypt/live/missions.springsoflifeg.com/privkey.pem"
-            }
-          }
-      ],
+
     "containerDefinitions": [
     
 
@@ -62,20 +49,12 @@
                 }
             ],
             "links":["web"],
-            "memory": 128,
-            "mountPoints": [
-                {
-                  "sourceVolume": "sslcert",
-                  "containerPath": "/etc/letsencrypt/live/missions.springsoflifeg.com",
-                  "readOnly": true
-                },
-                {
-                    "sourceVolume": "sslcertkey",
-                    "containerPath": "/etc/letsencrypt/live/missions.springsoflifeg.com",
-                    "readOnly": true
-                  }
-              ]
+            "memory": 128
         }
 
     ]
 }
+
+
+
+
