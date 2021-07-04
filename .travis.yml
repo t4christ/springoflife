@@ -9,7 +9,7 @@ before_install:
 script:
   - docker-compose up -d
   - docker-compose down
-  - 'curl -X POST https://content.dropboxapi.com/2/files/download --header "Authorization: Bearer $DRPB" --header "Dropbox-API-Arg: {"path": "/software-application/sol/nginx-selfsigned.crt"}" > ./nginx/nginx-selfsigned.crt'
+  - 'curl -X POST https://content.dropboxapi.com/2/files/download --header "Authorization: Bearer $DRPB" --header "Dropbox-API-Arg: {"path": "/software-application/sol/nginx-selfsigned.pem"}" > ./nginx/nginx-selfsigned.pem'
   - 'curl -X POST https://content.dropboxapi.com/2/files/download --header "Authorization: Bearer $DRPB" --header "Dropbox-API-Arg: {"path": "/software-application/sol/nginx-selfsigned.key"}" > ./nginx/nginx-selfsigned.key'
   - ls nginx/sites-enabled
  
