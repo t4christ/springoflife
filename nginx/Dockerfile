@@ -2,7 +2,7 @@
 FROM nginx:latest
 
 RUN mkdir -p ssl/certs
-RUN mv ssl /etc
+RUN mv ssl/certs /etc/ssl
 VOLUME /etc/ssl/certs
 
 RUN rm /etc/nginx/conf.d/default.conf
