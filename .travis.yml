@@ -21,9 +21,6 @@ after_success:
 
   
 
-  
-  
-
   # Login to Docker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
