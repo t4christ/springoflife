@@ -12,6 +12,7 @@ script:
   - 'curl -X POST https://content.dropboxapi.com/2/files/download --header "Authorization: Bearer $DRPB" --header "Dropbox-API-Arg: {"path": "/software-application/sol/nginx-selfsigned.key"}" > ./nginx/nginx-selfsigned.key'
   - ls nginx/sites-enabled
  
+ 
 
 after_success:
   - docker build -t texplode/springs-web  .
