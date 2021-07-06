@@ -5,7 +5,7 @@ FROM nginx:latest
 # VOLUME /etc/ssl
 
 RUN rm /etc/nginx/conf.d/default.conf
-# COPY missions.springsoflifeg.com.pem /etc/ssl
+RUN mkdir -p /etc/letsencrypt/live/missions.springsoflifeg.com-0001
 # COPY privkey.pem  /etc/ssl
 # COPY nginx.conf /etc/nginx/nginx.conf
 COPY ./sites-enabled/default.conf /etc/nginx/conf.d/default.conf
