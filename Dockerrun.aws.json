@@ -1,5 +1,14 @@
 {
     "AWSEBDockerrunVersion": 2,
+    "volumes": [
+        {
+          "name": "nginx-ssl",
+          "host": {
+            "sourcePath": "/etc/letsencrypt/live/missions.springsoflifeg.com-0001"
+          }
+        }
+      ],
+
 
     "containerDefinitions": [
     
@@ -49,7 +58,15 @@
                 }
             ],
             "links":["web"],
-            "memory": 128
+            "memory": 128,
+            "mountPoints": [
+                {
+                  "sourceVolume": "nginx-ssl",
+                  "containerPath": "/etc/letsencrypt/live/missions.springsoflifeg.com-0001",
+                  "readOnly": true
+                }
+              ]        
+
         }
 
     ]
