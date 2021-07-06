@@ -13,7 +13,6 @@ script:
   - ls nginx/sites-enabled
  
 
-
 after_success:
   - docker build -t texplode/springs-web  .
   - docker build -t texplode/springs-nginx  ./nginx
