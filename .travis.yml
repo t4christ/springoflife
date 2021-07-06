@@ -18,7 +18,6 @@ after_success:
   - docker build -t texplode/springs-nginx  ./nginx
   - docker build -t texplode/docker_smtp ./docker-smtp
 
-
   # Login to Docker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
