@@ -1,20 +1,20 @@
-import sys
-nums_squared_lc = [i * 2 for i in range(10)]
+# import sys
+# nums_squared_lc = [i * 2 for i in range(10)]
 
-cnum = list(nums_squared_lc)
+# cnum = list(nums_squared_lc)
 
-print(nums_squared_lc)
-print(cnum)
-nums_squared_lc.append(20)
+# print(nums_squared_lc)
+# print(cnum)
+# nums_squared_lc.append(20)
 
-print(nums_squared_lc)
-print(cnum)
+# print(nums_squared_lc)
+# print(cnum)
 
-nums_squared_lc[0]=1
+# nums_squared_lc[0]=1
 
 
-print(nums_squared_lc)
-print(cnum)
+# print(nums_squared_lc)
+# print(cnum)
 # print(nums_squared_lc)
 # nums_squared_gc = (i * 2 for i in range(10000))
 # print(nums_squared_gc)
@@ -53,3 +53,4 @@ print(cnum)
 
 
 # print(is_palindrome(121))
+
