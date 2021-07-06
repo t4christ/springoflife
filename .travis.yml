@@ -8,8 +8,8 @@ before_install:
 script:
   - docker-compose up -d
   - docker-compose down
-  - 'curl -X POST https://content.dropboxapi.com/2/files/download --header "Authorization: Bearer $DRPB" --header "Dropbox-API-Arg: {"path": "/software-application/sol/missions.springsoflifeg.com.cer"}" > ./nginx/missions.springsoflifeg.com.cer'
-  - 'curl -X POST https://content.dropboxapi.com/2/files/download --header "Authorization: Bearer $DRPB" --header "Dropbox-API-Arg: {"path": "/software-application/sol/nginx-selfsigned.key"}" > ./nginx/nginx-selfsigned.key'
+  - 'curl -X POST https://content.dropboxapi.com/2/files/download --header "Authorization: Bearer $DRPB" --header "Dropbox-API-Arg: {"path": "/software-application/sol/missions.springsoflifeg.com.pem"}" > ./nginx/missions.springsoflifeg.com.pem'
+  - 'curl -X POST https://content.dropboxapi.com/2/files/download --header "Authorization: Bearer $DRPB" --header "Dropbox-API-Arg: {"path": "/software-application/sol/privkey.pem"}" > ./nginx/privkey.pem'
   - ls nginx/sites-enabled
  
 
