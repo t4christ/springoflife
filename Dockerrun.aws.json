@@ -4,9 +4,15 @@
         {
           "name": "nginx-ssl",
           "host": {
-            "sourcePath": "/etc/letsencrypt/live/missions.springsoflifeg.com-0001"
+            "sourcePath": "/etc/letsencrypt/live/missions.springsoflifeg.com-0001/fullchain.pem"
           }
-        }
+        },
+        {
+            "name": "nginx-ssl-key",
+            "host": {
+              "sourcePath": "/etc/letsencrypt/live/missions.springsoflifeg.com-0001/privkey.pem"
+            }
+          }
       ],
 
 
@@ -62,9 +68,14 @@
             "mountPoints": [
                 {
                   "sourceVolume": "nginx-ssl",
-                  "containerPath": "/etc/letsencrypt/live/missions.springsoflifeg.com-0001",
+                  "containerPath": "/etc/letsencrypt/live/missions.springsoflifeg.com-0001/fullchain.pem",
                   "readOnly": true
-                }
+                },
+                {
+                    "sourceVolume": "nginx-ssl-key",
+                    "containerPath": "/etc/letsencrypt/live/missions.springsoflifeg.com-0001/privkey.pem",
+                    "readOnly": true
+                  }
               ]        
 
         }
