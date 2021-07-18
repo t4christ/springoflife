@@ -106,16 +106,16 @@
                                 <div class="tab-content">
                                         <h1 class="text-center">Featured Content</h1>
                                         <h3 class="text-center">About Missions</h3>
-                                        {% for feature in feature %}
+                                        {% for feature in feature_mission %}
                                         <div class="col-md-4 col-sm-6 single-team">
                                             <div class="inner">
                                                 <div class="team-content">
-                                                    <h2><a href="/church_plant" class="blog_cat">{{feature.title}}</a></h2>
+                                                    <h2><a href="/" class="blog_cat">{{feature.title}}</a></h2>
                                                 </div>
                                             </div>
                         
                                             <div class="team-img">
-                                                <img src="{{ feature.image.url }}" alt="">
+                                                <img src="{{ feature.link }}" alt="">
                                             </div>
                                         </div>
                                             {% empty %}

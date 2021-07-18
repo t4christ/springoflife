@@ -46,7 +46,7 @@ class Outreach(TimestampedModel):
 
 class Portfolio(TimestampedModel):
     title= models.CharField(max_length=100,default="")
-    image=models.ImageField(upload_to=settings.OUTREACH)
+    image=models.ImageField(upload_to=settings.OUTREACH,null=True)
     description= models.TextField(default="")
     link=models.URLField( null=True, blank=True)
     def __str__(self):

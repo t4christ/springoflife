@@ -48,10 +48,11 @@ def home(request):
     try:
         posts = Post.objects.all()[:3]
         feature = ChurchPlant.objects.filter(village='Akogun')[:3]
-        context={"outreach":outreach,"village":village,"posts":posts,"feature":feature}
+        feature_mission = Portfolio.objects.all()
+        context={"feature_mission":feature_mission,"outreach":outreach,"village":village,"posts":posts,"feature":feature}
         return render(request,template,context)
     except:
-        context={"outreach":outreach,"village":village,"posts":posts,"feature":feature}
+        context={"feature_mission":feature_mission,"outreach":outreach,"village":village,"posts":posts,"feature":feature}
         return render(request,template,context)
 
 
