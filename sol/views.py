@@ -38,7 +38,7 @@ def sol_donate_webhook(sender, event, data,**kwargs):
 
 def certbot(request,id):
 
-    return HttpResponse('vHhDeVUs8iyTTkPpw8oRpE854FcK6VYlhv-Y4snFufg.CyRlAkPO9WerE4v8Mytx145TnzN0DbeTQmfwqx-Ibd4')
+    return HttpResponse('frNxA6ugz7IGFgvVoiaZMGbMrAbPDj7W4ialVyfr3uU.IoCpDoZy0XPNJz9hxcGPysf3GHS8cNeVsTSBjbehWVg')
 
 def home(request):
     template="sol/home.html"
