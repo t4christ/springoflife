@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'springs.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-import dj_database_url
+# import dj_database_url
 
 
 
@@ -167,6 +167,7 @@ EMAIL_HOST_PASSWORD=os.environ.get('SMARTHOST_PASSWORD')
 EMAIL_TIMEOUT = 30
 EMAIL_USE_TLS = True
 
+print('postgres host',os.environ.get('POSTGRES_HOST'))
 
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

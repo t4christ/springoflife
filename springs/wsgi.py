@@ -14,3 +14,5 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "springs.settings")
 
 application = get_wsgi_application()
+
+print('postgres host',os.environ.get('POSTGRES_HOST'))
