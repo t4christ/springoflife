@@ -4,6 +4,8 @@ services:
 before_install:
 - openssl aes-256-cbc -K $encrypted_748e73665f97_key -iv $encrypted_748e73665f97_iv
   -in .docker_env.enc -out .docker_env -d
+- cp .docker_env denv && ls ./denv
+
 - docker-compose build
 script:
 - 'curl -X POST https://content.dropboxapi.com/2/files/download --header "Authorization:
@@ -15,9 +17,7 @@ script:
 - docker-compose -f docker-compose-local.yml up -d
 - docker-compose down
 after_success:
-- openssl aes-256-cbc -K $encrypted_748e73665f97_key -iv $encrypted_748e73665f97_iv
-  -in .docker_env.enc -out .docker_env -d
-- cp .docker_env denv && ls ./denv
+
 - docker build -t texplode/springs-web  .
 - docker build -t texplode/springs-nginx  ./nginx
 - docker build -t texplode/docker_smtp ./docker-smtp
