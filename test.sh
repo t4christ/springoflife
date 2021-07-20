@@ -30,4 +30,4 @@
   # - chmod 600 /tmp/deploy_rsa
   # - echo "yes" ssh-add /tmp/deploy_rsa
 
-
+#  sudo docker run -it --rm certbot/certbot certonly --standalone -d missions.springsoflifeg.com --staple-ocsp  --agree-tos
