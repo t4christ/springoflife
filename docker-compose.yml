@@ -6,7 +6,7 @@ services:
     image: texplode/springs-web
     tty: true
     command: /bin/sh -c "gunicorn springs.wsgi:application --bind 0.0.0.0:8009 && python manage.py migrate"
- 
+    env_file: .docker_env
 
   nginx:
     image: texplode/springs-nginx
