@@ -11,7 +11,7 @@ services:
   nginx:
     image: texplode/springs-nginx
     ports:
-      - "8000:80"
+      - "80:80"
     depends_on:
       - web
     restart: always
