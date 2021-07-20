@@ -55,6 +55,7 @@ WORKDIR /var/www/app
 # copy project root to app folder in the container
 COPY . /var/www/app
 
+EXPOSE 8009
 # RUN chmod 400 /var/www/app/start.sh
 
 # ENTRYPOINT ["./start.sh" ]
