@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-    - docker-compose
+    - docker-compose version
 
 script:
   # - rm -rf docker-compose.yml && rm -rf docker-compose-local.yml
