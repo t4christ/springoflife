@@ -9,7 +9,7 @@ script:
   # - rm -rf docker-compose.yml && rm -rf docker-compose-local.yml
   - 'curl -X POST https://content.dropboxapi.com/2/files/download --header "Authorization: Bearer $DRPB" --header "Dropbox-API-Arg: {"path": "/software-application/sol/fullchain.pem"}" > ./nginx/fullchain.pem'
   - 'curl -X POST https://content.dropboxapi.com/2/files/download --header "Authorization: Bearer $DRPB" --header "Dropbox-API-Arg: {"path": "/software-application/sol/privkey.pem"}" > ./nginx/privkey.pem'
-  - docker-compose -f ./docker-smtp/docker-compose-local.yml up -d
+  - docker-compose -f docker-compose-local.yml up -d
   - docker-compose down
   # - ls nginx/sites-enabled
  
