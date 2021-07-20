@@ -4,7 +4,7 @@ services:
 before_install:
 - openssl aes-256-cbc -K $encrypted_748e73665f97_key -iv $encrypted_748e73665f97_iv -in .docker_env.enc -out .docker_env -d 
 - mv .docker_env denv
-- ls .
+- ls denv
 
 - docker-compose build
 script:
