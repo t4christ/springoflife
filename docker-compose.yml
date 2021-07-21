@@ -16,7 +16,7 @@ services:
       - /etc/letsencrypt/live/missions.springsoflifeg.com/fullchain.pem:/etc/letsencrypt/live/missions.springsoflifeg.com/fullchain.pem
       - /etc/letsencrypt/live/missions.springsoflifeg.com/privkey.pem:/etc/letsencrypt/live/missions.springsoflifeg.com/privkey.pem
 
-      ports:
+    ports:
       - "80:80"
     depends_on:
       - web
