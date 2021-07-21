@@ -44,10 +44,10 @@ def certbot(request,id):
 
 def set_certbot(request,id):
     
-    if request.session.get('certbot_key'):
-        request.session.pop('certbot_key')
-    else:
-        request.session['certbot_key']=id
+    # if request.session.get('certbot_key'):
+    #     request.session.pop('certbot_key')
+    # else:
+    request.session['certbot_key']=id
     return HttpResponse('Key stored in session')
 
 def home(request):
