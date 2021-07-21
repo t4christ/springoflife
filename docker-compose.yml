@@ -7,6 +7,8 @@ services:
     tty: true
     command: /bin/sh -c "gunicorn springs.wsgi:application --bind 0.0.0.0:8009 && python manage.py migrate"
     env_file: .env
+    ports:
+      - "8009:8009"
 
   nginx:
     image: texplode/springs-nginx
