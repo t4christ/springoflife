@@ -37,9 +37,9 @@ def sol_donate_webhook(sender, event, data,**kwargs):
 
 
 def certbot(request,id):
-    # certbot_key = request.session.get('certbot_key')
+    key = Portfolio.objects.get(title=key)
 
-    return HttpResponse('c3Hsw56E4NQS-KXau35C2_3fP1Zl3uXQWATCwuvvP3w.dSYuruDc7vGOI4u9MNImNBSiQuwJVFi6MNhoGJjgzxk')
+    return HttpResponse(key.title)
 
 
 def set_certbot(request,id):
@@ -47,8 +47,8 @@ def set_certbot(request,id):
     # if request.session.get('certbot_key'):
     #     request.session.pop('certbot_key')
     # else:
-    request.session['certbot_key']=id
-    return HttpResponse('Key stored in session',request.session.get('certbot_key'))
+    request.session['key']=id
+    return HttpResponse('Key stored in session',id)
 
 def home(request):
     template="sol/home.html"
