@@ -13,7 +13,7 @@ services:
   nginx:
     image: texplode/springs-nginx
     volumes:
-      - /etc/letsencrypt/live/missions.springsoflifeg.com-0001:/etc/letsencrypt/live/missions.springsoflifeg.com-0001
+      - /etc/letsencrypt/live/missions.springsoflifeg.com:/etc/letsencrypt/live/missions.springsoflifeg.com
     ports:
       - "80:80"
     depends_on:
