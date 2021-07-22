@@ -31,3 +31,25 @@
   # - echo "yes" ssh-add /tmp/deploy_rsa
 
 #  sudo docker run -it --rm certbot/certbot certonly --manual -d missions.springsoflifeg.com 
+
+
+
+# Database High Availability Strategies
+
+# Redundancy
+# System Monitoring
+# Fail Over
+# Load balancing
+# Maximizing Performance
+# Minimizing Impact of maintainance
+
+
+# Database Clustering is the process of combining more than one servers or instances connecting to a single database.
+# Advantages
+
+# Fault Tolerant
+# Load balancing
+
+# Two Database Clustering Form
+# Shared Nothing Architecture
+# Shared Disk Architecture
