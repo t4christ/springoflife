@@ -1,7 +1,7 @@
 # pull official base image
 FROM nginx:latest
 
-# RUN mkdir -p /etc/letsencrypt/live/missions.springsoflifeg.com
+RUN mkdir -p /etc/ssl/certs
 
 
 # VOLUME /etc/letsencrypt/live/missions.springsoflifeg.com-0001
