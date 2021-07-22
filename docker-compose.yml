@@ -13,7 +13,8 @@ services:
   nginx:
     image: texplode/springs-nginx
     volumes:
-      - /etc/letsencrypt/live/mission.springsoflifeg.com:/etc/letsencrypt/live/mission.springsoflifeg.com
+      - /etc/letsencrypt/live/mission.springsoflifeg.com/fullchain.pem:/etc/letsencrypt/live/mission.springsoflifeg.com/fullchain.pem
+      - /etc/letsencrypt/live/mission.springsoflifeg.com/privkey.pem:/etc/letsencrypt/live/mission.springsoflifeg.com/privkey.pem
 
     ports:
       - "80:80"
