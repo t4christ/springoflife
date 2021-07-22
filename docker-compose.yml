@@ -13,9 +13,7 @@ services:
   nginx:
     image: texplode/springs-nginx
     volumes:
-      - /etc/letsencrypt/live/missions.springsoflifeg.com/fullchain.pem:/etc/letsencrypt/live/missions.springsoflifeg.com/fullchain.pem
-      - /etc/letsencrypt/live/missions.springsoflifeg.com/privkey.pem:/etc/letsencrypt/live/missions.springsoflifeg.com/privkey.pem
-
+      - /home/ec2-user/docker_ssl_proxy:/etc/nginx/conf.d
     ports:
       - "80:80"
     depends_on:
