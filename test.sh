@@ -33,6 +33,8 @@
 #  sudo docker run -it --rm certbot/certbot certonly --manual -d missions.springsoflifeg.com 
 
 
+# sudo docker run -it --rm certbot/certbot certonly --manual --preferred-challenges=dns --email bakaretemitayo712@gmail.com --server https://acme-v02.api.letsencrypt.org/directory --agree-tos --manual-public-ip-logging-ok -d missions.springsoflifeg.com
+
 
 # Database High Availability Strategies
 
