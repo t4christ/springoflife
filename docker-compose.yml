@@ -12,8 +12,8 @@ services:
 
   nginx:
     image: texplode/springs-nginx
-    volumes:
-      - spring-cert:/etc/letsencrypt/live/mission.springsoflifeg.com;
+    # volumes:
+    #   - /etc/letsencrypt/live:/etc/letsencrypt/live/mission.springsoflifeg.com/fullchain.pem;
 
     ports:
       - "80:80"
@@ -28,6 +28,3 @@ services:
      - "587:587"
 
 
-volumes:
-  spring-cert:
-    
