@@ -12,8 +12,8 @@ services:
 
   nginx:
     image: texplode/springs-nginx
-    volumes:
-      - /etc/letsencrypt/live:/etc/letsencrypt/live
+    # volumes:
+    #   - /etc/letsencrypt/live:/etc/letsencrypt/live
 
     ports:
       - "80:80"
