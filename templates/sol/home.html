@@ -81,13 +81,13 @@
 
 
                                         {% for village in village|slice:"0:1" %}
-                                        <li class="active"><a href="#tab{{village.title|cut:' '}}" data-toggle="tab" class="village">{{village.title}}</a></li>
+                                        <li class="active"><a href="#tab{{village.title|cut:' '}}" data-toggle="tab" class="village">{{village.village}}</a></li>
                                         {% endfor %}
 
 
 
                                         {% for village in village|slice:"1:" %}
-                                        <li class=""><a href="#tab{{village.title|cut:' '}}" data-toggle="tab" class="villages">{{village.title}}</a></li>
+                                        <li class=""><a href="#tab{{village.village|cut:' '}}" data-toggle="tab" class="villages">{{village.village}}</a></li>
                                         {% endfor %}
                                     
                                     </ul>
@@ -110,7 +110,7 @@
                                         <div class="col-md-4 col-sm-6 single-team">
                                             <div class="inner">
                                                 <div class="team-content">
-                                                    <h2><a href="/" class="blog_cat">{{feature.title}}</a></h2>
+                                                    <h2><a href="/" class="blog_cat">{{feature.village}}</a></h2>
                                                 </div>
                                             </div>
                         

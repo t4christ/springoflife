@@ -32,11 +32,11 @@ border: 2px solid whitesmoke;
 box-shadow: -1px 6px 7px -4px;
 }
 
-.card img{
-height: 100%;
-width:100%;
+.card img {
+    height: 310px;
+    width:100%;
 
-}
+  }
 
 .ministry-wrapper{
     display:flex;
@@ -48,7 +48,7 @@ width:100%;
     padding:0;
 }
 .ministry-header .ministry-background{
-height: 500px;
+height: 700px;
 width:100%;
 background-size:cover;
 
@@ -56,7 +56,7 @@ background-size:cover;
 
 .img-background{
     position:absolute;
-    top:400px;
+    top:600px;
     width:100%;
     
 }
@@ -64,6 +64,18 @@ background-size:cover;
 color:white;
 }
 
+@media only screen and (max-width: 600px) {
+  .card img {
+    height: 180px;
+  }
+
+  .ministry-header .ministry-background{
+height: 400px;
+width:100%;
+background-size:cover;
+
+}
+}
 </style>
 <section>
   

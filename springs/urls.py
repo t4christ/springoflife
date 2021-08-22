@@ -29,6 +29,8 @@ urlpatterns = [
     path('posts/', include("posts.urls",namespace="posts")),
     path("paystack", include(('django-paystack.paystack.urls','paystack'),namespace='paystack')),
     path('', include("sol.urls",namespace="sol")),
+    path('', include('django_prometheus.urls')),
+
 
   
 

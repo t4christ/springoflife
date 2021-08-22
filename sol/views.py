@@ -57,7 +57,7 @@ def home(request):
     village = Village.objects.all()
     try:
         posts = Post.objects.all()[:3]
-        feature = ChurchPlant.objects.filter(village='Akogun')[:3]
+        feature = MissionFields.objects.filter(village='Akogun')[:3]
         feature_mission = Portfolio.objects.all()
         context={"feature_mission":feature_mission,"outreach":outreach,"village":village,"posts":posts,"feature":feature}
         return render(request,template,context)
@@ -243,7 +243,7 @@ def edu_mission(request):
             edu_mission=EducationalMission.objects.all()
         else:
             village_title=search_query
-            edu_mission = EducationalMission.objects.filter(village=search_query)
+            edu_mission = EducationalMission.objects.filter(village__icontains=search_query)
     except:
         messages.error(request,"Educations missions will be available soon.Check back later")
     template="sol/ministries/edu_mission.html"
@@ -265,7 +265,7 @@ def mtc(request):
             edu_mission=EducationalMission.objects.all()
         else:
             village_title=search_query
-            mtc = Mtc.objects.filter(village=search_query)
+            mtc = Mtc.objects.filter(village__icontains=search_query)
     except:
         messages.error(request,"Mtc data will be available soon.Check back later")
     template="sol/ministries/mtc.html"
@@ -288,7 +288,7 @@ def conference(request):
             conference=Conference.objects.all()
         else:
             village_title=search_query
-            conference = Conference.objects.filter(village=search_query)
+            conference = Conference.objects.filter(village__icontains=search_query)
     except:
         messages.error(request,"Conference programs will be available soon.Check back later")
     template="sol/ministries/conference.html"
@@ -311,7 +311,7 @@ def med_mission(request):
             med_mission= MedicalMission.objects.all()
         else:
             village_title=search_query
-            med_mission = MedicalMission.objects.filter(village=search_query)
+            med_mission = MedicalMission.objects.filter(village__icontains=search_query)
     except:
         messages.error(request,"Medical missions will be available soon.Check back later")
     
@@ -330,10 +330,10 @@ def church_plant(request):
     church_plant=None
     try:
         if search_query == None:
-            church_plant= ChurchPlant.objects.all()
+            church_plant= MissionFields.objects.all()
         else:
             village_title=search_query
-            church_plant =ChurchPlant.objects.filter(village=search_query)
+            church_plant =MissionFields.objects.filter(village__icontains=search_query)
     except:
         messages.error(request,"Church Plants will be available soon.Check back later")
     

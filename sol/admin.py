@@ -15,7 +15,7 @@ admin.site.register(DonationPart)
 ########### Our Ministries ##############
 admin.site.register(EducationalMission)
 admin.site.register(MedicalMission)
-admin.site.register(ChurchPlant)
+admin.site.register(MissionFields)
 admin.site.register(GrowMission)
 admin.site.register(ServeWithUs)
 admin.site.register(PartnerWithUs)

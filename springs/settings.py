@@ -52,9 +52,12 @@ INSTALLED_APPS = [
     'comments',
     'pagedown',
     'crispy_forms',
+    'django_prometheus',
+
 ]
 
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,9 +65,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware'
+
 ]
 
 ROOT_URLCONF = 'springs.urls'
+PROMETHEUS_EXPORT_MIGRATIONS = False
 
 
 
@@ -167,7 +173,6 @@ EMAIL_HOST_PASSWORD=os.environ.get('SMARTHOST_PASSWORD')
 EMAIL_TIMEOUT = 30
 EMAIL_USE_TLS = True
 
-print('postgres host',os.environ.get('POSTGRES_HOST'))
 
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -239,3 +244,36 @@ else:
 #         default='DATABASE_URL'
 #     )
 # }
+
+from django.utils.log import DEFAULT_LOGGING
+
+LOGGING_CONFIG = None
+LOGLEVEL = os.getenv('DJ_LOGLEVEL', 'info').upper()
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        # Use JSON formatter as default
+        'default': {
+            '()': 'pythonjsonlogger.jsonlogger.JsonFormatter',
+        },
+        'django.server': DEFAULT_LOGGING['formatters']['django.server'],
+    },
+    'handlers': {
+        # Route console logs to stdout
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+        },
+        'django.server': DEFAULT_LOGGING['handlers']['django.server'],
+    },
+    'loggers': {
+        # Default logger for all modules
+        '': {
+            'level': LOGLEVEL,
+            'handlers': ['console', ],
+        },
+        # Default runserver request logging
+        'django.server': DEFAULT_LOGGING['loggers']['django.server'],
+    }
+}

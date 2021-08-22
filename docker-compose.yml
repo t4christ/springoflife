@@ -1,16 +1,66 @@
-version: '3'
+version: '3.7'
+
+x-logging: &loki-logging
+  driver: loki
+  options:
+    loki-url: "http://localhost:3100/api/prom/push"
 
 services:
+  db:
+    restart: always
+    build:
+      context: ./docker_db
+    env_file: .env
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    volumes:
+      - springs_data:/var/lib/postgresql/data/
+      - ./docker_db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  graphanaLoki:
+    image: grafana/loki
+    ports:
+      - 3100:3100
 
+    command: -config.file=/etc/loki/local-config.yaml
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    command: 
+        - bash -c "chown -R 1000:1000 /var/lib/grafana"
+    volumes:
+      - ./home/ec2-user/graphana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./home/ec2-user/graphana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./home/ec2-user/graphana/grafana_db:/var/lib/grafana
+    user: "root"
+
+    environment: 
+        GF_INSTALL_PLUGINS: "grafana-clock-panel,grafana-simple-json-datasource" 
+        GF_SERVER_DOMAIN: "localhost"
+        GF_USERS_ALLOW_SIGN_UP: "false"
+    depends_on:
+      - prometheus
+
+
+  prometheus:
+        image: prom/prometheus
+        ports:
+          - 7900:9090
+        volumes:
+          - ./home/ec2-user/prometheus-config/prometheus.yml:/etc/prometheus/prometheus.yml
+          - ./home/ec2-user/prometheus-config/prometheus_db:/var/lib/prometheus
   web:
-    image: texplode/springs-web
+    build: .
     tty: true
     command: /bin/sh -c "gunicorn springs.wsgi:application --bind 0.0.0.0:8009 && python manage.py migrate"
     env_file: .env
+    logging: *loki-logging
     ports:
       - "8009:8009"
 
   nginx:
+    build: ./nginx
     image: texplode/springs-nginx
     volumes:
       -  /etc/letsencrypt/live/mission.springsoflifeg.com/fullchain.pem:/etc/letsencrypt/live/mission.springsoflifeg.com/fullchain.pem
@@ -27,5 +77,8 @@ services:
     image: texplode/docker_smtp
     ports:
      - "587:587"
+
+volumes:
+  springs_data:
 
 

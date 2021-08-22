@@ -32,11 +32,11 @@ border: 2px solid whitesmoke;
 box-shadow: -1px 6px 7px -4px;
 }
 
-.card img{
-height: 100%;
-width:100%;
+.card img {
+    height: 310px;
+    width:100%;
 
-}
+  }
 
 .ministry-wrapper{
     display:flex;
@@ -48,19 +48,32 @@ width:100%;
     padding:0;
 }
 .ministry-header .ministry-background{
-height: 500px;
+height: 700px;
 width:100%;
 background-size:cover;
 }
 
 .img-background{
     position:absolute;
-    top:400px;
+    top:600px;
     width:100%;
     
 }
 .img-background h1{
 color:white;
+}
+
+@media only screen and (max-width: 600px) {
+  .card img {
+    height: 180px;
+  }
+
+  .ministry-header .ministry-background{
+height: 400px;
+width:100%;
+background-size:cover;
+
+}
 }
 </style>
 <section>
@@ -75,7 +88,7 @@ color:white;
 <div class="ministry-background" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3)100%,rgba(0,0,0,0.5)100%),url({% static 'images/sol/ministry/med_ministry.jpeg'%})" ></div>
 {% endif %}
 <div class="img-background">
- <h1>Medical Missions</h1>
+ <h1>SOL Outreaches</h1>
  <hr>
  </div>
  <p>SOL connects to health care volunteers in ways that not only bring access to quality medical facilities in the needy rural places(with no clinic, hospital or health centre) but the gospel of jesus christ to such places. Jesus preached the gospel by healing the sick. Volunteer health workers(doctors and nurses) can do the same, reaching the community with the gospel through the avenue of medicine. <p>

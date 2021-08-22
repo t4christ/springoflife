@@ -33,8 +33,8 @@ class ministryBackground(TimestampedModel):
 
 
 class Outreach(TimestampedModel):
-    title= models.CharField(max_length=100,default="")
-    description= models.TextField(default="")
+    village= models.CharField(max_length=100,default="")
+    write_up= models.TextField(default="")
     if settings.DEBUG:
         image=models.ImageField(upload_to=settings.OUTREACH)
     else:
@@ -45,9 +45,9 @@ class Outreach(TimestampedModel):
 
 
 class Portfolio(TimestampedModel):
-    title= models.CharField(max_length=100,default="")
+    village= models.CharField(max_length=100,default="")
     image=models.ImageField(upload_to=settings.OUTREACH,null=True)
-    description= models.TextField(default="")
+    write_up= models.TextField(default="")
     link=models.URLField( null=True, blank=True)
     def __str__(self):
         return "{} Portfolio ".format(self.title)
@@ -55,8 +55,8 @@ class Portfolio(TimestampedModel):
 
 
 class Village(TimestampedModel):
-    title= models.CharField(max_length=100,default="")
-    description= models.TextField(default="")
+    village= models.CharField(max_length=100,default="")
+    write_up= models.TextField(default="",null=True,blank=True)
     link=models.URLField( null=True, blank=True)
     def __str__(self):
         return "{} Village Video".format(self.title)
@@ -120,7 +120,7 @@ class EducationalMission(TimestampedModel):
     village= models.CharField(max_length=100,default="")
     link=models.URLField( null=True, blank=True)
     image=models.ImageField(upload_to=settings.OUTREACH)
-    description= models.TextField(default="")
+    write_up= models.TextField(default="")
     def __str__(self):
         return "{} Educational Mission ".format(self.title)
 
@@ -129,23 +129,23 @@ class MedicalMission(TimestampedModel):
     village= models.CharField(max_length=100,default="")
     image=models.ImageField(upload_to=settings.OUTREACH)
     link=models.URLField( null=True, blank=True)
-    description= models.TextField(default="")
+    write_up= models.TextField(default="")
     def __str__(self):
         return "{} Medical Mission ".format(self.title)
 
-class ChurchPlant(TimestampedModel):
+class MissionFields(TimestampedModel):
     title= models.CharField(max_length=100,default="")
     village= models.CharField(max_length=100,default="")
     link=models.URLField( null=True, blank=True)
     image=models.ImageField(upload_to=settings.OUTREACH)
-    description= models.TextField(default="")
+    write_up= models.TextField(default="")
     def __str__(self):
-        return "{} Church Plant ".format(self.title)
+        return "{} Mission Field ".format(self.village)
 
 class GrowMission(TimestampedModel):
     title= models.CharField(max_length=100,default="")
     link=models.URLField( null=True, blank=True)
-    description= models.TextField(default="")
+    write_up= models.TextField(default="")
     def __str__(self):
         return "{} Grow in Mission ".format(self.title)
 
@@ -153,7 +153,7 @@ class Mtc(TimestampedModel):
     title= models.CharField(max_length=100,default="")
     link=models.URLField( null=True, blank=True)
     image=models.ImageField(upload_to=settings.OUTREACH)
-    description= models.TextField(default="")
+    write_up= models.TextField(default="")
     def __str__(self):
         return "{} Mtc ".format(self.title)
 
@@ -162,7 +162,7 @@ class Conference(TimestampedModel):
     title= models.CharField(max_length=100,default="")
     link=models.URLField( null=True, blank=True)
     image=models.ImageField(upload_to=settings.OUTREACH)
-    description= models.TextField(default="")
+    write_up= models.TextField(default="")
     def __str__(self):
         return "{} Conference ".format(self.title)
 
@@ -185,7 +185,7 @@ class PartnerWithUs(TimestampedModel):
     title= models.CharField(max_length=100,default="")
     village= models.CharField(max_length=100,default="")
     image=models.ImageField(upload_to=settings.OUTREACH)
-    description= models.TextField(default="")
+    write_up= models.TextField(default="")
     def __str__(self):
         return "{} Pray With Us ".format(self.title)
 

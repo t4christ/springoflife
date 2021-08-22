@@ -27,17 +27,17 @@ color:white;
 
 
 .card{
-height:356px;
+height:auto;
 margin-bottom: 5%;
 border: 2px solid whitesmoke;
 box-shadow: -1px 6px 7px -4px;
 }
 
-.card img{
-height: 100%;
-width:100%;
+.card img {
+    height: 310px;
+    width:100%;
 
-}
+  }
 
 .ministry-wrapper{
     display:flex;
@@ -49,19 +49,32 @@ width:100%;
     padding:0;
 }
 .ministry-header .ministry-background{
-height: 500px;
+height: 700px;
 width:100%;
 
 }
 
 .img-background{
     position:absolute;
-    top:400px;
+    top:600px;
     width:100%;
     
 }
 .img-background h1{
 color:white;
+}
+
+@media only screen and (max-width: 600px) {
+  .card img {
+    height: 180px;
+  }
+
+  .ministry-header .ministry-background{
+height: 400px;
+width:100%;
+background-size:cover;
+
+}
 }
 </style>
 <section>
@@ -82,14 +95,14 @@ url({% static 'images/sol/ministry/edu_ministry.jpeg'%} )" ></div>
  <hr>
  </div>
  <h2 class="text-center">Access to education changes lives now and for generations to come. This is a long-term suitable impact.</h2>
- <p>Where communities live in poverty, it will be necessary to meet people's immediate needs in the form of food, shelter and clothes ( and we do all this at SOL), but we do more. Our goal is always in long term-missions that restores. We believe one of the most strategic ways to bring about restoration is through education, Illeteracy is sutained and opportunities. </p>
+ <p>When communities are poverty stricken, in the short term it will be necessary to meet people's immediate needs in the form of food, shelter and clothes. SOL does all of these, but our goal is always long term-missions that transforms and restores. We believe one of the most strategic ways to bring about transformation of communities in the long term is through education. We establish tuition free schools where none exists. </p>
     </div>
 
 
 <div class="large-title text-center search-title">                   
     <form class="form-inline" action="" method="post">
     {% csrf_token %}
-    <input class="form-control mr-sm-2" name="search_query" type="text" placeholder="Search">
+    <input class="form-control mr-sm-2" name="search_query" type="text" placeholder="Search by village">
     <button class="btn" type="submit">Search</button>
   </form>
   <h2 class="text-center" style="font-weight:bold;">{{village}}</h2>
@@ -99,8 +112,11 @@ url({% static 'images/sol/ministry/edu_ministry.jpeg'%} )" ></div>
 <div class="row"> 
 {% for edu in edu_mission %}
       <div class="card col-md-4">
+        <h2 class="text-center">  {{edu.title}}({{edu.village}})</h2>
+
   <img class="card-img-top" src="{{edu.image.url}}" alt="Card image">
   <div class="card-body">
+      {{edu.write_up}}
   </div>
 </div> 
 {% empty %}
