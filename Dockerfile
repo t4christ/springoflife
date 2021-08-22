@@ -53,7 +53,7 @@ RUN apk update && \
 WORKDIR /var/www/app
 
 # copy project root to app folder in the container
-COPY .doc_env /var/www/app
+COPY .env /var/www/app
 COPY . /var/www/app
 
 EXPOSE 8009
