@@ -48,7 +48,7 @@ services:
         ports:
           - 7900:9090
         volumes:
-          - ./home/ec2-user/prometheus-config/prometheus.yml:/etc/prometheus/prometheus.yml
+          - ./home/ec2-user/prometheus-config:/etc/prometheus
           - ./home/ec2-user/prometheus-config/prometheus_db:/var/lib/prometheus
   web:
     build: .
