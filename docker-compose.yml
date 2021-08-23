@@ -54,7 +54,7 @@ services:
     build: .
     tty: true
     command: /bin/sh -c "gunicorn springs.wsgi:application --bind 0.0.0.0:8009 && python manage.py migrate"
-    env_file: denv/.env
+    env_file: .env
     logging: *loki-logging
     ports:
       - "8009:8009"
